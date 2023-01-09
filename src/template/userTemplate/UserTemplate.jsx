@@ -5,8 +5,8 @@ import Header from '../../components/global/Header'
 const UserTemplate = () => {
   return (
     <div>
-        <Header />
-        <Outlet />
+      <Header />
+      <Outlet />
     </div>
   )
 }
