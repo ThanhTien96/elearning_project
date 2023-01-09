@@ -1,0 +1,217 @@
+.Logo{
+    display: flex;
+    align-items: center;
+    img{
+        width: 50px;
+    }
+    h1{
+        @apply font-extrabold text-2xl ml-2;
+        letter-spacing: 1px;
+    }
+    @media screen and (max-width: 820.98px) {            
+            img{
+                width: 40px;
+            }
+            h1{
+                display: none;
+            }
+    }
+    @media screen and (max-width: 390.98px) {
+        img{
+            width: 40px;
+        }
+        h1{
+            display: block;
+            font-size: 1rem;
+            line-height: 1rem;
+        }
+    }
+}
+
+
+.navMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    .navBar{
+        display: flex;
+        justify-content: space-around;
+        li{
+            padding: 20px 10px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1;
+            font-weight: 500;
+            font-size: 14px;
+        }
+       
+        .portfolioMenu{
+            position: relative;
+            display: flex;
+            align-items: center;
+            .portfolio{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: white;
+                border: 1px solid gray;
+                width: 220px;
+                color: #3b8d99;
+                height: 0;
+                transition: all 0.4s;
+                overflow: hidden;
+                visibility: hidden;
+                box-shadow: 0 0 0 1px #d1d7dc, 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+                li{
+                    padding: 5px 20px;
+                    position: relative;
+                    transition: all .4s;
+                    font-weight: 400;
+                    &:hover{
+                        color: white;
+                    }
+                }
+                li:last-child{
+                    padding-bottom: 10px;
+                }
+                li:first-child{
+                    padding-top: 10px;
+    
+                }
+                
+            }
+            &:hover .portfolio{
+                visibility: visible;
+                height: 198px;
+            }
+            @media screen and (max-width: 390.98px){
+                z-index: 10;
+                .portfolio{
+                    width: 90%;
+                    top: 0;
+                    left: -90%;      
+                }        
+                &:hover .portfolio{
+                    height: 147px; 
+                }
+            }
+        }
+    }
+    
+    .navBar > li:after{
+        content: "";
+        position: absolute;
+        background: linear-gradient(to bottom, #aa4b6b, #6b6b83, #3b8d99);
+        display: block;
+        width: 100%;
+        height: 0%;
+        bottom: 0;
+        left: 0;
+        transition: all .3s;
+        z-index: -1;
+    }
+    
+    .navBar>li:hover:after{
+        height: 100%;
+    }
+    
+    .portfolio li::after{
+        content: "";
+        position: absolute;
+        background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);
+        display: block;
+        width: 0%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        transition: all .4s;
+        z-index: -1;
+    }
+    .portfolio li:hover::after{
+        width: 100%;
+    }
+
+    @media screen and (max-width: 820.98px) {
+        .navBar{
+            li{
+                font-size: 12px;
+            }
+        }
+    }
+    @media screen and (max-width: 390.98px) {
+        display: block;
+        transition: all .5s;
+        transform: translateX(120%);
+        position: absolute;
+        width: 50%;
+        height: 256px;
+        top: 100%;
+        z-index: 1000;
+        right: 0;
+        border: 1px solid gray;
+        box-shadow: 0 0 0 1px #d1d7dc, 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+        .navBar{
+            display: block;
+            li{
+                color: #3b8d99;
+                padding: 10px 10px;
+                transition: all .4s;
+                &:hover{
+                    color: white;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+
+.loginButton{
+    @apply bg-green-700 px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    &:hover{
+        background-color: transparent;
+        border: 2px solid #15803d;
+        transform: scale(0.9);
+    }
+
+}
+
+.profile{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .account{
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img{
+            margin:0 5px;
+            border-radius: 100%;
+            width: 35px;
+            border: 2px solid #ffffff;
+            transition: all .4s;
+        }
+        h4{
+            transition: all .4s;
+        }
+        &:hover img{
+            border-color: rgb(74 222 128 );
+        }
+        &:hover h4{
+            color: rgb(74 222 128 );
+        }
+    }    
+}
+
+.buttonNavBar{
+    display: none;
+    @media screen and (max-width: 390.98px) {
+        display: block;
+        margin-right: 10px;
+    }
+}
