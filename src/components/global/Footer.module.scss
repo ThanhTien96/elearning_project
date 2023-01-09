@@ -1,0 +1,86 @@
+
+.footer{
+    background-color: #f0f8ff;
+    .social{
+
+        .logoFooter{
+            display: flex;
+            align-items: center;
+
+            img{
+                width: 50px;
+                display: block;
+            }
+            h3{
+              font-weight: 700;
+              font-size: 25px;
+              text-shadow: 2px 2px 2px #726f6fa3;  
+            }
+        }
+        .iconSocial{
+            display: flex;
+            align-items: center;
+            padding-top: 12px;
+            cursor: pointer;
+            transition: all .4s ease-out;
+            &:hover{
+                padding-top: 10px;
+                padding-bottom: 2px;
+                span{
+                    color: #01877e;   
+                }
+            }
+            i{  
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+                text-align: center;
+                line-height: 30px;
+                background-color: #01877e;
+                font-size: 14px;
+                border-radius: 100%;
+                color: white;
+            }
+            span{
+                font-size: 1rem;
+                font-weight: 500;
+                margin-left: 10px;
+                transition: all .5s;
+            }
+        }
+    }
+
+    .iconsBottom{
+        display: flex;
+        i{
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            background-color: #01877e;
+            font-size: 14px;
+            border-radius: 10px;
+            color: white;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all .5s;
+            &:hover {
+                border-radius: 100%;
+                box-shadow: 1px 2px 2px 1px #636363;
+            }
+        }
+    }
+    .linkFooter{
+        font-size: 18px;
+        font-weight: 500;
+        padding-top: 10px;
+        transition: all .3s;
+        cursor: pointer;
+        &:hover{
+            padding-top: 8px;
+            padding-bottom: 2px;
+            color: #01877e;
+        }
+    }
+}
