@@ -15,8 +15,8 @@ const Footer = () => {
               <h3>E-Learning</h3>
             </div>
 
-            <div className={styles.iconSocial}><i><FaPhoneAlt className='inline-block' /> </i><span>1800-123-4567</span></div>
-            <div className={styles.iconSocial}><i><FaEnvelope className='inline-block' /></i> <span>thanhtien2094@gmail.com</span></div>
+            <div className={styles.iconSocial}><a href="tel:1800-123-4567"><i><FaPhoneAlt className='inline-block' /> </i><span>1800-123-4567</span></a></div>
+            <div className={styles.iconSocial}><a href="mailto:thanhtien2094@gmail.com"> <i><FaEnvelope className='inline-block' /></i> <span>thanhtien2094@gmail.com</span></a></div>
             <div className={styles.iconSocial}><i><FaMapMarkerAlt className='inline-block' /></i> <span>TP. Hồ Chí Minh</span></div>
           </Col>
 
@@ -47,7 +47,7 @@ const Footer = () => {
               <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Email' />
               <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Số Điện Thoại' />
               <div className='mt-3'>
-                <button type='submit' className='px-4 py-2 bg-green-600 text-white font-semibold text-lg hover:bg-green-800 hover:rounded-md transition duration-500 hover:scale-95'>Đăng Ký</button>
+                <button type='submit' className='px-4 py-2 bg-green-700 text-white font-semibold text-lg hover:bg-green-800 hover:rounded-md transition duration-300 hover:scale-95'>Đăng Ký</button>
               </div>
             </form>
           </Col>

@@ -16,7 +16,7 @@ const Header = () => {
   
 
   return (
-    <div className='bg-slate-900 text-white h-12 lg:h-16 flex items-center relative'>
+    <div className='bg-slate-900 text-white h-12 lg:h-16 flex items-center w-full z-50 fixed'>
       <div className="container mx-auto flex justify-between items-center">
         <NavLink to='' className={styles.Logo}>
           <img src={require('../../assets/logo/E-learning.png')} alt="logo E-learning" />
