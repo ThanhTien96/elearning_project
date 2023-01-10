@@ -13,6 +13,7 @@ export const fetchApiLoginAction = (data) => async (dispatch) => {
         })
 
     } catch(err) {
+        throw err
         console.log(err);
     }
 };

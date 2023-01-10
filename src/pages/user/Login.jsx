@@ -4,20 +4,25 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Dispatch } from 'react';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
+import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
-
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       taiKhoan: '',
       matKhau: ''
     },
-    onSubmit: (value) => {
-      console.log(value);
-      dispatch(fetchApiLoginAction(value));
+    onSubmit: async (value) => {
+      try {
+        console.log(value);
+        await dispatch(fetchApiLoginAction(value));
+      } catch (err) {
+        console.log(err.response)
+      }
     },
-    validationSchema:Yup.object({
+    validationSchema: Yup.object({
       taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!'),
       matKhau: Yup.string().required('*Vui lòng nhập mật khẩu!'),
     }),
