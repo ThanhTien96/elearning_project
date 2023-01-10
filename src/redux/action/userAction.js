@@ -1,10 +1,8 @@
 
-// user login fetch api action
-
-import requester from "../../services/apiRequester";
 import userServices from "../../services/userSevice";
 import userType from "../type/userType";
 
+// user login fetch api action
 export const fetchApiLoginAction = (data) => async (dispatch) => {
     try{
         const res = await userServices.fetchApiLogin(data);
