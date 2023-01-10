@@ -2,7 +2,6 @@
 import { useFormik } from 'formik'
 import React from 'react';
 import * as Yup from 'yup';
-import { Dispatch } from 'react';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 
