@@ -57,7 +57,7 @@ const Header = () => {
 
         <div className='flex justify-around'>
 
-          <button className={styles.loginButton}>Đăng Nhập</button>
+          <NavLink to='/user/login'><button className={styles.loginButton}>Đăng Nhập</button></NavLink>
           <div style={{ display: 'none' }} className={styles.profile}>
             <div className={styles.account}>
               <h4>Nguyễn Thanh Tiến</h4>
