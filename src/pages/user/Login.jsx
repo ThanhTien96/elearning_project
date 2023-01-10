@@ -2,6 +2,8 @@
 import { useFormik } from 'formik'
 import React from 'react';
 import * as Yup from 'yup';
+import { Dispatch } from 'react';
+import { fetchApiLoginAction } from '../../redux/action/userAction';
 
 
 const Login = () => {
@@ -13,9 +15,11 @@ const Login = () => {
     },
     onSubmit: (value) => {
       console.log(value);
+      dispatch(fetchApiLoginAction(value));
     },
     validationSchema:Yup.object({
       taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!'),
+      matKhau: Yup.string().required('*Vui lòng nhập mật khẩu!'),
     }),
   })
 
@@ -36,6 +40,7 @@ const Login = () => {
             <input name='taiKhoan' onChange={formik.handleChange} className="mb-5 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
             {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
             <input name='matKhau' onChange={formik.handleChange} className="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
+            {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5'>{formik.errors.matKhau}</p>)}
           </div>
           <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="submit">Đăng Nhập</button>
           <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="button">Đăng Ký</button>
