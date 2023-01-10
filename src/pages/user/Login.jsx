@@ -4,10 +4,12 @@ import React from 'react';
 import * as Yup from 'yup';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       taiKhoan: '',
@@ -17,6 +19,7 @@ const Login = () => {
       try {
         console.log(value);
         await dispatch(fetchApiLoginAction(value));
+        navigate('/');
       } catch (err) {
         console.log(err.response)
       }
