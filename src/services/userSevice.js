@@ -11,6 +11,14 @@ class UserServices {
             data: data
         });
     };
+
+    fetchApiSignUp = (data) => {
+        return requester({
+            url: apiPathUser.USER_REGISTER,
+            method:'POST',
+            data: data,
+        })
+    }
 };
 
 const userServices = new UserServices();

@@ -11,6 +11,9 @@ const reducer = (state = initialState, {type, payload}) => {
             case userType.USER_LOGIN:
                 draft.profile = payload;
                 break;
+            case userType.USER_REGISTER:
+                draft.profile = payload;
+                break;
             default:
                 break;
         }
