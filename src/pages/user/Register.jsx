@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Register = () => {
-<<<<<<< HEAD
-=======
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const formik = useFormik({
@@ -34,7 +32,6 @@ const Register = () => {
     }),
   })
 
->>>>>>> 58d2b739157c6c796f1c6cc0a92f4f056aff25d0
 
   return (
 
