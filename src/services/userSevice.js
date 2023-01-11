@@ -7,7 +7,6 @@ class UserServices {
         return requester({
             url: apiPathUser.USER_LOGIN,
             method: 'POST',
-            
             data: data
         });
     };
