@@ -35,7 +35,7 @@ const Login = () => {
 
     <div>
       <div className="flex items-center justify-center h-screen pt-48 pb-10">
-        {/* Login Container */}
+
         <form
           onSubmit={formik.handleSubmit}
           className="w-1/3 flex-col border bg-white px-6 py-10 shadow-md rounded-[4px]">
@@ -49,8 +49,8 @@ const Login = () => {
             <input name='matKhau' onChange={formik.handleChange} className="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
             {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5'>{formik.errors.matKhau}</p>)}
           </div>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="submit">Đăng Nhập</button>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="button">Đăng Ký</button>
+          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-green-800 bg-green-500 text-white rounded-[4px] hover:bg-slate-500 scale-105 duration-300" type="submit">Đăng Nhập</button>
+          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-green-800 bg-green-500 text-white rounded-[4px] hover:bg-slate-500 scale-105 duration-300" type="button">Đăng Ký</button>
           <div className="mt-5 flex justify-between text-sm text-gray-600">
             <a>Quên Mật Khẩu?</a>
           </div>

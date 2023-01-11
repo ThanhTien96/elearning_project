@@ -6,14 +6,13 @@ import userType from "../type/userType";
 export const fetchApiLoginAction = (data) => async (dispatch) => {
     try{
         const res = await userServices.fetchApiLogin(data);
-        console.log(res.data.content);
+        console.log(res.data);
         dispatch({
             type: userType.USER_LOGIN,
-            payload: res.data.content,
+            payload: res.data,
         })
 
     } catch(err) {
-        throw err
-        console.log(err);
+        throw err;
     }
 };

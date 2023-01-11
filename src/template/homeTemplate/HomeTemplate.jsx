@@ -7,7 +7,6 @@ const HomeTemplate = () => {
   return (
     <div>
         <Header/>
-        <div className='py-96'></div>
         <Outlet/>
         <Footer/>
     </div>
