@@ -15,21 +15,36 @@ const Register = () => {
   const formik = useFormik({
     initialValues: {
       taiKhoan: '',
-      matKhau: ''
+      matKhau: '',
+      hoTen:'',
+      soDT:'',
+      maLoaiNguoiDung:'GP',
+      maNhom:'',
+      email:'',
     },
+
+    validationSchema: Yup.object({
+      taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!')
+                            .min(5, '*Tên Tài Khoản Tối Thiểu 5 Kí Tự, Tối Đa 20 Kí Tự!')
+                            .max(20, '*Tên Tài Khoản Tối Thiểu 5 Kí Tự, Tối Đa 20 Kí Tự!'),
+      matKhau: Yup.string().required('*Vui lòng nhập mật khẩu!'),
+      hoTen: Yup.string().required('*Vui lòng nhập họ tên!')
+                          .min(5, '*Họ Tên Tối Thiểu 5 Kí Tự'),
+      soDT: Yup.string().required('*Vui lòng nhập số điện thoại!'),
+      maNhom: Yup.string().required('*Vui lòng nhập mã nhóm!'),
+      email: Yup.string().email('*Vui Lòng Nhập Đúng Email!').required('*Vui lòng nhập email!'),
+    }),
+
     onSubmit: async (value) => {
       try {
-        console.log(value);
-        await dispatch(fetchApiLoginAction(value));
+
+        // await dispatch(fetchApiLoginAction(value));
         navigate('/');
       } catch (err) {
         console.log(err.response)
       }
     },
-    validationSchema: Yup.object({
-      taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!'),
-      matKhau: Yup.string().required('*Vui lòng nhập mật khẩu!'),
-    }),
+    
   })
 
 
@@ -48,10 +63,18 @@ const Register = () => {
           <div className="flex flex-col text-sm rounded-md">
             <input name='taiKhoan' onChange={formik.handleChange} className="mb-5 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
             {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
-            <input name='matKhau' onChange={formik.handleChange} className="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
+            <input name='matKhau' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
             {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5'>{formik.errors.matKhau}</p>)}
+            <input name='hoTen' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="text" placeholder="Họ Tên" />
+            {formik.errors.hoTen && formik.touched.hoTen && (<p className='text-red-700 mb-5'>{formik.errors.hoTen}</p>)}
+            <input name='soDT' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="text" placeholder="Số Điện Thoại" />
+            {formik.errors.soDT && formik.touched.soDT && (<p className='text-red-700 mb-5'>{formik.errors.soDT}</p>)}
+            <input name='maNhom' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="text" placeholder="Mã Nhóm" />
+            {formik.errors.maNhom && formik.touched.maNhom && (<p className='text-red-700 mb-5'>{formik.errors.maNhom}</p>)}
+            <input name='email' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="text" placeholder="Email" />
+            {formik.errors.email && formik.touched.email && (<p className='text-red-700 mb-5'>{formik.errors.email}</p>)}
           </div>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="button">Đăng Ký</button>
+          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="submit">Đăng Ký</button>
           <div className="mt-5 flex justify-between text-sm text-gray-600">
             <a>Quên Mật Khẩu?</a>
           </div>
