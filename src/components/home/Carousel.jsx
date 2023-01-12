@@ -114,7 +114,6 @@ const Carousel = (props) => {
             <img className={styles.imgBanner2} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner3} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner4} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
-            <img className={styles.imgBanner5} src={require('../../assets/image/imgBanner/message_slider.6835c478.png')} alt="..." />
           </Col>
           <Col span={12}></Col>
         </Row>
