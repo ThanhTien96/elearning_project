@@ -51,8 +51,8 @@ const Carousel = (props) => {
     },
     customPaging: (pagi, i) => {
       const style = {
-        width: 10,
-        height: 10,
+        width: 7,
+        height: 7,
         borderRadius: '100%',
         display: 'inline-block',
         background: 'rgb(21 128 61)',
