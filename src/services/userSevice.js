@@ -11,7 +11,7 @@ class UserServices {
         });
     };
 
-    fetchApiSignUp = (data) => {
+    fetchApiRegister = (data) => {
         return requester({
             url: apiPathUser.USER_REGISTER,
             method:'POST',

@@ -1,17 +1,21 @@
 
 import { useFormik } from 'formik'
-import React from 'react';
 import * as Yup from 'yup';
-import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState, React } from 'react';
+import { fetchApiRegister } from '../../redux/action/userAction';
+import Swal from 'sweetalert2';
 
 
 
 
 const Register = () => {
-  const dispatch = useDispatch()
+
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  let [validMess, setValidMess] = useState('');
   const formik = useFormik({
     initialValues: {
       taiKhoan: '',
@@ -30,7 +34,8 @@ const Register = () => {
       matKhau: Yup.string().required('*Vui lòng nhập mật khẩu!'),
       hoTen: Yup.string().required('*Vui lòng nhập họ tên!')
                           .min(5, '*Họ Tên Tối Thiểu 5 Kí Tự'),
-      soDT: Yup.string().required('*Vui lòng nhập số điện thoại!'),
+      soDT: Yup.string().matches(/^[0-9]+$/, '* Số điện thoại chỉ nhập số 0-9')
+                        .required('*Vui lòng nhập số điện thoại!'),
       maNhom: Yup.string().required('*Vui lòng nhập mã nhóm!'),
       email: Yup.string().email('*Vui Lòng Nhập Đúng Email!').required('*Vui lòng nhập email!'),
     }),
@@ -38,8 +43,18 @@ const Register = () => {
     onSubmit: async (value) => {
       try {
 
-        // await dispatch(fetchApiLoginAction(value));
-        navigate('/');
+        await dispatch(fetchApiRegister(value));
+
+        Swal.fire({
+          title: 'Đăng ký thành công',
+          icon: 'success',
+          showCancelButton: false,
+        }).then(result => {
+          if (result.isConfirmed) {
+            navigate('/user/login')
+          } 
+    
+        })
       } catch (err) {
         console.log(err.response)
       }
