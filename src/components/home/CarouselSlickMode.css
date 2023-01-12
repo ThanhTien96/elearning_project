@@ -41,7 +41,7 @@ li.slick-active .slickDots {
     top: 40%;
     transform: translateY(-50%);
     right: 0;
-    width: 0px;
+    width: 30px;
     height: 30px;
     z-index: -1;
     border-radius: 0 10px 10px 0;
@@ -56,7 +56,7 @@ li.slick-active .slickDots {
     top: 40%;
     transform: translateY(-50%);
     left: 0;
-    width: 0px;
+    width: 30px;
     height: 30px;
     z-index: -1;
     border-radius: 10px 0 0 10px;

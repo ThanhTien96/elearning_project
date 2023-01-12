@@ -53,7 +53,6 @@ const Register = () => {
           if (result.isConfirmed) {
             navigate('/user/login')
           } 
-    
         })
       } catch (err) {
         console.log(err.response)
