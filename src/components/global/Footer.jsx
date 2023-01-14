@@ -47,7 +47,7 @@ const Footer = () => {
               <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Email' />
               <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Số Điện Thoại' />
               <div className='mt-3'>
-                <button type='submit' className='px-4 py-2 bg-green-700 text-white font-semibold text-lg hover:bg-green-800 hover:rounded-md transition duration-300 hover:scale-95'>Đăng Ký</button>
+                <button type='submit' className='px-4 py-2 bg-green-600 text-white font-semibold text-lg hover:bg-green-800 hover:rounded-md transition duration-300 hover:scale-95'>Đăng Ký</button>
               </div>
             </form>
           </Col>

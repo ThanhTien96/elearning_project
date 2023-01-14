@@ -79,7 +79,7 @@ const Carousel = (props) => {
               <div className={styles.textAnimation}>
                 <h1>ELearning</h1>
               </div>
-              <button className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
+              <button className='bg-green-600 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
           <Col className={styles.bannerRight} xs={24} md={12}>

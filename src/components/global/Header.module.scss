@@ -75,6 +75,7 @@
                 box-shadow: 0 0 0 1px #d1d7dc, 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
                 li{
                     padding: 5px 20px;
+                    text-transform: uppercase;
                     position: relative;
                     transition: all .4s;
                     font-weight: 400;
@@ -129,7 +130,7 @@
     .portfolio li::after{
         content: "";
         position: absolute;
-        background: linear-gradient(to right, #aa4b6b, #6b6b83, #3b8d99);
+        background: linear-gradient(to right, #227df9, #7462f9, #df3ef8);
         display: block;
         width: 0%;
         height: 100%;
@@ -179,7 +180,7 @@
 
 
 .loginButton{
-    @apply bg-green-700 px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
+    @apply bg-green-600 px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
     transition: all 0.3s;
     border: 2px solid transparent;
     &:hover{

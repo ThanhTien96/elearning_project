@@ -1,4 +1,4 @@
-import userServices from "../../services/userSevice";
+import userServices from "../../services/userService";
 import userType from "../type/userType";
 
 // user login fetch api action
@@ -17,7 +17,7 @@ export const fetchApiLoginAction = (data) => async (dispatch) => {
     }
 };
 
-// dang ky tai khoan
+// action dang ky tai khoan
 export const fetchApiRegister = (data) => async (dispatch) => {
 
     try {
