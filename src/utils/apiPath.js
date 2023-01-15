@@ -16,6 +16,7 @@ export const apiPathCourseList = {
 
 //api path quan ly nguoi dung
 export const apiPathAdminList = {
+    GET_API_ACCOUNT_LIST: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
     ADD_ACCOUNT: 'api/QuanLyNguoiDung/ThemNguoiDung',
     
 }
