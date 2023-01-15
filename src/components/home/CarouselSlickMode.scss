@@ -1,4 +1,4 @@
-
+@import '../../utils/variable.scss';
 
 li.slick-active .slickDots {
     opacity: 1 !important;
@@ -6,21 +6,12 @@ li.slick-active .slickDots {
 .slickDots:hover{
     opacity: 1 !important;
 }
-.trailer{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    cursor: pointer;
-    transition: all .5s;
-}
 
 .setPrev, .setNext{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
+    color: $cWhite;
     z-index: 1;
     font-size: 20px;
     opacity: 0.7;
@@ -36,7 +27,7 @@ li.slick-active .slickDots {
     content: '';
     display: block;
     position: absolute;
-    background: linear-gradient(to left, rgb(21 128 61) 0%, rgb(21 128 61) 50%, rgb(91, 149, 112) 100%);
+    background: linear-gradient(to left, rgb(21 128 61) 0%, rgb(21 128 61) 50%, rgb(62, 126, 85) 100%);
     opacity: 0.7;
     top: 40%;
     transform: translateY(-50%);
@@ -51,7 +42,7 @@ li.slick-active .slickDots {
     content: '';
     display: block;
     position: absolute;
-    background: linear-gradient(to left, rgb(21 128 61) 0%, rgb(110, 146, 123) 100%);
+    background: linear-gradient(to right, rgb(21 128 61) 0%, rgb(21 128 61) 50%, rgb(62, 126, 85) 100%);
     opacity: 0.7;
     top: 40%;
     transform: translateY(-50%);

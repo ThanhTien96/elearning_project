@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import './CarouselSlickMode.css';
+import './CarouselSlickMode.scss';
 import { Col, Row } from 'antd';
 import styles from './Carousel.module.scss';
 

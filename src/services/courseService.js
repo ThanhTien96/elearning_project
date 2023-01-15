@@ -1,4 +1,5 @@
 import { apiPathCourseList } from "../utils/apiPath"
+import { maNhom } from "../utils/truncateText"
 import requester from "./apiRequester"
 
 class CoursesService {
@@ -10,7 +11,32 @@ class CoursesService {
         })
     }
 
-}
+    // call api lay khoa hoc theo danh muc
+    fetchApiCoursesCategory = (category) => {
+        return requester({
+            url: apiPathCourseList.GET_COURSES_CATEGORY,
+            method: 'GET',
+            params: {
+                maDanhMuc: category,
+                MaNhom: maNhom,
+            }
+        })
+    }
+
+    // call api lay danh sach khoa hoc pho bien
+    fetchApiPopularCourses = (page = 1) => {
+        return requester({
+            url: apiPathCourseList.GET_POPULAR_COURSES,
+            method: 'GET',
+            params: {
+                page: page,
+                pageSize: 8,
+                MaNhom: maNhom,
+            },
+        });
+    };
+
+};
 
 const coursesService = new CoursesService();
 

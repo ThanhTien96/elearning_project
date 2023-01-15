@@ -1,3 +1,5 @@
+@import '../../utils/variable.scss';
+
 
 .footer{
     background-color: #f0f8ff;
@@ -27,7 +29,7 @@
                 padding-top: 10px;
                 padding-bottom: 2px;
                 span{
-                    color: #01877e;   
+                    color: $cTeal-600;   
                 }
             }
             i{  
@@ -36,10 +38,10 @@
                 height: 35px;
                 text-align: center;
                 line-height: 30px;
-                background-color: #01877e;
+                background-color: $cTeal-600;
                 font-size: 14px;
                 border-radius: 100%;
-                color: white;
+                color: $cWhite;
             }
             span{
                 font-size: 1rem;
@@ -58,13 +60,13 @@
             height: 35px;
             text-align: center;
             line-height: 35px;
-            background-color: #01877e;
+            background-color: $cTeal-600;
             font-size: 14px;
             border-radius: 10px;
-            color: white;
+            color: $cWhite;
             margin-left: 10px;
             cursor: pointer;
-            transition: all .5s;
+            transition: all .3s;
             &:hover {
                 border-radius: 100%;
                 box-shadow: 1px 2px 2px 1px #636363;
@@ -80,7 +82,7 @@
         &:hover{
             padding-top: 8px;
             padding-bottom: 2px;
-            color: #01877e;
+            color: $cTeal-600;
         }
     }
 }

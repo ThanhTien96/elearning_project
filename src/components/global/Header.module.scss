@@ -1,3 +1,4 @@
+@import '../../utils/variable.scss';
 
 .headerLine{
     background: linear-gradient(to right, #227df9 20%, #7462f9, #df3ef8);
@@ -64,10 +65,10 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-                background-color: white;
+                background-color: $cWhite;
                 border: 1px solid gray;
                 width: 220px;
-                color: #3b8d99;
+                color: $cTeal-600;
                 height: 0;
                 transition: all 0.4s;
                 overflow: hidden;
@@ -80,7 +81,7 @@
                     transition: all .4s;
                     font-weight: 400;
                     &:hover{
-                        color: white;
+                        color: $cWhite;
                     }
                 }
                 li:last-child{
@@ -97,7 +98,7 @@
                 height: 198px;
             }
             @media screen and (max-width: 390.98px){
-                z-index: 10;
+                z-index: 100;
                 .portfolio{
                     width: 90%;
                     top: 0;
@@ -151,6 +152,7 @@
         }
     }
     @media screen and (max-width: 390.98px) {
+        background-color: $cWhite;
         display: block;
         transition: all .5s;
         position: absolute;
@@ -164,11 +166,11 @@
         .navBar{
             display: block;
             li{
-                color: #3b8d99;
+                color: $cTeal-700;
                 padding: 10px 10px;
                 transition: all .4s;
                 &:hover{
-                    color: white;
+                    color: $cWhite;
                 }
             }
         }

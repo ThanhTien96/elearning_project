@@ -10,4 +10,6 @@ export const apiPathUser = {
 
 export const apiPathCourseList = {
     CATEGORY_LIST: '/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc',
+    GET_COURSES_CATEGORY: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
+    GET_POPULAR_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
 }

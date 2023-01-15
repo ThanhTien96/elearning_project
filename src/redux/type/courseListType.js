@@ -2,6 +2,9 @@ const sliceName = 'courseListSlice';
 
 const courseType = {
     CATEGORY_LIST: 'CATEGORY_LIST',
+    GET_COURSES_CATEGORY: 'GET_COURSES_CATEGORY',
+    COURSE_LOADING: 'COURSE_LOADING',
+    GET_POPULAR_COURSE: 'GET_POPULAR_COURSE', 
 };
 
 Object.keys(courseType).forEach(key => {
