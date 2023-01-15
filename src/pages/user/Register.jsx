@@ -88,7 +88,7 @@ const Register = () => {
             <input name='email' onChange={formik.handleChange} className="mb-5 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="text" placeholder="Email" />
             {formik.errors.email && formik.touched.email && (<p className='text-red-700 mb-5'>{formik.errors.email}</p>)}
           </div>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-gray-800 bg-gray-500 text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300" type="submit">Đăng Ký</button>
+          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-green-800 bg-green-500 text-white rounded-[4px] hover:bg-slate-500 scale-105 duration-300" type="button">Đăng Ký</button>
           <div className="mt-5 flex justify-between text-sm text-gray-600">
             <a>Quên Mật Khẩu?</a>
           </div>

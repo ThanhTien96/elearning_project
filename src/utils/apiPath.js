@@ -13,3 +13,9 @@ export const apiPathCourseList = {
     GET_COURSES_CATEGORY: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
     GET_POPULAR_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
 }
+
+//api path quan ly nguoi dung
+export const apiPathAdminList = {
+    ADD_ACCOUNT: 'api/QuanLyNguoiDung/ThemNguoiDung',
+    
+}
