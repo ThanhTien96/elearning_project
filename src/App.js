@@ -5,6 +5,8 @@ import UserTemplate from './template/userTemplate/UserTemplate';
 import Login from './pages/user/Login';
 import Register from './pages/user/Register.jsx';
 import Home from './pages/home/Home';
+import AdminTemplate from './template/adminTemplate/AdminTemplate';
+import AddNewMenber from './pages/adminManager/accountManager/AddNewMenber';
 
 
 function App() {
@@ -19,6 +21,10 @@ function App() {
           <Route path='user' element={<UserTemplate />}>
             <Route path='login' element={<Login />}></Route>
             <Route path='register' element={<Register />}></Route>
+          </Route>
+
+          <Route path='admin' element={<AdminTemplate />}>
+            <Route path='addNewMenber' element={<AddNewMenber />}></Route>
           </Route>
 
         </Routes>
