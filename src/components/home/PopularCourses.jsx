@@ -1,5 +1,5 @@
 import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
-import { Col, Row } from 'antd';
+import { Col, Pagination, Row } from 'antd';
 import React, { useEffect } from 'react';
 import { FaSignal, FaTag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +16,11 @@ const PopularCourses = () => {
     useEffect(() => {
         dispatch(fetchApiPopularCoursesAction());
     }, [])
+
+    // onchange pagination call api
+    const handleGetPage = (page) => {
+        dispatch(fetchApiPopularCoursesAction(page));
+    }
 
 
     return (
@@ -104,6 +109,10 @@ const PopularCourses = () => {
                     })
                 }
             </Row>
+
+            <div className='text-center mt-5'>
+                <Pagination onChange={handleGetPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false}/>
+            </div>
 
         </div>
     )
