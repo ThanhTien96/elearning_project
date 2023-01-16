@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
 import {  fetchApiAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
-import '../../../utils/mixin.scss'
+import styles from './admin.module.scss'
+import clsx from 'clsx';
 
 const AccountManager = (props) => {
 
@@ -33,7 +34,7 @@ const AccountManager = (props) => {
       },
       render: (text, user) => {
         return <Fragment>
-          <h4 className='gradientText font-medium text-lg'>{user.hoTen}</h4>
+          <h4 className={clsx(styles.gradientText,'font-medium text-lg')}>{user.hoTen}</h4>
         </Fragment>
       },
       sortDirection: ['descend', 'ascend'],
@@ -126,7 +127,7 @@ const AccountManager = (props) => {
             placeholder="Nhập từ khóa tìm kiếm"
             // onSearch={onSearch}
         />
-        <Button className='btnGradient flex items-center' onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
+        <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
 
       </div>
       <Table pagination={{ total: accountList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />
