@@ -10,7 +10,7 @@ class UserServices {
             data: data
         });
     };
-
+    // dang ky
     fetchApiRegister = (data) => {
         return requester({
             url: apiPathUser.USER_REGISTER,

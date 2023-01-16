@@ -6,8 +6,12 @@ import Login from './pages/user/Login';
 import Register from './pages/user/Register.jsx';
 import Home from './pages/home/Home';
 import AdminTemplate from './template/adminTemplate/AdminTemplate';
+
+import AccountManager from './pages/adminManager/accountManager/AccountManager';
+
 import AddNewMenber from './pages/adminManager/accountManager/AddNewMenber';
 import Detail from './pages/detail/Detail';
+
 
 
 function App() {
@@ -27,8 +31,12 @@ function App() {
           </Route>
 
           <Route path='admin' element={<AdminTemplate />}>
-            <Route path='add-new' element={<AddNewMenber />}></Route>
+
+            <Route path='account' element={<AccountManager />}></Route>
+
           </Route>
+
+          
 
         </Routes>
       </BrowserRouter>
