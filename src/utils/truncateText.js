@@ -1,9 +1,9 @@
 
 // cat bot chu noi dung
-export const truncateText = (text, leg) => {
-    if(text.length > leg) {
-        return text.substr(0, leg) + '...'
-    } else {
+export const truncateText = (text, ele) => {
+    if(text && text.length > ele){
+        return text.substr(0, ele) + '...';
+    }else{
         return text;
     }
 };

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import styles from './userStyle.module.scss'
 
 
 const Login = () => {
@@ -33,7 +34,7 @@ const Login = () => {
 
   return (
 
-    <div>
+    <div className='container mx-auto'>
       <div className="flex items-center justify-center h-screen pt-48 pb-10">
 
         <form
@@ -49,9 +50,9 @@ const Login = () => {
             <input name='matKhau' onChange={formik.handleChange} className="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
             {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5'>{formik.errors.matKhau}</p>)}
           </div>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-green-800 bg-green-500 text-white rounded-[4px] hover:bg-slate-500 scale-105 duration-300" type="submit">Đăng Nhập</button>
+          <button className={styles.btnUser} type="submit">Đăng Nhập</button>
           <NavLink to='/user/register'>
-          <button className="mt-5 w-full border p-2 bg-gradient-to-r from-green-800 bg-green-500 text-white rounded-[4px] hover:bg-slate-500 scale-105 duration-300" type="button">Đăng Ký</button>
+          <button className={styles.btnUser} type="button">Đăng Ký</button>
           </NavLink>
           <div className="mt-5 flex justify-between text-sm text-gray-600">
             <span>Quên Mật Khẩu?</span>

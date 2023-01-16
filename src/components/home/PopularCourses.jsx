@@ -1,5 +1,5 @@
 import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
-import { Col, Row } from 'antd';
+import { Col, Pagination, Row } from 'antd';
 import React, { useEffect } from 'react';
 import { FaSignal, FaTag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,11 +11,16 @@ const PopularCourses = () => {
 
     const dispatch = useDispatch();
     const { popularCourses } = useSelector(state => state.courseList);
-    console.log(popularCourses)
-
+    const { courseLoading } = useSelector(state => state.courseList);
+    
     useEffect(() => {
         dispatch(fetchApiPopularCoursesAction());
     }, [])
+
+    // onchange pagination call api
+    const handleGetPage = (page) => {
+        dispatch(fetchApiPopularCoursesAction(page));
+    }
 
 
     return (
@@ -26,7 +31,7 @@ const PopularCourses = () => {
 
             <Row>
                 {
-                    popularCourses?.items.map((ele, index) => {
+                    !courseLoading && popularCourses?.items.map((ele, index) => {
                         return (
                             <Col xs={24} md={12} lg={6} key={index} className={styles.itemsCard}>
                                 <div className={styles.items}>
@@ -103,7 +108,15 @@ const PopularCourses = () => {
                         )
                     })
                 }
+
+                {courseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
+                <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
+            </div>}
             </Row>
+
+            <div className='text-center mt-3'>
+                <Pagination onChange={handleGetPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false}/>
+            </div>
 
         </div>
     )

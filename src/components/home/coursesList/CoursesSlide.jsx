@@ -38,7 +38,7 @@ function PrevArrow(props) {
 
 const CoursesSlide = (props) => {
 
-    const { courseLoading } = useSelector(state => state.courseList)
+    const { courseLoading } = useSelector(state => state.courseList);
 
     // cau hinh cho slick carousel
     let settingsCarouser = {
@@ -85,7 +85,7 @@ const CoursesSlide = (props) => {
 
         <div>
             {!courseLoading && <Slider {...settingsCarouser} className='my-5'>
-                {props.item.map((ele, index) => {
+                {props.item?.map((ele, index) => {
                     return (
                         <div key={index} className={styles.coursesCard}>
                             <div className={styles.coursesItem}>

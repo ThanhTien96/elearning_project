@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@react-hooks-library/core": "^0.5.1",
+    "@react-spring/web": "^9.6.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -20,6 +22,7 @@
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "react-spring": "^9.6.1",
     "react-sticky-box": "^1.0.2",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
