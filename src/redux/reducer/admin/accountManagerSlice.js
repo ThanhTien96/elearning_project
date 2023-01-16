@@ -1,5 +1,6 @@
-import adminService from "../../../services/adminSevice";
-import { createSlice } from '@reduxjs/toolkit';
+import produce from "immer";
+import adminType from "../../type/adminType";
+
 
 
 
@@ -10,33 +11,22 @@ const initialState = {
 
 
 
-const accountManagerSlice = createSlice({
-    name: 'accountManagerSlice',
-    initialState,
-    reducers: {
-      //lấy danh sách tài khoản người dùng
-      getApiAccountAction: (state, action) => {
-        state.accountList = action.payload;
-      },
-    }
-});
+const reducer = (state = initialState, {type, payload}) => {
+    
+    return produce(state, (draft) => {
+        switch(type){
+            case adminType.GET_ACCOUNT_LIST:
+                draft.accountList = payload;
+                break;
 
-export const {
-    getApiAccountAction,
-} = accountManagerSlice.actions
-
-export default accountManagerSlice.reducer
-
-//lấy danh sách tài khoản người dùng AJAX
-export const getApiAccount = (page, tuKhoa) => {
-    return async (dispatch, setState) => {
-        try{
-            const res = await adminService.getAccountList(page, tuKhoa);
-            dispatch(getApiAccountAction(res.data.content));
-
-        } catch (err) {
-            console.log(err);
+            
+            default:
+                break;
         }
-    };
+    })
 };
+
+export default reducer;
+
+
 

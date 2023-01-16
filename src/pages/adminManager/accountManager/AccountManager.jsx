@@ -1,18 +1,22 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Table, Input, Button } from 'antd';
 import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
+import {  fetchApiAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
 
 
 const AccountManager = (props) => {
 
   const dispatch = useDispatch();
-  const userList = useSelector(state => state.accountManagerSlice.accountList);
+  const {accountList} = useSelector(state => state.accountManagerSlice);
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+    dispatch(fetchApiAccountAction());
+  }, [])
+  
   const columns = [
     {
       title: 'Họ Tên',
@@ -95,9 +99,10 @@ const AccountManager = (props) => {
 
   ];
 
-  const data = userList?.items;
+  const data = accountList?.items;
   const onChange = async (pagination) => {
-    dispatch(getApiAccount(pagination.current));
+    console.log(pagination.current)
+    dispatch(fetchApiAccountAction(pagination.current));
   };
 
   return (
@@ -114,7 +119,7 @@ const AccountManager = (props) => {
         <Button onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined />Thêm Tài Khoản</Button>
 
       </div>
-      <Table pagination={{ total: userList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />
+      <Table pagination={{ total: accountList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />
     </div>
 
    

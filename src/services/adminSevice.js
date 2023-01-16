@@ -6,15 +6,14 @@ import { maNhom } from '../utils/truncateText';
 class AdminService{
 
     // lấy danh sách tài khoản người dùng
-    getAccountList = (page = 1) => {
+    getApiAccountList = (page = 1) => {
         return requester({
             url: apiPathAdminList.GET_API_ACCOUNT_LIST,
             method: 'GET',
             params: {
                 MaNhom: maNhom,
-                soPhanTuTrenTrang: 10,
-                soTrang: page,
-                
+                pageSize: 10,
+                page: page,                
             },
         });
     };
