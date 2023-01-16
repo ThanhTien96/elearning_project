@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-
+import { fetchApiLoginAction } from '../../../redux/action/userAction';
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +32,16 @@ const AddNewMenber = (props) => {
       maNhom: Yup.string().required('*Vui lòng nhập mã nhóm!'),
       email: Yup.string().email('*Vui Lòng Nhập Đúng Email!').required('*Vui lòng nhập email!'),
     }),
+
+    onSubmit: async (value) => {
+      try {
+        console.log(value);
+        await dispatch(fetchApiLoginAction(value));
+        navigate('/');
+      } catch (err) {
+        console.log(err.response)
+      }
+    },
 
   })
 

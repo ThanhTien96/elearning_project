@@ -5,14 +5,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-    menberList: [],
+    accountList: null,
 }
+
+
 
 const accountManagerSlice = createSlice({
     name: 'accountManagerSlice',
     initialState,
     reducers: {
-      // lấy danh sách tài khoản người dùng
+      //lấy danh sách tài khoản người dùng
       getApiAccountAction: (state, action) => {
         state.accountList = action.payload;
       },
@@ -25,7 +27,7 @@ export const {
 
 export default accountManagerSlice.reducer
 
-// lấy danh sách tài khoản người dùng AJAX
+//lấy danh sách tài khoản người dùng AJAX
 export const getApiAccount = (page, tuKhoa) => {
     return async (dispatch, setState) => {
         try{

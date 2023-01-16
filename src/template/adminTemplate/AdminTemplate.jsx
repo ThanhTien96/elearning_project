@@ -6,7 +6,6 @@ const AdminTemplate = () => {
   return (
     <div>
         <Header />
-        <h1>Admin Template</h1>
         <Outlet/>
     </div>
   )

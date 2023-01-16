@@ -5,6 +5,7 @@ import { maNhom } from '../utils/truncateText';
 
 class AdminService{
 
+    // lấy danh sách tài khoản người dùng
     getAccountList = (page = 1) => {
         return requester({
             url: apiPathAdminList.GET_API_ACCOUNT_LIST,
@@ -14,6 +15,17 @@ class AdminService{
                 soPhanTuTrenTrang: 10,
                 soTrang: page,
                 
+            },
+        });
+    };
+
+    // lấy thông tin chi tiết tài khoản
+    getAccountProfile = (taiKhoan) => {
+        return requester({
+            url: apiPathAdminList.GET_ACCOUNT_PROFILE,
+            method: 'POST',
+            params: {
+                taiKhoan: taiKhoan,
             },
         });
     };
