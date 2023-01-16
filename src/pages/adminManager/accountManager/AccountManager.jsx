@@ -105,17 +105,26 @@ const AccountManager = (props) => {
     dispatch(fetchApiAccountAction(pagination.current));
   };
 
+  const { Search } = Input;
+
+  // const onSearch = (value) => {
+  //     if(value){
+  //         dispatch(searchAccountApi(value));
+  //     }else {
+  //         dispatch(getApiAccount());
+  //     }
+  // };
+
   return (
     <div>
-      <div className="flex justify-between mb-5 md:mb-10">
+      <div className="flex justify-between mb-5 md:mb-10" > 
         <h3 className='text-orange-600 text-xl'>Quản lý Tài Khoản Người Dùng</h3>
-        {/* <Search
+        <Search
             allowClear
             className='w-1/2'
             placeholder="Nhập từ khóa tìm kiếm"
-            onSearch={onSearch}
-
-        /> */}
+            // onSearch={onSearch}
+        />
         <Button onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined />Thêm Tài Khoản</Button>
 
       </div>
