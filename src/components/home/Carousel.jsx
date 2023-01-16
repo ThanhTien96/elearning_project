@@ -47,7 +47,7 @@ const Carousel = (props) => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     appendDots: dots => {
-      return <ul style={{ bottom: 35 }}>{dots}</ul>;
+      return <ul style={{ bottom: 0 }}>{dots}</ul>;
     },
     customPaging: (pagi, i) => {
       const style = {

@@ -23,13 +23,13 @@ const BoxNumber = () => {
                 <p>Khóa Học</p>
             </Col>
 
-            <Col xs={12} md={6} lg={6} className={clsx(styles.boxItem, 'mt-10 lg:mt-0')}>
+            <Col xs={12} md={6} lg={6} className={clsx(styles.boxItem, 'mt-10 md:mt-0')}>
                 <img src={require('../../assets/image/boxNumber/002-hourglass.548810be.png')} alt="..." />
                 <h1>33200</h1>
                 <p>Giờ Học</p>
             </Col>
 
-            <Col xs={12} md={6} lg={6} className={clsx(styles.boxItem, 'mt-10 lg:mt-0')}>
+            <Col xs={12} md={6} lg={6} className={clsx(styles.boxItem, 'mt-10 md:mt-0')}>
                 <img src={require('../../assets/image/boxNumber/004-teacher.5bbd6eec.png')} alt="..." />
                 <h1>400</h1>
                 <p>Giảng Viên</p>

@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
     .reviewImg{
         position: relative;
         background: linear-gradient(to right, #7462f9, #df3ef8);
@@ -50,5 +51,58 @@
         width: 100px;
         border-radius: 100%;
         background-image: radial-gradient(#41b294 10%,transparent 11%),radial-gradient(#41b294 10%,transparent 11%);
+    }
+
+    blockquote{
+
+        q{
+            font-size: $text-300;
+            line-height: 28px;
+            font-weight: 500;
+            &::before{
+                position: absolute;
+                top: 10%;
+                left: -2%;
+                font-family: fantasy;
+                color: #ed85ab;
+                font-size: 60px;
+                @media screen and (max-width: 821.98px) {
+                    top: -10px;
+                    left: 10px;
+                }
+                @media screen and (max-width: 414.98px) {
+                    top: -10px;
+                    left: 10px;
+                }
+            }
+            
+        }
+    }
+    p{
+        color: grey;
+        font-size: $text-300;
+        font-weight: 500;
+    }
+    .reviewName{
+        color: #ed85ab;
+        margin-top: 20px;
+    }
+    .dot3Box{
+        position: absolute;
+        top: -18%;
+        left: 10%;
+        height: 60px;
+        background-size: 10px 10px;
+        width: 80px;
+        background-image: radial-gradient($cYellow-600 10%,transparent 11%),radial-gradient($cYellow-600 10%,transparent 11%);
+    }
+    .dot4Box{
+        position: absolute;
+        bottom: 0%;
+        right: 10%;
+        height: 70px;
+        background-size: 10px 10px;
+        width: 20%;
+        background-image: radial-gradient($cGreen-600 10%,transparent 11%),radial-gradient($cGreen-600 10%,transparent 11%);
     }
 }

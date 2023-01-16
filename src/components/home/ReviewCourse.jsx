@@ -1,10 +1,11 @@
 import { Col, Row } from 'antd'
+import clsx from 'clsx';
 import React from 'react';
 import styles from './ReviewCourse.module.scss'
 
 const ReviewCourse = () => {
     return (
-        <div className='container mx-auto py-14'>
+        <div className='container mx-auto pb-14 pt-5 lg:pt-14'>
             <Row>
                 <Col xs={24} lg={12}>
                     <div className={styles.reviewItem}>
@@ -17,7 +18,7 @@ const ReviewCourse = () => {
                     </div>
                 </Col>
 
-                <Col xs={24} lg={12}>
+                <Col className={clsx(styles.reviewItem, 'mt-5 lg:mt-0')} xs={24} lg={12}>
                     <div>
                         <blockquote>
                             <q>
@@ -25,11 +26,11 @@ const ReviewCourse = () => {
                             </q>
                         </blockquote>
 
-                        <p>Nhi Dev</p>
+                        <p className={styles.reviewName}>Nhi Dev</p>
                         <p>Học viên xuất sắc</p>
 
-                        <div className='dot3Box'></div>
-                        <div className='dot4Box'></div>
+                        <div className={styles.dot3Box}></div>
+                        <div className={styles.dot4Box}></div>
                     </div>
                 </Col>
             </Row>

@@ -15,11 +15,9 @@ const Teachers = () => {
         dots: true,
         infinite: true,
         speed: 1000,
-        rows: 1,
         autoplay: true,
         slidesToShow: 5,
         slidesToScroll: 5,
-        initialSlide: 0,
         responsive: [
             {
                 breakpoint: 1024,
@@ -47,7 +45,7 @@ const Teachers = () => {
             }
         ],
         appendDots: dots => {
-            return <ul style={{ bottom: 0 }}>{dots}</ul>;
+            return <ul style={{ bottom: '-7%'}}>{dots}</ul>;
           },
           customPaging: (pagi, i) => {
             const style = {
@@ -63,13 +61,13 @@ const Teachers = () => {
           },
     };
     return (
-        <div className='container mx-auto py-10 lg:py-14'>
+        <div className='max-w-full px-5 py-10 lg:py-14'>
             <h1 className='mb-5 text-teal-600 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
                 Giảng Viên Hàng Đầu
             </h1>
-            <Slider {...settingsCarouser}>
+            <Slider className='max-w-full ' {...settingsCarouser}>
                 <div>
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24    object-cover object-center rounded-full' src={require('../../assets/avatar/dadMoon.jpg')} alt="teacher e learing" />
                         </div>
@@ -84,7 +82,7 @@ const Teachers = () => {
                 </div>
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/menBor.jpg')} alt="teacher e learing" />
                         </div>
@@ -99,7 +97,7 @@ const Teachers = () => {
                 </div>
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/Slaham.jpg')} alt="teacher e learing" />
                         </div>
@@ -114,7 +112,7 @@ const Teachers = () => {
                 </div>
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/andersan.jpg')} alt="teacher e learing" />
                         </div>
@@ -129,7 +127,7 @@ const Teachers = () => {
                 </div>
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/gadi.jpg')} alt="teacher e learing" />
                         </div>
@@ -144,7 +142,7 @@ const Teachers = () => {
                 </div>
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/hoangNam.jpg')} alt="teacher e learing" />
                         </div>
@@ -159,7 +157,7 @@ const Teachers = () => {
                 </div>     
 
                 <div >
-                    <div className='text-center flex flex-col items-center hover:shadow-xl p-10 transition-all duration-500'>
+                    <div className='text-center flex flex-col items-center hover:shadow-xl m-5 p-5 transition-all duration-500'>
                         <div className='text-center'>
                             <img className='w-24 h-24 object-cover object-center rounded-full' src={require('../../assets/avatar/savani.jpg')} alt="teacher e learing" />
                         </div>
