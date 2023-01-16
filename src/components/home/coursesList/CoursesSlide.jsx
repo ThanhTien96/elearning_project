@@ -7,6 +7,7 @@ import { FaSignal, FaTag } from "react-icons/fa";
 import styles from './CourseSlide.module.scss';
 import { truncateText } from '../../../utils/truncateText';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -39,6 +40,7 @@ function PrevArrow(props) {
 const CoursesSlide = (props) => {
 
     const { courseLoading } = useSelector(state => state.courseList);
+    const navigate = useNavigate();
 
     // cau hinh cho slick carousel
     let settingsCarouser = {
@@ -79,6 +81,11 @@ const CoursesSlide = (props) => {
         ]
     };
 
+    // chuyển sang trang chi tiết
+    const handleFetchDetail = (id) => {
+        navigate(`/detail/${id}`)
+    }
+
 
 
     return (
@@ -97,7 +104,7 @@ const CoursesSlide = (props) => {
                                 </div>
                                 <div className='px-5 mt-5'>
                                     <h3 className='h-14 bg-white overflow-hidden text-lg font-medium mt-2 cursor-pointer hover:text-teal-500 transition-all duration-300'>
-                                        {truncateText(ele.moTa, 50)}
+                                        {truncateText(ele.moTa, 45)}
                                     </h3>
                                     <div className='flex justify-around text-lg font-medium text-gray-500 mt-3'>
                                         <div className='flex items-center'>
@@ -153,7 +160,10 @@ const CoursesSlide = (props) => {
                                             <span>Tất Cả</span>
                                         </div>
                                     </div>
-                                    <button className={styles.btnText}> Xem Chi Tiết</button>
+                                    <button
+                                        onClick={() => handleFetchDetail(ele.maKhoaHoc)}
+                                        className={styles.btnText}> Xem Chi Tiết
+                                    </button>
                                 </div>
 
                             </div>

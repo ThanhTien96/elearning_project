@@ -36,6 +36,17 @@ class CoursesService {
         });
     };
 
+    // call api lấy thông tin chi tiết khóa học
+    fetchApiDetailCourse = (maKH) => {
+        return requester({
+            url: apiPathCourseList.GET_COURSE_DETAIL,
+            method: 'GET',
+            params: {
+                maKhoaHoc: maKH,
+            },
+        });
+    };
+
 };
 
 const coursesService = new CoursesService();

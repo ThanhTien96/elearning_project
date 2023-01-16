@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-  const categoryList = useSelector(state => state.courseList.categoryList)
+  const categoryList = useSelector(state => state.courseList.categoryList);
 
   const [styleCSS, setStyleCSS] = useState(false);
 
@@ -18,7 +18,7 @@ const Header = () => {
   } 
 
   return (
-    <div className='fixed w-full z-50'>
+    <div className='fixed w-full z-50 top-0 left-0'>
       <div className={styles.headerLine}></div>
       <div className={styles.header}>
         <div className="container mx-auto flex justify-between items-center">

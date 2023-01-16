@@ -3,6 +3,7 @@ import { Col, Pagination, Row } from 'antd';
 import React, { useEffect } from 'react';
 import { FaSignal, FaTag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchApiPopularCoursesAction } from '../../redux/action/courseListAction';
 import { truncateText } from '../../utils/truncateText';
 import styles from './PopularCourses.module.scss';
@@ -12,16 +13,22 @@ const PopularCourses = () => {
     const dispatch = useDispatch();
     const { popularCourses } = useSelector(state => state.courseList);
     const { courseLoading } = useSelector(state => state.courseList);
-    
+    const navigate = useNavigate();
+
+    // call api lấy danh sách khóa học phân trang
     useEffect(() => {
         dispatch(fetchApiPopularCoursesAction());
     }, [])
 
-    // onchange pagination call api
+    // onchange call api khi click phân trang
     const handleGetPage = (page) => {
         dispatch(fetchApiPopularCoursesAction(page));
     }
 
+    // chuyển sang trang chi tiết
+    const handleFetchDetail = (id) => {
+        navigate(`/detail/${id}`)
+    }
 
     return (
         <div className='container mx-auto lg:py-8 px-8 lg:px-0'>
@@ -100,7 +107,10 @@ const PopularCourses = () => {
                                                 <span>Tất Cả</span>
                                             </div>
                                         </div>
-                                        <button className={styles.btnDetail}> Xem Chi Tiết</button>
+                                        <button
+                                            onClick={() => handleFetchDetail(ele.maKhoaHoc)}
+                                            className={styles.btnDetail}> Xem Chi Tiết
+                                        </button>
                                     </div>
 
                                 </div>
@@ -110,12 +120,12 @@ const PopularCourses = () => {
                 }
 
                 {courseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
-                <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
-            </div>}
+                    <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
+                </div>}
             </Row>
 
             <div className='text-center mt-3'>
-                <Pagination onChange={handleGetPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false}/>
+                <Pagination onChange={handleGetPage} current={popularCourses?.currentPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false} />
             </div>
 
         </div>

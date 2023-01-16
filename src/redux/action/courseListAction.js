@@ -50,3 +50,14 @@ export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
         dispatch(createAction(courseType.COURSE_LOADING, false));
     }
 }
+
+// action lấy chi tiết khóa học
+
+export const fetchApiDetailCourseAction = (maKH) => async (dispatch) => {
+    try {
+        const res = await coursesService.fetchApiDetailCourse(maKH);
+        console.log(res.data)
+    } catch (err) {
+        console.log(err);
+    }
+}
