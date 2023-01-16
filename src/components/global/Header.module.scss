@@ -109,6 +109,7 @@
                 }
             }
         }
+
     }
     
     .navBar > li:after{
@@ -182,12 +183,13 @@
 
 
 .loginButton{
-    @apply bg-green-600 px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
-    transition: all 0.3s;
-    border: 2px solid transparent;
+    @apply px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
+        background: linear-gradient(to left, #227df9 0%, #7462f9 25%, #df3ef8 50%, #7462f9 75%, #227df9 100%);
+        background-size: 250% auto;
+        transition: all 0.5s ease;
+        transition-timing-function: ease, ease;
     &:hover{
-        background-color: transparent;
-        border: 2px solid #15803d;
+        background-position: right center;
         transform: scale(0.9);
     }
 

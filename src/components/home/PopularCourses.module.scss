@@ -1,8 +1,9 @@
 @import '../../utils/variable.scss';
 
 .itemsCard{
-    padding: 20px 10px;
+    padding: 30px 15px;
     width: 100%;
+    transition: all .4s;
     .items{
         position: relative;
         border: 1px solid rgba(0,0,0,.125);
@@ -141,6 +142,35 @@
             transition-timing-function: ease, ease;
             &:hover{
                 background-position: right center;
+            }
+        }
+
+        
+    }
+
+    &:hover{
+        padding-top: 27px;
+    }
+
+    @media screen and (max-width: 821.98px) {
+        padding: 20px 15px;
+    }
+    @media screen and (max-width: 391.98px) {
+        .items{
+            
+            .hoverLeftSide, .hoverRightSide{
+                top: 0;
+                width: 100%;
+                left: 0;
+                transform: translateY(0);
+                &::after{
+                    border: none;
+                }
+            }
+
+            &:hover .hoverLeftSide, &:hover .hoverRightSide{
+                visibility: visible;
+                transform: scale(1) translateY(0);
             }
         }
     }

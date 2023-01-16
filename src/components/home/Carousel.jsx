@@ -55,8 +55,8 @@ const Carousel = (props) => {
         height: 7,
         borderRadius: '100%',
         display: 'inline-block',
-        background: 'rgb(21 128 61)',
-        opacity: 0.7,
+        background: 'rgb(13, 148, 136)',
+        opacity: 0.4,
         transition: "0.4s",
       };
       return <span className='slickDots' style={style} />;

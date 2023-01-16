@@ -11,8 +11,8 @@ const PopularCourses = () => {
 
     const dispatch = useDispatch();
     const { popularCourses } = useSelector(state => state.courseList);
-    console.log(popularCourses)
-
+    const { courseLoading } = useSelector(state => state.courseList);
+    
     useEffect(() => {
         dispatch(fetchApiPopularCoursesAction());
     }, [])
@@ -31,7 +31,7 @@ const PopularCourses = () => {
 
             <Row>
                 {
-                    popularCourses?.items.map((ele, index) => {
+                    !courseLoading && popularCourses?.items.map((ele, index) => {
                         return (
                             <Col xs={24} md={12} lg={6} key={index} className={styles.itemsCard}>
                                 <div className={styles.items}>
@@ -108,9 +108,13 @@ const PopularCourses = () => {
                         )
                     })
                 }
+
+                {courseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
+                <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
+            </div>}
             </Row>
 
-            <div className='text-center mt-5'>
+            <div className='text-center mt-3'>
                 <Pagination onChange={handleGetPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false}/>
             </div>
 
