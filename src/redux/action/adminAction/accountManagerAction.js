@@ -17,3 +17,18 @@ export const fetchApiAccountAction = (page) => {
         }
     };
 };
+
+// them nguoi dung
+export const fetchApiCreateAccountAction = (page) => {
+    return async (dispatch) => {
+        try {
+            const res = await adminService.getApiCreateAccount(page);
+            console.log(res.data);
+            dispatch(createAction(adminType.CREATE_ACCOUNT));
+        }catch(err){
+            console.log(err);
+        }
+    };
+};
+
+

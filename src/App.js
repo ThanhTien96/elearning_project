@@ -10,6 +10,7 @@ import AdminTemplate from './template/adminTemplate/AdminTemplate';
 import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
+import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
 
 
 
@@ -32,7 +33,7 @@ function App() {
           <Route path='admin' element={<AdminTemplate />}>
 
             <Route path='account' element={<AccountManager />}></Route>
-
+            <Route path='account/create' element={<CreateAccount />}></Route>
           </Route>
 
           

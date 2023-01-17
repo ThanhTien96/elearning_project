@@ -31,7 +31,7 @@ class AdminService{
 
 
     // them nguoi dung
-    addAccount = (formData) => {
+    getApiCreateAccount = (formData) => {
         return requester({
             url: apiPathAdminList.ADD_ACCOUNT,
             method: 'POST',
