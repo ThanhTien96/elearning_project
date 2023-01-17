@@ -9,7 +9,6 @@ import AdminTemplate from './template/adminTemplate/AdminTemplate';
 
 import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
-import AddNewMenber from './pages/adminManager/accountManager/AddNewMenber';
 import Detail from './pages/detail/Detail';
 
 

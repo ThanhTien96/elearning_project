@@ -13,8 +13,8 @@ const InfoCourse = () => {
                 <Col className='p-2' xs={24} lg={8} >
                     <div className={clsx(styles.boxCourse, 'bg-teal-600 text-white p-5 lg:h-99 z-10')}>
                         <h1 className='text-2xl font-semibold mb-3 uppercase'>Khóa Học</h1>
-                        <p className='lg:text-lg'><b>Học qua dự án thực tế</b>, học đi đôi với hành, không lý thuyết lan man, phân tích cội nguồn của vấn đề, xây dựng từ các ví dụ nhỏ đến thực thi một dự án lớn ngoài thực tế để học viên học xong làm được ngay</p>
-                        <ul className='lg:text-lg'>
+                        <p className='lg:text-lg text-justify'><b>Học qua dự án thực tế</b>, học đi đôi với hành, không lý thuyết lan man, phân tích cội nguồn của vấn đề, xây dựng từ các ví dụ nhỏ đến thực thi một dự án lớn ngoài thực tế để học viên học xong làm được ngay</p>
+                        <ul className='lg:text-lg mt-5'>
                             <li className='mt-1'><BsCheckLg className='mr-1 inline-block' /> Hơn 1000 bài tập và dự án thực tế</li>
                             <li className='mt-1'><BsCheckLg className='mr-1 inline-block' /> Công nghệ cập nhật mới nhất</li>
                             <li className='mt-1'><BsCheckLg className='mr-1 inline-block' /> Hình ảnh, ví dụ, bài giảng sinh động trực quan</li>

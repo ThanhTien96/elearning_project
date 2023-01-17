@@ -15,3 +15,8 @@
     -webkit-background-clip: text;
 }
 
+@mixin textBase ($fontS, $fontW ,$color) {
+    font-size: $fontS;
+    font-weight: $fontW;
+    color: $color;
+} 

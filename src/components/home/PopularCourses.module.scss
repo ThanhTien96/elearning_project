@@ -61,7 +61,7 @@
                 position: absolute;
                 bottom: -10px;
                 left: 0px;
-                background: linear-gradient(to right, #227df9, #7462f9, #df3ef8);
+                background: $c3GradientRight;
                 padding: 5px 10px;
                 font-size: $text-300;
                 font-weight: 500;
@@ -102,7 +102,8 @@
             }
             .text{
                 font-size: $text-300;
-                font-weight: 500;
+                font-weight: 400;
+                text-align: justify;
                 color: grey;
             }
 
@@ -136,7 +137,7 @@
 
         .btnDetail{
             @apply mt-5 hover:scale-95 block w-full py-3 text-lg font-medium text-white;
-            background: linear-gradient(to left, #227df9 0%, #7462f9 25%, #df3ef8 50%, #7462f9 75%, #227df9 100%);
+            background: $c5GradientLeft;
             background-size: 250% auto;
             transition: all 0.5s ease;
             transition-timing-function: ease, ease;

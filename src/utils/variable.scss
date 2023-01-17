@@ -39,3 +39,13 @@ $text-600: 2rem;
 $text-700: 2.5rem;
 $text-800: 3rem;
 $text-900: 3.5rem;
+
+
+// gradient color
+
+$c3GradientLeft: linear-gradient(to left, #227df9 20%, #7462f9, #df3ef8); 
+$c3GradientRight: linear-gradient(to right, #227df9 20%, #7462f9, #df3ef8); 
+$c3GradientBottom: linear-gradient(to bottom, #227df9 20%, #7462f9, #df3ef8); 
+$c3GradientTop: linear-gradient(to top, #227df9 20%, #7462f9, #df3ef8); 
+
+$c5GradientLeft: linear-gradient(to left, #227df9 0%, #7462f9 25%, #df3ef8 50%, #7462f9 75%, #227df9 100%);

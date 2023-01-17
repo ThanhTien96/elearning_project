@@ -1,4 +1,5 @@
 @import '../../utils/variable.scss';
+@import '../../utils/mixin.scss';
 
 
 .footer{
@@ -51,6 +52,11 @@
             }
         }
     }
+    .btnFooter{
+        @include btnGradient($c5GradientLeft, 250% auto, all 0.5s ease);
+        transition-timing-function: ease, ease;
+        @apply px-4 py-2 text-white font-semibold text-lg hover:rounded-md;
+    }
 
     .iconsBottom{
         display: flex;
@@ -60,7 +66,7 @@
             height: 35px;
             text-align: center;
             line-height: 35px;
-            background-color: $cTeal-600;
+            background: $c3GradientRight;
             font-size: 14px;
             border-radius: 10px;
             color: $cWhite;
