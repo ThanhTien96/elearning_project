@@ -20,5 +20,7 @@ export const apiPathAdminList = {
     GET_API_ACCOUNT_LIST: '/api/QuanLyNguoiDung/LayDanhSachNguoiDung_PhanTrang',
     ADD_ACCOUNT: '/api/QuanLyNguoiDung/ThemNguoiDung',
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
+    EDIT_ACCOUNT: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
+    DELETE_ACCOUNT: '/api/QuanLyNguoiDung/XoaNguoiDung',
    
 }

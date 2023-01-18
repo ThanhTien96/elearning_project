@@ -11,6 +11,7 @@ import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
+import EditAccount from './pages/adminManager/accountManager/EditAccount';
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
             <Route path='account' element={<AccountManager />}></Route>
             <Route path='account/create' element={<CreateAccount />}></Route>
+            <Route path='account/create/edit' element={<EditAccount />}></Route>
           </Route>
 
           
