@@ -4,20 +4,20 @@ import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
-import {  fetchApiAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetchApiAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';
 
 const AccountManager = (props) => {
 
   const dispatch = useDispatch();
-  const {accountList} = useSelector(state => state.accountManagerSlice);
+  const { accountList } = useSelector(state => state.accountManagerSlice);
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchApiAccountAction());
   }, [])
-  
+
   const columns = [
     {
       title: 'Họ Tên',
@@ -34,7 +34,7 @@ const AccountManager = (props) => {
       },
       render: (text, user) => {
         return <Fragment>
-          <h4 className={clsx(styles.gradientText,'font-medium text-lg')}>{user.hoTen}</h4>
+          <h4 className={clsx(styles.gradientText, 'font-medium text-lg')}>{user.hoTen}</h4>
         </Fragment>
       },
       sortDirection: ['descend', 'ascend'],
@@ -88,11 +88,30 @@ const AccountManager = (props) => {
     {
       title: 'Tác Vụ',
       key: '6',
-      dataIndex: 'maLoaiNguoiDung',
+      dataIndex: 'taiKhoan',
       width: '20%',
       render: (text, user, index) => {
         return <Fragment>
-          <p>thêm tác vụ ở đây</p>
+          <NavLink key={1} to={`/admin/account/create/edit`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+
+          {/* <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
+            onClick={async () => {
+              if (window.confirm(`Bạn Có Chắc Muốn Xóa Phim ${account.taiKhoan}`)) {
+                try {
+                  await dispatch(fetchApiDeleteAccount(account.taiKhoan));
+                  await dispatch(isAlertActionSuccess({ message: 'Xóa tài khoản thành công!' }));
+                  await setTimeout(() => {
+                    dispatch(isAlertActionSuccess(null));
+                  }, 1000);
+                  dispatch(getApiAccount(userList?.currentPage));
+                } catch (err) {
+                  await dispatch(isAlertActionERR({ message: err.response.data.content }));
+                  await setTimeout(() => {
+                    dispatch(isAlertActionERR(null));
+                  }, 1000);
+                }
+              }
+            }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span> */}
         </Fragment>
       }
     },
@@ -119,13 +138,13 @@ const AccountManager = (props) => {
 
   return (
     <div>
-      <div className="flex justify-between mb-5 md:mb-10" > 
+      <div className="flex justify-between mb-5 md:mb-10" >
         <h3 className='text-teal-600 text-xl font-semibold'>Quản lý Tài Khoản</h3>
         <Search
-            allowClear
-            className='w-1/2'
-            placeholder="Nhập từ khóa tìm kiếm"
-            // onSearch={onSearch}
+          allowClear
+          className='w-1/2'
+          placeholder="Nhập từ khóa tìm kiếm"
+        // onSearch={onSearch}
         />
         <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
 
@@ -133,7 +152,7 @@ const AccountManager = (props) => {
       <Table pagination={{ total: accountList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />
     </div>
 
-   
+
   )
 }
 

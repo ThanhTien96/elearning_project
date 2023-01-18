@@ -38,7 +38,28 @@ class AdminService{
             data: formData,
         });
     };
-}
+
+    // sua thong tin nguoi dung
+    getApiEditAccount = (formData) => {
+        return requester({
+            url: apiPathAdminList.EDIT_ACCOUNT,
+            method: 'PUT',
+            data: formData,
+
+        });
+    };
+
+    // xóa tài khoản nguoi dùng
+    getApiDeleteAccount = (taiKhoan) => {
+        return requester({
+            url: apiPathAdminList.DELETE_ACCOUNT,
+            method: 'DELETE',
+            params:{
+                TaiKhoan: taiKhoan,
+            },
+        });
+    };
+};
 
 const adminService = new AdminService();
 
