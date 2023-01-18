@@ -34,7 +34,16 @@ class UserServices {
             method: 'POST',
             data: data,
         })
-    }
+    };
+
+    // cập nhật thông tin tài khoản
+    fetchApiEditProfile = (data) => (
+        requester({
+            url: apiPathUser.EDIT_PROFILE,
+            method: 'PUT',
+            data: data,
+        })
+    );
 };
 
 const userServices = new UserServices();

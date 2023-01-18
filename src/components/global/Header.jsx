@@ -73,7 +73,7 @@ const Header = () => {
             {!profile && <NavLink to='/user/login'><button className={styles.loginButton}>Đăng Nhập</button></NavLink>}
 
             {profile && <div className={styles.profile}>
-              <NavLink to=' profile'>
+              <NavLink to='profile'>
                 <div className={styles.account}>
                   <img src="https://picsum.photos/150/150" alt="avatar" />
                 </div>

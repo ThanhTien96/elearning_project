@@ -27,7 +27,7 @@ const CreateAccount = (props) => {
             hoTen: '',
             email: '',
             soDT: '',
-            maNhom: '',
+            maNhom: maNhom,
             maLoaiNguoiDung: '',
         },
         validationSchema: Yup.object({
