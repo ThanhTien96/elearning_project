@@ -18,6 +18,9 @@ const reducer = (state = initialState, {type, payload}) => {
             case adminType.GET_ACCOUNT_LIST:
                 draft.accountList = payload;
                 break;
+            case adminType.ADD_ACCOUNT:
+                draft.accountList = payload;
+                break;
         
             
             default:

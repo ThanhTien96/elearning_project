@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/Profile';
+import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
 
 
 
