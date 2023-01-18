@@ -50,7 +50,7 @@ function App() {
           <Route path='admin' element={<AdminTemplate />}>
 
             <Route path='account' element={<AccountManager />}></Route>
-
+            <Route path='account/create' element={<CreateAccount />}></Route>
           </Route>
 
           
