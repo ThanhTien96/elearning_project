@@ -50,7 +50,7 @@ const PopularCourses = () => {
                                         <h1>{ele.tenKhoaHoc}</h1>
                                     </div>
                                     <div className='px-5 mt-5'>
-                                        <h3 className='h-14 bg-white overflow-hidden text-lg font-medium mt-2 cursor-pointer hover:text-teal-500 transition-all duration-300'>
+                                        <h3 onClick={() => handleFetchDetail(ele.maKhoaHoc)} className='h-14 bg-white overflow-hidden text-lg font-medium mt-2 cursor-pointer hover:text-teal-500 transition-all duration-300'>
                                             {truncateText(ele.moTa, 57)}
                                         </h3>
                                         <div className='flex justify-around text-lg font-medium text-gray-500 mt-3'>

@@ -7,7 +7,7 @@
     height: 3px;
 }
 .header{
-   @apply bg-slate-900 text-white h-12 lg:h-16 flex items-center;
+   @apply bg-slate-900 text-white h-16 flex items-center;
 
    .Logo{
     position: relative;
@@ -209,18 +209,12 @@
         img{
             margin:0 5px;
             border-radius: 100%;
-            width: 35px;
+            width: 45px;
             border: 2px solid $cWhite;
             transition: all .4s;
         }
-        h4{
-            transition: all .4s;
-        }
         &:hover img{
-            border-color: rgb(74 222 128 );
-        }
-        &:hover h4{
-            color: rgb(74 222 128 );
+            border-color: $cTeal-500;
         }
     }    
 }

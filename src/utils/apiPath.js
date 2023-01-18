@@ -4,6 +4,8 @@
 export const apiPathUser = {
     USER_LOGIN: '/api/QuanLyNguoiDung/DangNhap',
     USER_REGISTER: '/api/QuanLyNguoiDung/DangKy',
+    GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
+    REGISTER_COURSE: '/api/QuanLyKhoaHoc/DangKyKhoaHoc',
 }
 
 // api path lay danh sach khoa hoc, danh muc
@@ -19,5 +21,4 @@ export const apiPathCourseList = {
 export const apiPathAdminList = {
     GET_API_ACCOUNT_LIST: '/api/QuanLyNguoiDung/LayDanhSachNguoiDung_PhanTrang',
     ADD_ACCOUNT: '/api/QuanLyNguoiDung/ThemNguoiDung',
-    GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
 }

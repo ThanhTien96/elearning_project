@@ -5,6 +5,7 @@ const courseType = {
     GET_COURSES_CATEGORY: 'GET_COURSES_CATEGORY',
     COURSE_LOADING: 'COURSE_LOADING',
     GET_POPULAR_COURSE: 'GET_POPULAR_COURSE', 
+    GET_DETAIL_COURSE: 'GET_DETAIL_COURSE',
 };
 
 Object.keys(courseType).forEach(key => {

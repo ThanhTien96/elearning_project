@@ -43,9 +43,9 @@ const LessonContent = () => {
                             <button className={styles.btnView}><span>Xem Trước</span></button>
                         </div>
                         <h3 className='text-lg font-medium mb-2'>{item.title}</h3>
-                        {item.lessonDetail.map(ele => {
+                        {item.lessonDetail.map((ele, index) => {
                             return (
-                                <LessonText content={ele.content} time={ele.time} />
+                                <LessonText key={index} content={ele.content} time={ele.time} />
                             )
                         })}
 

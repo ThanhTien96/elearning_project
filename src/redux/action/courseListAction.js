@@ -56,7 +56,7 @@ export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
 export const fetchApiDetailCourseAction = (maKH) => async (dispatch) => {
     try {
         const res = await coursesService.fetchApiDetailCourse(maKH);
-        console.log(res.data)
+        dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
     } catch (err) {
         console.log(err);
     }

@@ -8,12 +8,12 @@ const requester = axios.create({
     },
 });
 
-// interceptor
+// interceptor them access authoriztion token
 requester.interceptors.request.use((req) => {
     req.headers = {
         ...req.headers,
-        Authorization: "Bearer " + localStorage.getItem('TOKEN'),
-    }
+        Authorization: "Bearer " + localStorage.getItem('Token'),
+    };
     return req;
 });
 

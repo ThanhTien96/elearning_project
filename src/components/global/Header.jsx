@@ -4,18 +4,29 @@ import { HiMenu } from "react-icons/hi";
 import { NavLink } from 'react-router-dom';
 import { ExportOutlined } from '@ant-design/icons';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createAction } from '../../redux/action/createAction';
+import userType from '../../redux/type/userType';
 
 
 const Header = () => {
 
   const categoryList = useSelector(state => state.courseList.categoryList);
+  const { profile } = useSelector(state => state.userSlice);
+
+  const dispatch = useDispatch();
 
   const [styleCSS, setStyleCSS] = useState(false);
 
   const handleShowNav = () => {
     setStyleCSS(current => !current);
-  } 
+  }
+
+  // dang xuat
+  const handleLogout = () => {
+    dispatch(createAction(userType.GET_PROFILE, null));
+    localStorage.removeItem('Token');
+  }
 
   return (
     <div className='fixed w-full z-50 top-0 left-0'>
@@ -47,7 +58,7 @@ const Header = () => {
                   {categoryList.map(item => {
                     return <li className={styles.category} key={item.maDanhMuc}>{item.tenDanhMuc}</li>
                   })}
-                  
+
                 </ul>
               </li>
               <li>KHÓA HỌC</li>
@@ -59,16 +70,18 @@ const Header = () => {
 
           <div className='flex justify-around'>
 
-            <NavLink to='/user/login'><button className={styles.loginButton}>Đăng Nhập</button></NavLink>
-            <div style={{ display: 'none' }} className={styles.profile}>
-              <div className={styles.account}>
-                <h4>Nguyễn Thanh Tiến</h4>
-                <img src="https://picsum.photos/150/150" alt="avatar" />
-              </div>
-              <span className='text-2xl text-gray-300'>|</span>
-              <button className='flex items-center'><ExportOutlined className='text-2xl ml-2 mr-1' /> <span className='mt-1'>Đăng Xuất</span></button>
+            {!profile && <NavLink to='/user/login'><button className={styles.loginButton}>Đăng Nhập</button></NavLink>}
 
-            </div>
+            {profile && <div className={styles.profile}>
+              <NavLink to=' profile'>
+                <div className={styles.account}>
+                  <img src="https://picsum.photos/150/150" alt="avatar" />
+                </div>
+              </NavLink>
+              <button onClick={handleLogout} className='flex items-center hover:text-teal-500 transition-all duration-500'><ExportOutlined className='text-2xl ml-2 mr-1' /> <span className='mt-1 lg:block hidden'>Đăng Xuất</span></button>
+
+            </div>}
+
 
             <button onClick={handleShowNav} className={styles.buttonNavBar}><HiMenu className='text-2xl' /></button>
           </div>

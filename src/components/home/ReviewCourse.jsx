@@ -5,7 +5,7 @@ import styles from './ReviewCourse.module.scss'
 
 const ReviewCourse = () => {
     return (
-        <div className='container mx-auto pb-14 pt-5 lg:pt-14'>
+        <div className='container mx-auto pb-14 pt-5  lg:pt-14'>
             <Row>
                 <Col xs={24} lg={12}>
                     <div className={styles.reviewItem}>

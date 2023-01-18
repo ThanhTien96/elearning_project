@@ -17,6 +17,23 @@ class UserServices {
             method:'POST',
             data: data,
         })
+    };
+
+    // lay thong tin tai khoan
+    fetchApiProfile = () => (
+        requester({
+            url: apiPathUser.GET_ACCOUNT_PROFILE,
+            method: 'POST',
+        })
+    ) 
+
+    // dang ky khoa hoc
+    fetchApiRegisterCourse = (data) => {
+        return requester({
+            url: apiPathUser.REGISTER_COURSE,
+            method: 'POST',
+            data: data,
+        })
     }
 };
 

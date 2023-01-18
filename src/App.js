@@ -10,10 +10,25 @@ import AdminTemplate from './template/adminTemplate/AdminTemplate';
 import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetApiProfileAction } from './redux/action/userAction';
+import Profile from './pages/user/Profile';
 
 
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  // fetch api profile
+  useEffect(() => {
+    if(localStorage.getItem('Token')) {
+      dispatch(fetApiProfileAction);
+    }
+  }, []);
+  
+
   return (
     <div>
       <BrowserRouter>
@@ -21,6 +36,8 @@ function App() {
           <Route path='' element={<HomeTemplate/>}>
             <Route index path='' element={<Home />}></Route>
             <Route path='/detail/:id' element={<Detail />}></Route>
+            <Route path='profile' element={<Profile />} ></Route>
+            
             <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>
 

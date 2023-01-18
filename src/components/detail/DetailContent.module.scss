@@ -3,6 +3,7 @@
 
 .detailContent{
     .CourseName{
+        text-transform: capitalize;
         @include textBase($text-500,700, $cBlack);
     }
     .itemsTop{

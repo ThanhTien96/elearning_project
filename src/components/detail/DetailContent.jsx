@@ -3,14 +3,13 @@ import React from 'react'
 import { FaGraduationCap } from 'react-icons/fa';
 import styles from './DetailContent.module.scss';
 import { BsCheckLg } from "react-icons/bs";
-import ContentCourse from './lessonContent/LessonContent';
 import LessonContent from './lessonContent/LessonContent';
 
-const DetailContent = () => {
+const DetailContent = (props) => {
     return (
         <div>
             <div className={styles.detailContent}>
-                <h1 className={styles.CourseName}>BC28 - Lập Trình Full Stackk</h1>
+                <h1 className={styles.CourseName}>{props.detailCourse?.tenKhoaHoc}</h1>
                 <div className={styles.itemsTop}>
                     <div className='flex items-center justify-start mt-5 lg:mt-0'>
                         <img className='w-20 h-20 object-cover object-center rounded-full' src={require('../../assets/avatar/hoangNam.jpg')} alt="...." />
@@ -35,7 +34,9 @@ const DetailContent = () => {
                     </div>
                 </div>
 
-                <p className='pb-5 border-b border-solid border-gray-300 text-[1rem] font-medium text-gray-600 mt-10 text-justify'>React.js là thư viện JavaScript phổ biến nhất mà bạn có thể sử dụng và tìm hiểu ngày nay để xây dựng giao diện người dùng hiện đại, phản ứng cho web.Khóa học này dạy bạn về React chuyên sâu, từ cơ bản, từng bước đi sâu vào tất cả các kiến ​​thức cơ bản cốt lõi, khám phá rất nhiều ví dụ và cũng giới thiệu cho bạn các khái niệm nâng cao.Bạn sẽ nhận được tất cả lý thuyết, hàng tấn ví dụ và bản trình diễn, bài tập và bài tập cũng như vô số kiến ​​thức quan trọng bị hầu hết các nguồn khác bỏ qua - sau cùng, có một lý do tại sao khóa học này lại rất lớn! Và trong trường hợp bạn thậm chí không biết tại sao bạn lại muốn học React và bạn chỉ ở đây vì một số quảng cáo hoặc "thuật toán" - đừng lo lắng: ReactJS là một công nghệ quan trọng với tư cách là một nhà phát triển web và trong khóa học này, tôi sẽ cũng giải thích TẠI SAO điều đó lại quan trọng!</p>
+                <p className='pb-5 border-b border-solid border-gray-300 text-[1rem] font-medium text-gray-600 mt-10 text-justify'>
+                    {props.detailCourse?.moTa}
+                </p>
             </div>
             <div>
                 <h2 className='mt-10 text-xl font-medium capitalize mb-5'>Những gì bạn sẽ học</h2>

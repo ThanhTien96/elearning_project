@@ -1,26 +1,48 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { Col, Row } from 'antd';
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import DetailCourse from '../../components/detail/DetailCourse';
+import DetailContent from '../../components/detail/DetailContent';
+import RegisterCourse from '../../components/detail/RegisterCourse';
 import Banner from '../../components/global/Banner'
+import CourseList from '../../components/home/coursesList/CourseList';
 import { fetchApiDetailCourseAction } from '../../redux/action/courseListAction';
 
 const Detail = (props) => {
+
+  const bannerRef = useRef({title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!'})
+
+  const { detailCourse } = useSelector(state => state.courseList) 
+
 
   const dispatch = useDispatch();
   const params = useParams();
 
   useEffect(() => {
     dispatch(fetchApiDetailCourseAction(params.id))
-  }, [])
-  
+  }, [params])
 
-  const title = 'Thông Tin Khóa Học';
-  const text = 'tiến lên và không chần chừ !!!';
   return (
     <div>
-        <Banner title={title} text={text} />
-        <DetailCourse />
+      <Banner title={bannerRef.current.title} text={bannerRef.current.text} />
+      <div className='container mx-auto'>
+        <Row className='mt-14'>
+          <Col xs={24} lg={16}>
+            <DetailContent detailCourse={detailCourse} />
+          </Col>
+
+          <Col className='px-5' xs={24} lg={8}>
+            <RegisterCourse detailCourse={detailCourse} />
+          </Col>
+        </Row>
+
+        <div className='py-10'>
+        <h1 className='mb-5 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
+          Khóa học tham khảo
+        </h1>
+          <CourseList />
+        </div>
+      </div>
     </div>
   )
 }

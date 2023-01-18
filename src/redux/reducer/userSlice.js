@@ -8,7 +8,7 @@ const initialState = {
 const reducer = (state = initialState, {type, payload}) => {
     return produce (state, (draft) => {
         switch(type){
-            case userType.USER_LOGIN:
+            case userType.GET_PROFILE:
                 draft.profile = payload;
                 break;
             case userType.USER_REGISTER:
