@@ -128,10 +128,6 @@ const CreateAccount = (props) => {
                     {formik.errors.maLoaiNguoiDung && formik.touched.maLoaiNguoiDung && (<p className='text-red-700 mt-1'>{formik.errors.maLoaiNguoiDung}</p>)}
                 </Form.Item>
 
-                <Form.Item label="Mã Nhóm">
-                    <Input type="text" name="maNhom" value={maNhom} readonly />
-                </Form.Item>
-
                 <Form.Item
                     wrapperCol={{
                         offset: 4,
