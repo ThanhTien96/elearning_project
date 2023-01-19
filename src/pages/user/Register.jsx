@@ -23,7 +23,7 @@ const Register = () => {
       matKhau: '',
       hoTen:'',
       soDT:'',
-      maLoaiNguoiDung:'',
+      maLoaiNguoiDung:'HV',
       maNhom:'',
       email:'',
     },
