@@ -155,7 +155,6 @@ const items = [
     },
 ];
 
-
 export const TabsProfile = (props) => {
 
     const onChange = (key) => {
@@ -169,7 +168,7 @@ export const TabsProfile = (props) => {
             />
         </div>
     )
-}
+};
 
 
 
