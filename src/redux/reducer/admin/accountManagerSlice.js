@@ -7,6 +7,7 @@ import adminType from "../../type/adminType";
 
 const initialState = {
     accountList: null,
+    
 }
 
 
@@ -21,11 +22,10 @@ const reducer = (state = initialState, {type, payload}) => {
             case adminType.ADD_ACCOUNT:
                 draft.accountList = payload;
                 break;
-            case adminType.EDIT_ACCOUNT:
+            case adminType.GET_PROFILE:
                 draft.accountList = payload;
                 break;
         
-            
             default:
                 break;
         }

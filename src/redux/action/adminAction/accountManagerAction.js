@@ -2,8 +2,11 @@ import adminService from '../../../services/adminSevice';
 import adminType from '../../type/adminType';
 import { useState } from 'react';
 import { createAction } from '../createAction';
+import userServices from '../../../services/userService';
+import userType from '../../type/userType';
 
-const setUser = useState;
+
+
 
 //lấy danh sách tài khoản người dùng AJAX
 export const fetchApiAccountAction = (page) => {
@@ -19,13 +22,23 @@ export const fetchApiAccountAction = (page) => {
     };
 };
 
+//lay thong tin tai khoan
+export const fetApiProfileAction = async (dispatch) => {
+    try {
+        const res = await adminService.getAccountProfile();
+        dispatch(createAction(adminType.GET_PROFILE, res.data));
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 // them nguoi dung
-export const fetchApiCreateAccountAction = (page) => {
+export const fetchApiCreateAccountAction = (taiKhoan) => {
     return async (dispatch) => {
         try {
-            const res = await adminService.getApiCreateAccount(page);
+            const res = await adminService.getApiCreateAccount(taiKhoan);
             console.log(res.data);
-            dispatch(createAction(adminType.CREATE_ACCOUNT));
+            dispatch(createAction(adminType.CREATE_ACCOUNT, res.data));
         } catch (err) {
             console.log(err);
         }
@@ -35,11 +48,14 @@ export const fetchApiCreateAccountAction = (page) => {
 
 // sua thong tin nguoi dung
 export const fetchApiAccountProfile = async (taiKhoan) => {
+    
     return async (dispatch) => {
         try {
-            const res = await adminService.getApiEditAccount(taiKhoan);
+            const setUser = useState(null);
+            const res = await adminService.fetchApiAccountProfile(taiKhoan);
             await setUser(res.data.content);
-            dispatch(createAction(adminType.EDIT_ACCOUNT));
+            console.log(res.data.content);
+            dispatch(createAction(adminType.EDIT_ACCOUNT, res.data));
         } catch (err) {
             console.log(err);
         }

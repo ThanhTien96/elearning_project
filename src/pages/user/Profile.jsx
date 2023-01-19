@@ -10,6 +10,7 @@ import styles from './Profile.module.scss';
 
 export const Information = (props) => {
     const account = useSelector(state => state.userSlice.profile);
+    console.log(account);
     const [editProfile, setEditProfile] = useState(false);
 
     const dispatch = useDispatch();

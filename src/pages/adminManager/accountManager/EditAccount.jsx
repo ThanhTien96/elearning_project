@@ -5,24 +5,23 @@ import { Form, Input, Radio, Select } from 'antd';
 import { useFormik } from 'formik';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import adminService from '../../../services/adminSevice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { maNhom } from '../../../utils/truncateText';
 import { fetchApiAccountProfile } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetApiProfileAction } from '../../../redux/action/userAction';
 
 
 const EditAccount = (props) => {
 
     const params = useParams();
-    const [user] = useState(null);
+    // const [user] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [passwordVisible, setPasswordVisible] = React.useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
-   
-    useEffect(() => {
-        fetchApiAccountProfile(params.taikhoan);
-      
-    }, [])
+
+   const user = useSelector(state => state.accountManagerSlice.accountList);
+   console.log(user);
     
     const formik = useFormik({
         enableReinitialize: true,
@@ -37,7 +36,9 @@ const EditAccount = (props) => {
         },
         onSubmit: async (values) => {
             try{
-                const res = await adminService.getApiEditAccount(values);
+                const res = await adminService.fetchApiEditAccount(values);
+                console.log(res);
+                dispatch(fetApiProfileAction);
                 //dispatch(isAlertActionSuccess({message:'Cập nhật thành công!'}));
                 await setTimeout(() => {
                     //dispatch(isAlertActionSuccess(null));
@@ -47,7 +48,8 @@ const EditAccount = (props) => {
                 //dispatch(isAlertActionERR({message: err.response.data.content}));
                 await setTimeout(() => {
                     //dispatch(isAlertActionERR(null));
-                },500)
+                },500);
+                console.log(err);
             }
             finally{
                 navigate('/admin/account');
@@ -91,34 +93,35 @@ const EditAccount = (props) => {
                 </Form.Item>
 
                 <Form.Item label="Tài Khoản">
-                    <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} />
+                    
+                    <Input name='taiKhoan' onChange={formik.handleChange} type="text" value={formik.values.taiKhoan} />
                 </Form.Item>
 
                 <Form.Item label="Mật Khẩu">
                     <Input.Password
                         visibilityToggle={{ visible: passwordVisible, onVisibleChange: setPasswordVisible }}
                         onChange={formik.handleChange}
-                        value={formik.values.matKhau}
+                        value={formik.values?.matKhau}
                         name='matKhau'
                     />
                 </Form.Item>
 
                 <Form.Item label="Họ Tên">
-                    <Input name='hoTen' onChange={formik.handleChange} value={formik.values.hoTen} />
+                    <Input name='hoTen' onChange={formik.handleChange} value={formik.values?.hoTen} />
                 </Form.Item>
 
                 <Form.Item label="Email">
-                    <Input type='email' name='email' onChange={formik.handleChange} value={formik.values.email} />
+                    <Input type='email' name='email' onChange={formik.handleChange} value={formik.values?.email} />
                 </Form.Item>
 
                 <Form.Item label="Số Điện Thoại">
-                    <Input name='soDT' onChange={formik.handleChange} value={formik.values.soDT} />
+                    <Input name='soDT' onChange={formik.handleChange} value={formik.values?.soDT} />
                 </Form.Item>
 
                 <Form.Item label="Loại Người Dùng">
                     <Select options={[{ value: 'GV', label: 'Giáo Viên' }, { value: 'HV', label: 'Học Viên' }]}
                         onChange={handleChangeSelect}
-                        value={formik.values.maLoaiNguoiDung}
+                        value={formik.values?.maLoaiNguoiDung}
                     />
                 </Form.Item>
 

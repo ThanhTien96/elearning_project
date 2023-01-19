@@ -13,8 +13,8 @@ const Login = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      taiKhoan: '',
-      matKhau: ''
+      taiKhoan: 'thanhtien1',
+      matKhau: 'thanhtien1',
     },
     onSubmit: async (value) => {
       try {

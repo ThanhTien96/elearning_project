@@ -18,13 +18,13 @@ class AdminService{
         });
     };
 
-    // lấy thông tin chi tiết tài khoản
+    // lấy thông tin tài khoản
     getAccountProfile = (taiKhoan) => {
-        return requester({
+        requester({
             url: apiPathAdminList.GET_ACCOUNT_PROFILE,
             method: 'POST',
-            params: {
-                taiKhoan: taiKhoan,
+            params:{
+                TaiKhoan: taiKhoan,
             },
         });
     };
@@ -40,7 +40,7 @@ class AdminService{
     };
 
     // sua thong tin nguoi dung
-    getApiEditAccount = (formData) => {
+    fetchApiEditAccount = (formData) => {
         return requester({
             url: apiPathAdminList.EDIT_ACCOUNT,
             method: 'PUT',
