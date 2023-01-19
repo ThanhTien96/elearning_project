@@ -13,7 +13,7 @@ import Detail from './pages/detail/Detail';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
-import Profile from './pages/user/Profile';
+import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
 import EditAccount from './pages/adminManager/accountManager/EditAccount';
 
