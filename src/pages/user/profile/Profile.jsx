@@ -46,7 +46,7 @@ export const Information = (props) => {
         <div>
             <form
                 onSubmit={formik.handleSubmit}
-                className='px-10'>
+                className='lg:px-10'>
                 <Row>
                     <Col xs={24} lg={12} className='px-5'>
                         <div className='border-b border-solid border-teal-500 py-5'>
@@ -158,12 +158,16 @@ const items = [
 
 export const TabsProfile = (props) => {
 
+    // activekey global state
+    const { activeKeyTab } = useSelector(state => state.userSlice);
+
     const onChange = (key) => {
         console.log(key);
     };
     return (
         <div className='px-5'>
             <Tabs
+                defaultActiveKey={activeKeyTab}
                 onChange={onChange}
                 items={items}
             />

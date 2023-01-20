@@ -4,16 +4,20 @@
 import coursesService from "../../services/courseService";
 import courseType from "../type/courseListType";
 import { createAction } from "./createAction";
+import { isLoadingAction } from "./userAction";
 
 
 // action lay danh muc khoa hoc
 export const fetchApiCategoryListAction = async (dispatch) => {
     try {
+        dispatch(isLoadingAction(true));
         const res = await coursesService.fetchApiCategory();
         dispatch(createAction(courseType.CATEGORY_LIST, res.data));
     } catch (err) {
         console.log(err);
-    };
+    } finally {
+        dispatch(isLoadingAction(false));
+    }
 };
 
 
@@ -55,9 +59,12 @@ export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
 
 export const fetchApiDetailCourseAction = (maKH) => async (dispatch) => {
     try {
+        dispatch(isLoadingAction(true));
         const res = await coursesService.fetchApiDetailCourse(maKH);
-        dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
+        await dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
     } catch (err) {
         console.log(err);
+    } finally {
+        dispatch(isLoadingAction(false));
     }
-}
+};

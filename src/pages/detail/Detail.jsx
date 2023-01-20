@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DetailContent from '../../components/detail/DetailContent';
@@ -12,15 +12,16 @@ const Detail = (props) => {
 
   const bannerRef = useRef({title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!'})
 
-  const { detailCourse } = useSelector(state => state.courseList) 
+   
 
 
   const dispatch = useDispatch();
   const params = useParams();
-
+  console.log(params)
   useEffect(() => {
-    dispatch(fetchApiDetailCourseAction(params.id))
-  }, [params])
+    const id = params.id
+    dispatch(fetchApiDetailCourseAction(id));
+  }, [params.id])
 
   return (
     <div>
@@ -28,11 +29,11 @@ const Detail = (props) => {
       <div className='container mx-auto'>
         <Row className='mt-14'>
           <Col xs={24} lg={16}>
-            <DetailContent detailCourse={detailCourse} />
+            <DetailContent />
           </Col>
 
           <Col className='px-5' xs={24} lg={8}>
-            <RegisterCourse detailCourse={detailCourse} />
+            <RegisterCourse />
           </Col>
         </Row>
 
@@ -47,4 +48,4 @@ const Detail = (props) => {
   )
 }
 
-export default Detail
+export default Detail;

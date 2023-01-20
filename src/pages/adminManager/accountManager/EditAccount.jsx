@@ -7,7 +7,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import adminService from '../../../services/adminSevice';
 import { maNhom } from '../../../utils/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchApiAccountProfile } from '../../../redux/action/adminAction/accountManagerAction';
+
 import { fetApiProfileAction } from '../../../redux/action/userAction';
 
 

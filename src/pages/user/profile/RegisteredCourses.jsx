@@ -9,7 +9,7 @@ import { removeAccents, truncateText } from '../../../utils/index';
 const RegisteredCourses = () => {
     const [dataSearch, setDataSearch] = useState(null);
     const { chiTietKhoaHocGhiDanh } = useSelector(state => state.userSlice.profile);
-    
+    const dataMap = {...chiTietKhoaHocGhiDanh};
     // tim kiem khoa hoc da dang ky
     const onSearch = (e) => {
         const keyWord = removeAccents(e.target.value.toLowerCase().trim()) ;
@@ -39,11 +39,11 @@ const RegisteredCourses = () => {
 
             </div>
             {!dataSearch && chiTietKhoaHocGhiDanh.map((course, index) => (
-                <Row key={index} className='relative shadow-lg lg:shadow-none mt-5 lg:border-b border-solid border-gray-300 lg:py-5'>
+                <Row key={index} className='relative shadow-lg lg:shadow-none mt-10 lg:border-b border-solid border-gray-300 lg:py-5'>
                     <Col xs={24} lg={8} >
                         <img src={course.hinhAnh} alt={course.tenKhoaHoc} className='w-full block object-cover object-center' />
                     </Col>
-                    <Col xs={24} lg={16} className='lg:pl-5 p-5 lg:p-0'>
+                    <Col xs={24} lg={16} className='lg:pl-5 p-5 lg:p-0 lg:h-48'>
                         <h1 className='my-2 lg:mt-0 text-[18px] lg:text-xl font-semibold'>{course.tenKhoaHoc}</h1>
                         <p className='text-justify text-[16px] font-medium text-gray-500'>{truncateText(course.moTa, 300)}</p>
                         <Row className='flex justify-between items-end text-[16px] mt-3 lg:absolute lg:bottom-0 lg:right-0 w-full lg:pl-5'>

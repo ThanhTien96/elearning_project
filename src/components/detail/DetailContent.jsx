@@ -4,12 +4,14 @@ import { FaGraduationCap } from 'react-icons/fa';
 import styles from './DetailContent.module.scss';
 import { BsCheckLg } from "react-icons/bs";
 import LessonContent from './lessonContent/LessonContent';
+import { useSelector } from 'react-redux';
 
 const DetailContent = (props) => {
+    const { detailCourse } = useSelector(state => state.courseList);
     return (
         <div>
             <div className={styles.detailContent}>
-                <h1 className={styles.CourseName}>{props.detailCourse?.tenKhoaHoc}</h1>
+                <h1 className={styles.CourseName}>{detailCourse?.tenKhoaHoc}</h1>
                 <div className={styles.itemsTop}>
                     <div className='flex items-center justify-start mt-5 lg:mt-0'>
                         <img className='w-20 h-20 object-cover object-center rounded-full' src={require('../../assets/avatar/hoangNam.jpg')} alt="...." />
@@ -35,7 +37,7 @@ const DetailContent = (props) => {
                 </div>
 
                 <p className='pb-5 border-b border-solid border-gray-300 text-[1rem] font-medium text-gray-600 mt-10 text-justify'>
-                    {props.detailCourse?.moTa}
+                    {detailCourse?.moTa}
                 </p>
             </div>
             <div>
@@ -90,4 +92,4 @@ const DetailContent = (props) => {
     )
 }
 
-export default DetailContent
+export default DetailContent;

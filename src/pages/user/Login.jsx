@@ -1,16 +1,27 @@
 
 import { useFormik } from 'formik'
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './userStyle.module.scss'
+import Swal from 'sweetalert2';
+import { Alert } from 'antd';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 
 
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+
+  // thông báo lỗi đăng nhập
+  const [errMess, setErrMess] = useState(null);
+
+  // ẩn hiện mật khẩu
+  const [showPasswor, setShowPassword] = useState(false)
+
+  // xử lý form bằng formik
   const formik = useFormik({
     initialValues: {
       taiKhoan: 'thanhtien1',
@@ -20,9 +31,21 @@ const Login = () => {
       try {
 
         await dispatch(fetchApiLoginAction(value));
-        navigate('/');
+        Swal.fire({
+          position: 'top center',
+          icon: 'success',
+          title: 'Đăng Nhập Thành Công',
+          showConfirmButton: false,
+          timer: 500
+        }).then(result => {
+          navigate('/')
+        })
+
       } catch (err) {
-        console.log(err)
+        setErrMess(err.response.data);
+        await setTimeout(() => {
+          setErrMess(null);
+        }, 3000)
       }
     },
     validationSchema: Yup.object({
@@ -35,12 +58,12 @@ const Login = () => {
   return (
 
     <div>
-      <div className='container mx-auto pb-10'>
-        <div className="flex items-center justify-center h-screen mt-16">
+      <div className='container mx-auto relative'>
+        <div className="flex items-center justify-center h-screen lg:mt-5 px-5 lg:px-0">
 
           <form
             onSubmit={formik.handleSubmit}
-            className="w-1/3 flex-col border bg-white  rounded-[4px]">
+            className="lg:w-1/3 md:w-1/2 w-full flex-col border bg-white  rounded-[4px]">
             <div className="mb-3 flex justify-center items-center bg-gray-200 py-2">
               <img className="w-12 block" src={require('../../assets/logo/E-learning.png')} alt='...' />
               <h1 className='font-bold text-2xl ml-3'>Đăng Nhập</h1>
@@ -48,11 +71,24 @@ const Login = () => {
             <div className='px-6 pb-5 shadow-md mt-5'>
               <div className="flex flex-col text-sm rounded-md">
                 <p>Tài Khoản</p>
-                <input name='taiKhoan' onChange={formik.handleChange} className="mb-5 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
+                <div>
+                  <input name='taiKhoan' onChange={formik.handleChange} className="mb-2 w-full rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
+
+                </div>
                 {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
                 <p>Mật Khẩu</p>
-                <input name='matKhau' onChange={formik.handleChange} className="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-yellow-500" type="password" placeholder="Mật Khẩu" />
-                {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5'>{formik.errors.matKhau}</p>)}
+                <div className='relative'>
+                  <input name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPasswor ? 'text' : 'password'} placeholder="Mật Khẩu" />
+                  {showPasswor ?
+                    <EyeInvisibleOutlined
+                      onClick={() => setShowPassword(true)}
+                      className='absolute top-1/2 -translate-y-1/2 right-2 px-2' /> :
+                    <EyeOutlined
+                      onClick={() => setShowPassword(false)}
+                      className='absolute top-1/2 -translate-y-1/2 right-2 px-2' />
+                  }
+                </div>
+                {formik.errors.matKhau && formik.touched.matKhau && (<p className='text-red-700 mb-5 mt-2'>{formik.errors.matKhau}</p>)}
               </div>
               <button className={styles.btnUser} type="submit">Đăng Nhập</button>
               <NavLink to='/user/register'>
@@ -74,6 +110,12 @@ const Login = () => {
 
           </form>
         </div>
+
+        {errMess &&
+          <div className='fixed top-20 left-1/2 -translate-x-1/2 z-50' >
+            <Alert message={errMess} type="error" showIcon />
+          </div>
+        }
 
       </div>
     </div>

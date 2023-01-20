@@ -68,7 +68,7 @@ const Carousel = (props) => {
 
       <div className={styles.banner1}>
         <Row>
-          <Col className={styles.bannerLeft} xs={24} md={12}>
+          <Col className={styles.bannerLeft} xs={24} md={12} xl={12}>
             <img src={require('../../assets/image/imgBanner/paper_plane.93dfdbf5.png')} alt="..." />
             <div className={styles.flyAngle}></div>
             <div className={styles.BgDot1}></div>
@@ -82,7 +82,7 @@ const Carousel = (props) => {
               <button className='bg-green-600 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
-          <Col className={styles.bannerRight} xs={24} md={12}>
+          <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
             <img src={require('../../assets/image/imgBanner/slider2.f170197b.png')} alt="..." />
             <img className={styles.imgBanner2} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner3} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
@@ -95,7 +95,7 @@ const Carousel = (props) => {
 
       <div className={styles.banner1}>
         <Row>
-          <Col className={styles.bannerLeft} xs={24} md={12}>
+          <Col className={styles.bannerLeft} xs={24} md={12} xl={12}>
             <img  style={{width: '30%'}}  src={require('../../assets/image/imgBanner/paper_plane.93dfdbf5.png')} alt="..." />
             <div className={styles.flyAngle}></div>
             <div className={styles.BgDot1}></div>
@@ -109,7 +109,7 @@ const Carousel = (props) => {
               <button className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
-          <Col className={styles.bannerRight} xs={24} md={12}>
+          <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
             <img src={require('../../assets/image/imgBanner/slide2.png')} alt="..." />
             <img className={styles.imgBanner2} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner3} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
@@ -121,7 +121,7 @@ const Carousel = (props) => {
 
       <div className={styles.banner1}>
         <Row>
-          <Col className={styles.bannerLeft} xs={24} md={12}>
+          <Col className={styles.bannerLeft} xs={24} md={12} xl={12}>
             <img src={require('../../assets/image/imgBanner/paper_plane.93dfdbf5.png')} alt="..." />
             <div className={styles.flyAngle}></div>
             <div className={styles.BgDot1}></div>
@@ -135,7 +135,7 @@ const Carousel = (props) => {
               <button className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
-          <Col className={styles.bannerRight} xs={24} md={12}>
+          <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
             <img className='absolute top-24' src={require('../../assets/image/imgBanner/slide3.png')} alt="..." />
             <img className={styles.imgComputer1} src={require('../../assets/image/imgBanner/computerIcon.png')} alt="..." />
             <img className={styles.imgComputer2} src={require('../../assets/image/imgBanner/computerIcon.png')} alt="..." />

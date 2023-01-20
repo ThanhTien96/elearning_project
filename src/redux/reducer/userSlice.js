@@ -3,6 +3,8 @@ import userType from "../type/userType";
 
 const initialState = {
     profile: null,
+    globalLoading: false,
+    activeKeyTab: '1',
 }
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -14,6 +16,15 @@ const reducer = (state = initialState, {type, payload}) => {
             case userType.USER_REGISTER:
                 draft.profile = payload;
                 break;
+
+            case userType.IS_LOADING: 
+                draft.globalLoading = payload;
+                break; 
+            
+            case userType.SET_TAB_ACTIVE_KEY:
+                draft.activeKeyTab = payload;
+                break;
+
             default:
                 break;
         }
