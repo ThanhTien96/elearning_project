@@ -5,7 +5,7 @@ import { FaSignal, FaTag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchApiPopularCoursesAction } from '../../redux/action/courseListAction';
-import { truncateText } from '../../utils/truncateText';
+import { truncateText } from '../../utils/index';
 import styles from './PopularCourses.module.scss';
 
 const PopularCourses = () => {
@@ -51,7 +51,7 @@ const PopularCourses = () => {
                                     </div>
                                     <div className='px-5 mt-5'>
                                         <h3 onClick={() => handleFetchDetail(ele.maKhoaHoc)} className='h-14 bg-white overflow-hidden text-lg font-medium mt-2 cursor-pointer hover:text-teal-500 transition-all duration-300'>
-                                            {truncateText(ele.moTa, 57)}
+                                            {truncateText(ele.moTa, 45)}
                                         </h3>
                                         <div className='flex justify-around text-lg font-medium text-gray-500 mt-3'>
                                             <div className='flex items-center'>

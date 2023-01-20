@@ -1,14 +1,13 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Radio, Select } from 'antd';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { isAlertActionERR, isAlertActionSuccess } from '../../../../redux/reducers/admin/movieManagerSlice';
 import * as Yup from 'yup';
-import adminService from '../../../services/adminSevice';
-import { maNhom } from '../../../utils/truncateText';
+import { maNhom } from '../../../utils/index';
 import { fetchApiCreateAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';

@@ -6,6 +6,7 @@ import { fetApiProfileAction } from '../../../redux/action/userAction';
 import userServices from '../../../services/userService';
 import styles from './Profile.module.scss';
 import ProfileSkills from './ProfileSkills';
+import RegisteredCourses from './RegisteredCourses';
 
 
 
@@ -150,8 +151,8 @@ const items = [
     },
     {
         key: '2',
-        label: `Tab 2`,
-        children: `Content of Tab Pane 1`,
+        label: <h1>Khóa Học Đã Đăng Ký</h1>,
+        children: <RegisteredCourses />,
     },
 ];
 

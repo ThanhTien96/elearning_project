@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
 import { FaSignal, FaTag } from "react-icons/fa";
 import styles from './CourseSlide.module.scss';
-import { truncateText } from '../../../utils/truncateText';
+import { truncateText } from '../../../utils/index';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 

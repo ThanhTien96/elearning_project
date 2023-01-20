@@ -1,7 +1,7 @@
 
 import requester from "./apiRequester"
 import { apiPathAdminList } from '../utils/apiPath';
-import { maNhom } from '../utils/truncateText';
+import { maNhom } from '../utils/index';
 
 class AdminService{
 

@@ -1,5 +1,5 @@
 import { apiPathCourseList } from "../utils/apiPath"
-import { maNhom } from "../utils/truncateText"
+import { maNhom } from "../utils/index"
 import requester from "./apiRequester"
 
 class CoursesService {
