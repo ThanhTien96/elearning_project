@@ -27,7 +27,7 @@ const RegisterCourse = (props) => {
             Swal.fire({
                 position: 'top center',
                 icon: 'success',
-                title: 'Đăng Nhập Thành Công',
+                title: 'Đăng Ký Thành Công',
                 showConfirmButton: false,
                 timer: 1500
             }).then(result => {

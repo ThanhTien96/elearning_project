@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Row } from 'antd';
+import { Col, Pagination, Row } from 'antd';
 import styles from './RegisteredCourses.module.scss';
 import { Rate } from 'antd';
 import { useSelector } from 'react-redux';
@@ -8,19 +8,33 @@ import { removeAccents, truncateText } from '../../../utils/index';
 
 const RegisteredCourses = () => {
     const [dataSearch, setDataSearch] = useState(null);
+    const [dataCourse, setDataCourse] = useState([]);
     const { chiTietKhoaHocGhiDanh } = useSelector(state => state.userSlice.profile);
-    const dataMap = {...chiTietKhoaHocGhiDanh};
+    
+   
+    const [currentPage, setCurrentPage] = useState(1);
+    const [coursePerPage] = useState(4);
+
+    const indexOfLastCourse = currentPage * coursePerPage;
+    const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
+    const currentCourse = chiTietKhoaHocGhiDanh.slice(indexOfFirstCourse, indexOfLastCourse);
+    const nPages = Math.ceil(chiTietKhoaHocGhiDanh.length / coursePerPage)
+
     // tim kiem khoa hoc da dang ky
     const onSearch = (e) => {
-        const keyWord = removeAccents(e.target.value.toLowerCase().trim()) ;
-        if(keyWord !== '') {
+        const keyWord = removeAccents(e.target.value.toLowerCase().trim());
+        if (keyWord !== '') {
             const data = chiTietKhoaHocGhiDanh.filter(ele => removeAccents(ele.tenKhoaHoc.toLowerCase()) === keyWord);
             setDataSearch(data);
         } else if (keyWord === '') {
             setDataSearch(null)
         }
     };
+    const handleChangePagination = (current) => {
+        setCurrentPage(current);
+    }
 
+    console.log(chiTietKhoaHocGhiDanh.length)
 
     return (
         <div className='lg:px-10 px-5'>
@@ -38,7 +52,7 @@ const RegisteredCourses = () => {
                 </form>
 
             </div>
-            {!dataSearch && chiTietKhoaHocGhiDanh.map((course, index) => (
+            {!dataSearch && currentCourse?.map((course, index) => (
                 <Row key={index} className='relative shadow-lg lg:shadow-none mt-10 lg:border-b border-solid border-gray-300 lg:py-5'>
                     <Col xs={24} lg={8} >
                         <img src={course.hinhAnh} alt={course.tenKhoaHoc} className='w-full block object-cover object-center' />
@@ -94,6 +108,9 @@ const RegisteredCourses = () => {
                     </Col>
                 </Row>
             ))}
+            <div className='text-center mt-10'>
+                <Pagination onChange={(current) => handleChangePagination(current)} defaultCurrent={1} pageSize={4} total={chiTietKhoaHocGhiDanh.length + 1} />
+            </div>
         </div>
     )
 }
