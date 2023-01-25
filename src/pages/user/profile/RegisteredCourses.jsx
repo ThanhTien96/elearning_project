@@ -8,17 +8,14 @@ import { removeAccents, truncateText } from '../../../utils/index';
 
 const RegisteredCourses = () => {
     const [dataSearch, setDataSearch] = useState(null);
-    const [dataCourse, setDataCourse] = useState([]);
     const { chiTietKhoaHocGhiDanh } = useSelector(state => state.userSlice.profile);
     
-   
+   // pagination index
     const [currentPage, setCurrentPage] = useState(1);
     const [coursePerPage] = useState(4);
-
     const indexOfLastCourse = currentPage * coursePerPage;
     const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
     const currentCourse = chiTietKhoaHocGhiDanh.slice(indexOfFirstCourse, indexOfLastCourse);
-    const nPages = Math.ceil(chiTietKhoaHocGhiDanh.length / coursePerPage)
 
     // tim kiem khoa hoc da dang ky
     const onSearch = (e) => {
@@ -32,9 +29,7 @@ const RegisteredCourses = () => {
     };
     const handleChangePagination = (current) => {
         setCurrentPage(current);
-    }
-
-    console.log(chiTietKhoaHocGhiDanh.length)
+    };
 
     return (
         <div className='lg:px-10 px-5'>

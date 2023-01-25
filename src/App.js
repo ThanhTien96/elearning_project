@@ -17,6 +17,7 @@ import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
 import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
+import Information from './pages/information/Information';
 
 
 
@@ -42,6 +43,7 @@ function App() {
             <Route index path='' element={<Home />}></Route>
             <Route path='/detail/:id' element={<Detail />}></Route>
             <Route path='profile' element={<Profile />} ></Route>
+            <Route path='information' element={<Information />}></Route>
             
             <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>
