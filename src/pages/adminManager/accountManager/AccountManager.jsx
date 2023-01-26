@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
-import { fetchApiAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetchApiAccountAction, searchAccountApi } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';
 
@@ -128,13 +128,13 @@ const AccountManager = (props) => {
 
   const { Search } = Input;
 
-  // const onSearch = (value) => {
-  //     if(value){
-  //         dispatch(searchAccountApi(value));
-  //     }else {
-  //         dispatch(getApiAccount());
-  //     }
-  // };
+  const onSearch = (value) => {
+      if(value){
+          dispatch(searchAccountApi(value));
+      }else {
+          dispatch(fetchApiAccountAction());
+      }
+  };
 
   return (
     <div>
@@ -144,7 +144,7 @@ const AccountManager = (props) => {
           allowClear
           className='w-1/2'
           placeholder="Nhập từ khóa tìm kiếm"
-        // onSearch={onSearch}
+         onSearch={onSearch}
         />
         <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
 

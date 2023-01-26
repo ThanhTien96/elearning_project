@@ -21,7 +21,7 @@ const EditAccount = (props) => {
 
 
    const user = useSelector(state => state.accountManagerSlice.accountList);
-   console.log(user);
+   console.log(user.items);
     
     const formik = useFormik({
         enableReinitialize: true,
