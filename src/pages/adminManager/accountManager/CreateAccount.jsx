@@ -11,6 +11,7 @@ import { maNhom } from '../../../utils/index';
 import { fetchApiCreateAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';
+import { Swal } from 'sweetalert2';
 
 const CreateAccount = (props) => {
     const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -40,11 +41,16 @@ const CreateAccount = (props) => {
         onSubmit: async (values) => {
             try {
                 await dispatch(fetchApiCreateAccountAction(values));
-                // dispatch(isAlertActionSuccess({ message: 'Thêm Tài Khoản Thành Công!' }));
-                await setTimeout(() => {
-                    // dispatch(isAlertActionSuccess(null));
-                }, 500);
-                navigate('/admin/account')
+                navigate('/admin/account');
+
+                Swal.fire({
+                    position: 'top center',
+                    icon: 'success',
+                    title: 'Thêm Tài Khoản Thành Công!',
+                    showConfirmButton: false,
+                    timer: 500
+                });
+               
             } catch (err) {
                 // dispatch(isAlertActionERR({ message: err.response.data.content }));
                 await setTimeout(() => {

@@ -51,12 +51,24 @@ export const fetchApiAccountProfile = async (taiKhoan) => {
     
     return async (dispatch) => {
         try {
-            const setUser = useState(null);
+            
             const res = await adminService.fetchApiAccountProfile(taiKhoan);
-            await setUser(res.data.content);
-            console.log(res.data.content);
             dispatch(createAction(adminType.EDIT_ACCOUNT, res.data));
+            console.log(res.data);
         } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+// tìm kiếm người dùng
+export const searchAccountApi = (tuKhoa) => {
+    return async (dispatch) => {
+        try{
+            const res = await adminService.searchAccountPagination(tuKhoa);
+            dispatch(createAction(adminType.GET_ACCOUNT_LIST, res.data));
+            console.log(res.data)
+        }catch(err) {
             console.log(err);
         }
     }

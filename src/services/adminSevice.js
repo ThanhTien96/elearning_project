@@ -1,9 +1,12 @@
-
 import requester from "./apiRequester"
-import { apiPathAdminList } from '../utils/apiPath';
-import { maNhom } from '../utils/index';
+import {
+    apiPathAdminList
+} from '../utils/apiPath';
+import {
+    maNhom
+} from '../utils/index';
 
-class AdminService{
+class AdminService {
 
     // lấy danh sách tài khoản người dùng
     getApiAccountList = (page = 1) => {
@@ -13,7 +16,7 @@ class AdminService{
             params: {
                 MaNhom: maNhom,
                 pageSize: 10,
-                page: page,                
+                page: page,
             },
         });
     };
@@ -23,7 +26,7 @@ class AdminService{
         requester({
             url: apiPathAdminList.GET_ACCOUNT_PROFILE,
             method: 'POST',
-            params:{
+            params: {
                 TaiKhoan: taiKhoan,
             },
         });
@@ -49,12 +52,24 @@ class AdminService{
         });
     };
 
+    //tìm kiếm người dùng phân trang
+    searchAccountPagination = (tuKhoa) => {
+        return requester({
+            url: apiPathAdminList.SEARCH_ACCOUNT_PAGINATION,
+            method: 'GET',
+            params: {
+                MaNhom: maNhom,
+                tuKhoa: tuKhoa,
+            }
+        })
+    };
+
     // xóa tài khoản nguoi dùng
     getApiDeleteAccount = (taiKhoan) => {
         return requester({
             url: apiPathAdminList.DELETE_ACCOUNT,
             method: 'DELETE',
-            params:{
+            params: {
                 TaiKhoan: taiKhoan,
             },
         });
