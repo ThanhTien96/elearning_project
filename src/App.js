@@ -19,6 +19,7 @@ import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
 import Event from './pages/event/Event';
+import Blog from './pages/blog/Blog';
 
 
 
@@ -26,7 +27,6 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(state => state.userSlice.globalLoading);
   // fetch api profile
   useEffect(() => {
     if(localStorage.getItem('Token')) {
@@ -46,6 +46,7 @@ function App() {
             <Route path='profile' element={<Profile />} ></Route>
             <Route path='about' element={<Information />}></Route>
             <Route path='event' element={<Event />}></Route>
+            <Route path='blog' element={<Blog />}></Route>
             
             <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>
