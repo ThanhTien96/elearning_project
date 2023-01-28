@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
 import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DetailContent from '../../components/detail/DetailContent';
 import RegisterCourse from '../../components/detail/RegisterCourse';
@@ -11,9 +11,6 @@ import { fetchApiDetailCourseAction } from '../../redux/action/courseListAction'
 const Detail = (props) => {
 
   const bannerRef = useRef({title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!'})
-
-   
-
 
   const dispatch = useDispatch();
   const params = useParams();
