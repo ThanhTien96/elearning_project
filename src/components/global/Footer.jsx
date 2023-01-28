@@ -20,7 +20,7 @@ const Footer = () => {
             <div className={styles.iconSocial}><i><FaMapMarkerAlt className='inline-block' /></i> <span>TP. Hồ Chí Minh</span></div>
           </Col>
 
-          <Col span={24} md={12} lg={4}>
+          <Col span={12} md={12} lg={4}>
             <h1 className='text-2xl font-bold mb-2 mt-5 md:mt-0'>Liên Kết</h1>
             <ul>
               <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Trang Chủ</span></li>
@@ -30,7 +30,7 @@ const Footer = () => {
             </ul>
           </Col>
 
-          <Col span={24} md={12} lg={4}>
+          <Col span={12} md={12} lg={4}>
             <h1 className='text-2xl font-bold mb-2 lg:mt-0 mt-5 '>Khóa Học</h1>
             <ul>
               <li className={styles.linkFooter}><FaAngleRight className='align-middle inline-block' /> <span>Front End</span></li>

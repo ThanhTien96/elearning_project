@@ -25,7 +25,6 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(state => state.userSlice.globalLoading);
   // fetch api profile
   useEffect(() => {
     if(localStorage.getItem('Token')) {
@@ -43,7 +42,9 @@ function App() {
             <Route index path='' element={<Home />}></Route>
             <Route path='/detail/:id' element={<Detail />}></Route>
             <Route path='profile' element={<Profile />} ></Route>
-            <Route path='information' element={<Information />}></Route>
+            <Route path='about' element={<Information />}></Route>
+            <Route path='event' element={<Event />}></Route>
+            <Route path='blog' element={<Blog />}></Route>
             
             <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>

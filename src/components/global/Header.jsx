@@ -63,9 +63,13 @@ const Header = () => {
               </li>
               <li>KHÓA HỌC</li>
               <li>BLOG</li>
-              <li>SỰ KIỆN</li>
               <li>
-                <NavLink to='information'>THÔNG TIN</NavLink>
+                <NavLink to='event'>
+                  SỰ KIỆN
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='about'>THÔNG TIN</NavLink>
               </li>
             </ul>
           </nav>
