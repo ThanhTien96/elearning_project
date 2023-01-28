@@ -7,15 +7,18 @@ import adminType from "../../type/adminType";
 
 const initialState = {
     accountList: null,
-    
+
 }
 
 
 
-const reducer = (state = initialState, {type, payload}) => {
-    
+const reducer = (state = initialState, {
+    type,
+    payload
+}) => {
+
     return produce(state, (draft) => {
-        switch(type){
+        switch (type) {
             case adminType.GET_ACCOUNT_LIST:
                 draft.accountList = payload;
                 break;
@@ -28,7 +31,10 @@ const reducer = (state = initialState, {type, payload}) => {
             case adminType.FIND_ACCOUNT:
                 draft.accountList = payload;
                 break;
-        
+            case adminType.DELETE_ACCOUNT:
+                draft.accountList = payload;
+                break;
+
             default:
                 break;
         }
@@ -36,6 +42,3 @@ const reducer = (state = initialState, {type, payload}) => {
 };
 
 export default reducer;
-
-
-

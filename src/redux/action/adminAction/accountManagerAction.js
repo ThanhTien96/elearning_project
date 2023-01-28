@@ -66,7 +66,7 @@ export const searchAccountApi = (tuKhoa) => {
     return async (dispatch) => {
         try{
             const res = await adminService.searchAccountPagination(tuKhoa);
-            dispatch(createAction(adminType.GET_ACCOUNT_LIST, res.data));
+            dispatch(createAction(adminType.FIND_ACCOUNT, res.data));
             console.log(res.data)
         }catch(err) {
             console.log(err);

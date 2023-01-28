@@ -18,12 +18,12 @@ import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
 import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
+import CourseManager from './pages/adminManager/courseManager/CourseManager';
 import Event from './pages/event/Event';
 import Blog from './pages/blog/Blog';
 import CoursesPage from './pages/courses/CoursesPage';
 import CategoryPage from './pages/categoryCourse/CategoryPage';
 import SearchPage from './pages/search/SearchPage';
-
 
 
 function App() {
@@ -67,6 +67,7 @@ function App() {
             <Route path='account' element={<AccountManager />}></Route>
             <Route path='account/create' element={<CreateAccount />}></Route>
             <Route path='account/create/edit' element={<EditAccount />}></Route>
+            <Route path='course' element={<CourseManager />}></Route>
           </Route>
 
           

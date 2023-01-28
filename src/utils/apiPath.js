@@ -29,3 +29,9 @@ export const apiPathAdminList = {
     SEARCH_ACCOUNT_PAGINATION: 'api/QuanLyNguoiDung/TimKiemNguoiDung',
    
 }
+
+//api path quan ly khoa hoc
+export const apiPathCourseManagerList = {
+    GET_API_COURSE_LIST: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
+
+}

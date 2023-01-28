@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
-import { fetchApiAccountAction, searchAccountApi } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';
 
@@ -94,24 +94,24 @@ const AccountManager = (props) => {
         return <Fragment>
           <NavLink key={1} to={`/admin/account/create/edit`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
-          {/* <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
+          <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
             onClick={async () => {
-              if (window.confirm(`Bạn Có Chắc Muốn Xóa Phim ${account.taiKhoan}`)) {
-                try {
-                  await dispatch(fetchApiDeleteAccount(account.taiKhoan));
-                  await dispatch(isAlertActionSuccess({ message: 'Xóa tài khoản thành công!' }));
-                  await setTimeout(() => {
-                    dispatch(isAlertActionSuccess(null));
-                  }, 1000);
-                  dispatch(getApiAccount(userList?.currentPage));
-                } catch (err) {
-                  await dispatch(isAlertActionERR({ message: err.response.data.content }));
-                  await setTimeout(() => {
-                    dispatch(isAlertActionERR(null));
-                  }, 1000);
-                }
+
+              try {
+                await dispatch(fetchApiDeleteAccount(user.taiKhoan));
+                // await dispatch(isAlertActionSuccess({ message: 'Xóa tài khoản thành công!' }));
+                // await setTimeout(() => {
+                //   dispatch(isAlertActionSuccess(null));
+                // }, 1000);
+                dispatch(fetchApiAccountAction(accountList?.currentPage));
+              } catch (err) {
+                // await dispatch(isAlertActionERR({ message: err.response.data.content }));
+                // await setTimeout(() => {
+                //   dispatch(isAlertActionERR(null));
+                // }, 1000);
               }
-            }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span> */}
+
+            }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
         </Fragment>
       }
     },
@@ -129,11 +129,11 @@ const AccountManager = (props) => {
   const { Search } = Input;
 
   const onSearch = (value) => {
-      if(value){
-          dispatch(searchAccountApi(value));
-      }else {
-          dispatch(fetchApiAccountAction());
-      }
+    if (value) {
+      dispatch(searchAccountApi(value));
+    } else {
+      dispatch(fetchApiAccountAction());
+    }
   };
 
   return (
@@ -144,7 +144,7 @@ const AccountManager = (props) => {
           allowClear
           className='w-1/2'
           placeholder="Nhập từ khóa tìm kiếm"
-         onSearch={onSearch}
+          onSearch={onSearch}
         />
         <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
 
