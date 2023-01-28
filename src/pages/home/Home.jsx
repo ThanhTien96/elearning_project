@@ -15,12 +15,18 @@ const Home = () => {
       <Carousel />
       <InfoCourse />
       <div className='container mx-auto px-5 md:px-0 mt-10'>
-        <h1 className='mb-5 text-teal-600 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
+        <h1 className='mb-3 text-teal-600 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
           Khóa Học Tùy Chọn
         </h1>
         <CourseList />
       </div>
-      <PopularCourses />
+      <div className='container mx-auto lg:py-8 px-8 lg:px-0'>
+        <h1 className='text-teal-600 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
+          Khóa Học Tham Khảo
+        </h1>
+        <PopularCourses />
+      </div>
+
       <BoxNumber />
       <Teachers />
       <ReviewCourse />

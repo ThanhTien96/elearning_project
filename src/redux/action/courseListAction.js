@@ -61,10 +61,23 @@ export const fetchApiDetailCourseAction = (maKH) => async (dispatch) => {
     try {
         dispatch(isLoadingAction(true));
         const res = await coursesService.fetchApiDetailCourse(maKH);
-        await dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
+        dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
     } catch (err) {
         console.log(err);
     } finally {
         dispatch(isLoadingAction(false));
     }
+};
+
+// action lấy danh sách khóa học theo danh mục cho trang danh mục khóa học
+export const fetchApiCategoryCoursesAction = (maDM) => async (dispatch) => {
+    try {
+        dispatch(isLoadingAction(true));
+        const res = await coursesService.fetchApiCoursesCategory(maDM);
+        dispatch(createAction(courseType.GET_COURSES_CATEGORY, res.data));
+    } catch (err) {
+        console.log(err);
+    } finally {
+        dispatch(isLoadingAction(false));
+    };
 };

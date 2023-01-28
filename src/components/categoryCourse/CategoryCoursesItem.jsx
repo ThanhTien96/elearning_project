@@ -1,40 +1,45 @@
-import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import React, { useState } from 'react'
 import { Col, Pagination, Row } from 'antd';
-import React, { useEffect } from 'react';
-import { FaSignal, FaTag } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import { truncateText } from '../../utils';
 import { useNavigate } from 'react-router-dom';
-import { fetchApiPopularCoursesAction } from '../../redux/action/courseListAction';
-import { truncateText } from '../../utils/index';
-import styles from './PopularCourses.module.scss';
+import { useSelector } from 'react-redux';
+import styles from '../home/PopularCourses.module.scss';
+import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
+import { FaSignal, FaTag } from 'react-icons/fa';
 
-const PopularCourses = () => {
+const CategoryCoursesItem = () => {
 
-    const dispatch = useDispatch();
-    const { popularCourses } = useSelector(state => state.courseList);
-    const { courseLoading } = useSelector(state => state.courseList);
     const navigate = useNavigate();
 
-    // call api lấy danh sách khóa học phân trang
-    useEffect(() => {
-        dispatch(fetchApiPopularCoursesAction());
-    }, [])
 
-    // onchange call api khi click phân trang
-    const handleGetPage = (page) => {
-        dispatch(fetchApiPopularCoursesAction(page));
-    }
+
+
+    //lấy danh sách khóa học theo danh mục
+    const { categoryCourse } = useSelector(state => state.courseList);
+
+
+    // useState pagination 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [coursePerPage] = useState(12);
+    const lastIndex = currentPage * coursePerPage;
+    const firstIndex = lastIndex - coursePerPage;
+    const dataMap = categoryCourse.slice(firstIndex, lastIndex);
 
     // chuyển sang trang chi tiết
     const handleFetchDetail = (id) => {
         navigate(`/detail/${id}`)
     }
 
+    // onchange call api khi click phân trang
+    const handleGetPage = (page) => {
+        setCurrentPage(page)
+    }
+
     return (
-        <div >
+        <div>
             <Row>
                 {
-                    !courseLoading && popularCourses?.items.map((ele, index) => {
+                    dataMap.map((ele, index) => {
                         return (
                             <Col xs={24} md={12} lg={6} key={index} className={styles.itemsCard}>
                                 <div className={styles.items}>
@@ -114,18 +119,13 @@ const PopularCourses = () => {
                         )
                     })
                 }
-
-                {courseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
-                    <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
-                </div>}
             </Row>
-
-            <div className='text-center mt-3'>
-                <Pagination onChange={handleGetPage} current={popularCourses?.currentPage} defaultCurrent={1} total={popularCourses?.totalCount} showSizeChanger={false} />
-            </div>
+            {categoryCourse.length > 12 && <div className='text-center mt-3'>
+                <Pagination onChange={handleGetPage} defaultCurrent={1} pageSize={12} total={categoryCourse.length + 1} showSizeChanger={false} />
+            </div>}
 
         </div>
     )
 }
 
-export default PopularCourses
+export default CategoryCoursesItem

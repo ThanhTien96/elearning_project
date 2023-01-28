@@ -28,6 +28,7 @@ const Header = () => {
     localStorage.removeItem('Token');
   }
 
+
   return (
     <div className='fixed w-full z-50 top-0 left-0'>
       <div className={styles.headerLine}></div>
@@ -56,13 +57,19 @@ const Header = () => {
               <li className={styles.portfolioMenu}><HiMenu className='mr-1 text-xl' /> DANH MỤC
                 <ul className={styles.portfolio}>
                   {categoryList.map(item => {
-                    return <li className={styles.category} key={item.maDanhMuc}>{item.tenDanhMuc}</li>
+                    return <li className={styles.category} key={item.maDanhMuc}>
+                      <NavLink to={`category-courses/${item.maDanhMuc}`} >{item.tenDanhMuc}</NavLink>
+                    </li>
                   })}
 
                 </ul>
               </li>
-              <li>KHÓA HỌC</li>
-              <li>BLOG</li>
+              <li>
+                <NavLink to='courses'>KHÓA HỌC</NavLink>
+              </li>
+              <li>
+                <NavLink to='blog'>BLOG</NavLink>
+              </li>
               <li>
                 <NavLink to='event'>
                   SỰ KIỆN

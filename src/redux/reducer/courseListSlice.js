@@ -3,7 +3,7 @@ import courseType from "../type/courseListType";
 
 const initialState = {
     categoryList: [],
-    courseCategory: [],
+    categoryCourse: [],
     courseLoading: false,
     popularCourses: null,
     detailCourse: null,
@@ -18,7 +18,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 break;
 
             case courseType.GET_COURSES_CATEGORY:
-                draft.courseCategory = payload;
+                draft.categoryCourse = payload;
                 break;
 
             case courseType.COURSE_LOADING:
@@ -32,7 +32,6 @@ const reducer = (state = initialState, {type, payload}) => {
             case courseType.GET_DETAIL_COURSE:
                 draft.detailCourse = payload;
                 break;
-
                 
             default:
                 break;

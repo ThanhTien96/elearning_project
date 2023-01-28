@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DetailContent from '../../components/detail/DetailContent';
@@ -25,7 +25,7 @@ const Detail = (props) => {
 
   return (
     <div>
-      <Banner title={bannerRef.current.title} text={bannerRef.current.text} />
+      <Banner bannerContent={bannerRef.current} />
       <div className='container mx-auto'>
         <Row className='mt-14'>
           <Col xs={24} lg={16}>

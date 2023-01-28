@@ -9,13 +9,14 @@ export const apiPathUser = {
     EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung'
 }
 
-// api path lay danh sach khoa hoc, danh muc
+// api path lay danh sach khoa hoc, danh muc, khóa học theo danh mục
 
 export const apiPathCourseList = {
     CATEGORY_LIST: '/api/QuanLyKhoaHoc/LayDanhMucKhoaHoc',
     GET_COURSES_CATEGORY: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
     GET_POPULAR_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
     GET_COURSE_DETAIL: '/api/QuanLyKhoaHoc/LayThongTinKhoaHoc',
+    GET_CATEGORY_COURSE: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
 }
 
 //api path quan ly nguoi dung

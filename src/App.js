@@ -11,7 +11,7 @@ import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
@@ -20,6 +20,9 @@ import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
 import Event from './pages/event/Event';
 import Blog from './pages/blog/Blog';
+import CoursesPage from './pages/courses/CoursesPage';
+import CategoryPage from './pages/categoryCourse/CategoryPage';
+import SearchPage from './pages/search/SearchPage';
 
 
 
@@ -47,6 +50,9 @@ function App() {
             <Route path='about' element={<Information />}></Route>
             <Route path='event' element={<Event />}></Route>
             <Route path='blog' element={<Blog />}></Route>
+            <Route path='courses' element={<CoursesPage />}></Route>
+            <Route path='category-courses/:id' element={<CategoryPage />}></Route>
+            <Route path='search/:key' element={<SearchPage />}></Route>
             
             <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>

@@ -10,7 +10,7 @@ const CourseList = (props) => {
   const dispatch = useDispatch();
 
   const categoryList = useSelector(state => state.courseList.categoryList);
-  const coursesList = useSelector(state => state.courseList.courseCategory);
+  const coursesList = useSelector(state => state.courseList.categoryCourse);
 
   const onChange = (key) => {
     dispatch(fetchApiCoursesWithCategoryAction(key));
