@@ -19,6 +19,8 @@ import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
 import CourseManager from './pages/adminManager/courseManager/CourseManager';
+import Event from './pages/event/Event';
+import Blog from './pages/blog/Blog';
 
 
 function App() {
