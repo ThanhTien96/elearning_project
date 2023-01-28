@@ -1,6 +1,6 @@
 import requester from "./apiRequester"
 import {
-    apiPathAdminList
+    apiPathAdminList, apiPathCourseManagerList
 } from '../utils/apiPath';
 import {
     maNhom
@@ -74,6 +74,22 @@ class AdminService {
             },
         });
     };
+
+
+    //lay danh sach khoa hoc
+    getApiCourseList = (page = 1) => {
+        return requester({
+            url: apiPathCourseManagerList.GET_API_COURSE_LIST,
+            method: 'GET',
+            params: {
+                pageSize: 10,
+                page: page,
+            },
+        });
+    };
+
+
+
 };
 
 const adminService = new AdminService();

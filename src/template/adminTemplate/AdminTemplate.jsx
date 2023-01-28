@@ -1,4 +1,4 @@
-import { FileOutlined,  UserOutlined, VideoCameraAddOutlined } from '@ant-design/icons/lib/icons';
+import { FileOutlined,  UserOutlined, VideoCameraAddOutlined, ReadOutlined } from '@ant-design/icons/lib/icons';
 import { Alert, Breadcrumb, Layout, Menu, Space, theme } from 'antd'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +23,7 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem(<NavLink to="/admin/account">Quản lý người dùng </NavLink>, '1', <UserOutlined />),
+  getItem(<NavLink to="/admin/course">Quản lý khóa học </NavLink>, '1', <ReadOutlined />),
 
 ];
 
