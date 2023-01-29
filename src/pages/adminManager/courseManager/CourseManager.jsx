@@ -106,8 +106,10 @@ const CourseManager = (props) => {
         },
     ];
 
-
-    //const data = courseList?.items;
+    console.log(courseList);
+    const data = courseList?.items;
+    console.log(data);
+    
     const onChange = async (pagination) => {
         console.log(pagination.current)
         dispatch(fetApiCourseAction(pagination.current));
@@ -136,7 +138,7 @@ const CourseManager = (props) => {
                 <Button className={clsx('flex items-center')} onClick={() => navigate('/admin/course/create')} type='primary' size='large'><PlusOutlined /> <span>Thêm Khoá Học</span></Button>
 
             </div>
-            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} onChange={onChange} />
+            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={onChange} />
         </div>
 
 
