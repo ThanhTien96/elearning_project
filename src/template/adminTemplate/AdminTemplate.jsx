@@ -23,7 +23,7 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem(<NavLink to="/admin/account">Quản lý người dùng </NavLink>, '1', <UserOutlined />),
-  getItem(<NavLink to="/admin/course">Quản lý khóa học </NavLink>, '2', <ReadOutlined />),
+  getItem(<NavLink to="/admin">Quản lý khóa học </NavLink>, '2', <ReadOutlined />),
 
 ];
 
