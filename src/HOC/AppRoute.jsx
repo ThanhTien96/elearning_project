@@ -22,10 +22,10 @@ function AppRoute({ path, component: Comp, isPrivate, isAuth, isAdmin }) {
 
   if (isAdmin) {
     if (profile) {
-      if (profile?.maLoaiNguoiDung === "QV") {
+      if (profile.maLoaiNguoiDung === "GV") {
         return <Comp />
       } else {
-        return <Comp />
+        return <Navigate to='/' />
       }
     } else {
       return <Navigate to='/user/login' replace />
