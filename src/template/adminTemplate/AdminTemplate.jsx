@@ -81,7 +81,7 @@ const Dashboard = (props) => {
           <div className='py-5 px-5'>
             <NavLink to='/'><img className='w-40' src={require('../../assets/logo/E-learning.png')} alt="" /></NavLink>
           </div>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+          <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" items={items} />
         </Sider>
         <Layout className="site-layout">
           <Header
