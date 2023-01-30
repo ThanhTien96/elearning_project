@@ -1,147 +1,132 @@
-
+import { Table, Input, Button } from 'antd';
+import React, { Fragment } from 'react';
+import { VideoCameraAddOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, Fragment } from 'react';
-import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
-import { clsx } from 'clsx';
-import { Button, Table, Input } from 'antd';
-//import styles from './admin.module.scss';
-import { PlusOutlined } from '@ant-design/icons';
-import { truncateText } from '../../../utils/index';
+
+import { NavLink, useNavigate } from 'react-router-dom';
+import { truncateText } from '../../../utils';
+
+
 
 
 const CourseManager = (props) => {
 
     const dispatch = useDispatch();
-    const courseList = useSelector(state => state.courseManagerSlice);
+    const {courseList} = useSelector(state => state.courseManagerSlice);
     const navigate = useNavigate();
-    useEffect(() => {
-        dispatch(fetApiCourseAction());
-    }, [])
+
 
     const columns = [
         {
-            title: 'Mã Khoá Học',
+            title: 'Mã Khóa Học',
             dataIndex: 'maKhoaHoc',
-            key: '1',
             sorter: (a, b) => a.maKhoaHoc - b.maKhoaHoc,
             sortDirection: ['descend', 'ascend'],
             width: '10%',
+            key: '1'
         },
         {
-            title: 'Tên Khoá Học',
-            key: '2',
+            title: 'Hình ảnh',
+            dataIndex: 'hinhAnh',
+            render: (text, course, index) => {
+                return <Fragment><img src={course.hinhAnh} alt={course.tenPhim} width={50} onError={(e) => { e.tartget.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
+            },
+            width: '15%',
+            key: '2'
+        },
+        {
+            title: 'Tên Khóa Học',
+            dataIndex: 'tenKhoaHoc',
+            key: '3',
             sorter: (a, b) => {
-                let tenA = a.tenPhim.toLowerCase().trim();
-                let tenB = b.tenPhim.toLowerCase().trim();
-                if (tenA > tenB) {
+                let khoaHocA = a.tenKhoaHoc.toLowerCase().trim();
+                let khoaHocB = b.tenPhtenKhoaHocim.toLowerCase().trim();
+                if (khoaHocA > khoaHocB) {
                     return 1
                 } else {
                     return -1;
                 }
             },
-            dataIndex: 'tenKhoaHoc',
-            width: '10%',
-            render: (text, course, index) => {
+            render: (text, course) => {
                 return <Fragment>
-                    <p>{course.tenKhoaHoc}</p>
+                    <h4 className='text-green-700'>{course.maKhoaHoc}</h4>
                 </Fragment>
             },
-
+            sortDirection: ['descend', 'ascend'],
+            width: '20%',
         },
         {
-            title: 'Hình Ảnh',
-            key: '3',
-            dataIndex: 'hinhAnh',
-            width: '10%',
-            render: (text, course, index) => {
-                return <Fragment>
-                    <img src={course.hinhAnh} alt={course.tenKhoaHoc} width={50} onError={(e) => { e.tartget.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} />
-                </Fragment>
-            },
-
-        },
-        {
-            title: 'Mô Tả',
+            title: 'Mô tả',
             key: '4',
             dataIndex: 'moTa',
             sorter: (a, b) => {
-                let tenA = a.tenKhoaHoc.toLowerCase().trim();
-                let tenB = b.tenKhoaHoc.toLowerCase().trim();
-                if (tenA > tenB) {
+                let khoaHocA = a.tenPhim.toLowerCase().trim();
+                let khoaHocB = b.tenPhim.toLowerCase().trim();
+                if (khoaHocA > khoaHocB) {
                     return 1
                 } else {
                     return -1;
                 }
             },
             width: '35%',
+            sortDirection: ['descend', 'ascend'],
             render: (text, course, index) => {
                 return <Fragment>
                     {truncateText(course.moTa, 50)}
                 </Fragment>
             }
         },
-        
         {
-            title: 'Ngày Tạo',
-            key: '7',
-            dataIndex: 'ngayTao',
-            width: '10%',
-            render: (text, course, index) => {
+            title: 'Chức năng',
+            key: '5',
+            dataIndex: 'maPhim',
+            render: (text, flims, index) => {
                 return <Fragment>
-                    <p>{course.ngayTao}</p>
+                    <NavLink key={1} to={`/admin/editfilms/${flims.maPhim}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+
+                    <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
+                        onClick={() => {
+                            if (window.confirm(`Bạn Có Chắc Muốn Xóa Phim ${flims.tenPhim}`)) {
+                                dispatch('')
+                            }
+                        }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+
+                    <NavLink key={3} to={`/admin/showtime/${flims.maPhim}/${flims.tenPhim}`} 
+                    onClick={() => {localStorage.setItem('filmParams', flims.hinhAnh)}}
+                    className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
                 </Fragment>
-            }
-        },
-        {
-            title: 'Tác Vụ',
-            key: '8',
-            dataIndex: 'maKhoaHoc',
-            width: '10%',
-            render: (text, course, index) => {
-                return <Fragment>
-                    <param>them xoa sua</param>
-                </Fragment>
-            }
+            },
+            width: '20%',
         },
     ];
-
-
-    //const data = courseList?.items;
-    const onChange = async (pagination) => {
-        console.log(pagination.current)
-        dispatch(fetApiCourseAction(pagination.current));
-    };
-
+    const data = courseList.items;
+    console.log(courseList.items)
+    
     const { Search } = Input;
 
     const onSearch = (value) => {
-        if (value) {
-            //dispatch(searchAccountApi(value));
-        } else {
-            //dispatch(fetchApiAccountAction());
-        }
+        dispatch('');
     };
 
     return (
         <div>
-            <div className="flex justify-between mb-5 md:mb-10" >
-                <h3 className='text-teal-600 text-xl font-semibold'>Quản lý Khoá Học</h3>
+            <div className="flex justify-between mb-5 md:mb-10">
+                <h3 className='text-orange-600 text-xl'>Quản lý phim</h3>
                 <Search
                     allowClear
                     className='w-1/2'
                     placeholder="Nhập từ khóa tìm kiếm"
                     onSearch={onSearch}
+                    enterButton
+
                 />
-                <Button className={clsx('flex items-center')} onClick={() => navigate('/admin/course/create')} type='primary' size='large'><PlusOutlined /> <span>Thêm Khoá Học</span></Button>
+                <Button onClick={() => navigate('/admin/addfilms')} type='primary' size='large'><VideoCameraAddOutlined />Thêm Phim</Button>
 
             </div>
-            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} onChange={onChange} />
+            <Table rowKey={'maPhim'} columns={columns} dataSource={data} />
         </div>
-
-
     )
 }
 
-
 export default CourseManager
+
