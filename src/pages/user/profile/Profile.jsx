@@ -16,6 +16,11 @@ export const Information = (props) => {
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+    // formik xử lý form thông tin tài khoản
     const formik = useFormik({
         initialValues: {
             taiKhoan: account?.taiKhoan,
@@ -27,12 +32,9 @@ export const Information = (props) => {
             email: account?.email,
         },
         onSubmit: async (values) => {
-            console.log(values)
             try {
-                const res = await userServices.fetchApiEditProfile(values);
-                console.log(res);
+                await userServices.fetchApiEditProfile(values);
                 dispatch(fetApiProfileAction);
-
                 setEditProfile(false);
             } catch (err) {
                 console.log(err)
@@ -161,14 +163,10 @@ export const TabsProfile = (props) => {
     // activekey global state
     const { activeKeyTab } = useSelector(state => state.userSlice);
 
-    const onChange = (key) => {
-        console.log(key);
-    };
     return (
         <div className='px-5'>
             <Tabs
                 defaultActiveKey={activeKeyTab}
-                onChange={onChange}
                 items={items}
             />
         </div>

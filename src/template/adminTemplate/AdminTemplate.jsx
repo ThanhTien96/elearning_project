@@ -23,13 +23,13 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem(<NavLink to="/admin/account">Quản lý người dùng </NavLink>, '1', <UserOutlined />),
-  getItem(<NavLink to="/admin/course">Quản lý khóa học </NavLink>, '1', <ReadOutlined />),
+  getItem(<NavLink to="/admin/course">Quản lý khóa học </NavLink>, '2', <ReadOutlined />),
 
 ];
 
 const Dashboard = (props) => {
 
-  const user = useSelector(state => state.userSlice.userLogin);
+  const user = useSelector(state => state.userSlice.profile);
   
 
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const Dashboard = (props) => {
     }).then(result => {
       if (result.isConfirmed) {
         dispatch(fetchApiLoginAction(null));
-        localStorage.removeItem('TOKEN');
+        localStorage.removeItem('Token');
         navigate('/');
         Swal.fire('Đăn Xuất Thành Công !', '', 'success')
       } 
@@ -71,7 +71,6 @@ const Dashboard = (props) => {
 
 
   return (
-    // <><Header /><Outlet /></>
     <>
       <Layout
         style={{

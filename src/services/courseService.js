@@ -47,6 +47,18 @@ class CoursesService {
         });
     };
 
+    // tim kiem khoa hoc
+    fetchApiSearchCourse = (tenKH) => {
+        return requester({
+            url: apiPathCourseList.SEARCH_COURSES,
+            method: 'GET',
+            params: {
+                MaNhom: maNhom,
+                tenKhoaHoc: tenKH,
+            },
+        });
+    };
+
 };
 
 const coursesService = new CoursesService();

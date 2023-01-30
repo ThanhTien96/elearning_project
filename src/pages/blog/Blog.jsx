@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BlogContent from '../../components/blog/BlogContent'
 import Banner from '../../components/global/Banner'
 
 const Blog = (props) => {
-    const bannerContent = {title: 'BLOG', text: 'THÔNG TIN CÔNG NGHỆ SỐ !!!'}
+    const bannerContent = {title: 'BLOG', text: 'THÔNG TIN CÔNG NGHỆ SỐ !!!'};
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [])
+
   return (
     <div>
         <Banner bannerContent={bannerContent} />

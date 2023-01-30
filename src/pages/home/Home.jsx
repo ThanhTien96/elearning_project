@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BoxNumber from '../../components/home/BoxNumber'
 import Carousel from '../../components/home/Carousel'
 import CourseList from '../../components/home/coursesList/CourseList'
@@ -9,7 +9,10 @@ import Teachers from '../../components/home/Teachers'
 
 
 const Home = () => {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+  
   return (
     <div>
       <Carousel />

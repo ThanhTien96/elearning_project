@@ -71,7 +71,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            z-index: 1000;
+            z-index: 100;
             .portfolio{
                 position: absolute;
                 top: 100%;
@@ -120,6 +120,47 @@
                 }
             }
         }
+        
+        .eventMenu{
+            position: relative;
+            z-index: 1000;
+            .event{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: $cWhite;
+                border: 1px solid gray;
+                width: 220px;
+                color: $cTeal-600;
+                text-transform: uppercase;
+                height: 0;
+                transition: all 0.4s;
+                overflow: hidden;
+                visibility: hidden;
+                box-shadow: 0 0 0 1px #d1d7dc, 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+                li{
+                    padding: 5px 20px;
+                    text-transform: uppercase;
+                    position: relative;
+                    transition: all .4s;
+                    font-weight: 400;
+                    &:hover{
+                        color: $cWhite;
+                    }
+                }
+                li:last-child{
+                    padding-bottom: 10px;
+                }
+                li:first-child{
+                    padding-top: 10px;
+    
+                }
+            }
+            &:hover .event{
+                visibility: visible;
+                height: 74px; 
+            }
+        }
 
     }
     
@@ -153,6 +194,21 @@
         z-index: -1;
     }
     .portfolio li:hover::after{
+        width: 100%;
+    }
+    .event li::after{
+        content: "";
+        position: absolute;
+        background: $c3GradientRight;
+        display: block;
+        width: 0%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        transition: all .4s;
+        z-index: -1;
+    }
+    .event li:hover::after{
         width: 100%;
     }
 
@@ -219,7 +275,58 @@
         &:hover img{
             border-color: $cTeal-500;
         }
-    }    
+    }   
+    .adminBtn{
+        position: absolute;
+        top: 100%;
+        border: 1px solid gray;
+        box-shadow: 0 0 0 1px #d1d7dc, 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+        right: 0%;
+        width: 200px;
+        height: 0%;
+        background-color: $cWhite;
+        color: $cTeal-600;
+        transition: all .5s ease;
+        visibility: hidden;
+        overflow: hidden;
+        li{
+            padding: 5px 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            cursor: pointer;
+            transition: all .5s ease;
+            &:hover {
+                color: $cWhite;
+            }        }
+        li:last-child{
+            padding-bottom: 10px;
+        }
+        li:first-child{
+            padding-top: 10px;
+
+        }
+        li:after{
+            content: "";
+            position: absolute;
+            background: $c3GradientBottom;
+            display: block;
+            width: 0%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            transition: all .3s;
+            z-index: -1;
+        }
+        li:hover:after{
+            width: 100%;
+        }
+    }
+    &:hover .adminBtn{
+        visibility: visible;
+        height: 122px;
+    }
 }
 
 .buttonNavBar{

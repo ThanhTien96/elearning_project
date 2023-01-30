@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaBookmark } from 'react-icons/fa'
 import CourseShowTime from '../../components/coursesPage/CourseShowTime'
 import Banner from '../../components/global/Banner'
@@ -6,6 +6,10 @@ import PopularCourses from '../../components/home/PopularCourses';
 
 const CoursesPage = () => {
     const bannerContent = { title: 'KHÓA HỌC', text: 'BẮT ĐẦU HÀNH TRÌNH NÀO !!!' }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <div>

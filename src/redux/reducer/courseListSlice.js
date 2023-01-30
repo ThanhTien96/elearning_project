@@ -32,7 +32,7 @@ const reducer = (state = initialState, {type, payload}) => {
             case courseType.GET_DETAIL_COURSE:
                 draft.detailCourse = payload;
                 break;
-                
+            
             default:
                 break;
         }

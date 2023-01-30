@@ -1,9 +1,7 @@
 import adminService from '../../../services/adminSevice';
 import adminType from '../../type/adminType';
-import { useState } from 'react';
 import { createAction } from '../createAction';
-import userServices from '../../../services/userService';
-import userType from '../../type/userType';
+
 
 
 

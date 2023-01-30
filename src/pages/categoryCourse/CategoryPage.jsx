@@ -16,7 +16,10 @@ const CategoryPage = () => {
 
 
   useEffect(() => {
-    dispatch(fetchApiCategoryCoursesAction(params.id))
+    dispatch(fetchApiCategoryCoursesAction(params.id));
+
+    window.scrollTo(0, 0);
+
   }, [params])
 
   const bannerContent = { title: 'KHÓA HỌC THEO DANH MỤC', text: 'HÃY CHỌN KHÓA HỌC MONG MUỐN !!!' }
@@ -24,7 +27,7 @@ const CategoryPage = () => {
   return (
     <div>
       <Banner bannerContent={bannerContent} />
-      <div className="container mx-auto">
+      <div className="container mx-auto pb-10">
 
         <h1 className='mt-10 mb-5 py-2 px-5 text-lg capitalize border-2 border-solid border-gray-400 rounded-[30px] inline-block mb-10 hover:border-gray-600 transition-all duration-300 cursor-pointer'>
           <FaDesktop className='text-pink-600 mr-3 text-xl inline-block' />

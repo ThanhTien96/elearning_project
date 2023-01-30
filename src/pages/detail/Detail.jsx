@@ -10,7 +10,7 @@ import { fetchApiDetailCourseAction } from '../../redux/action/courseListAction'
 
 const Detail = (props) => {
 
-  const bannerRef = useRef({title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!'})
+  const bannerRef = useRef({ title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!' })
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -18,6 +18,9 @@ const Detail = (props) => {
   useEffect(() => {
     const id = params.id
     dispatch(fetchApiDetailCourseAction(id));
+
+    window.scrollTo(0, 0);
+
   }, [params.id])
 
   return (
@@ -35,9 +38,9 @@ const Detail = (props) => {
         </Row>
 
         <div className='py-10'>
-        <h1 className='mb-5 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
-          Khóa học tham khảo
-        </h1>
+          <h1 className='mb-5 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
+            Khóa học tham khảo
+          </h1>
           <CourseList />
         </div>
       </div>
