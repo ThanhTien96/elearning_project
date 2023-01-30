@@ -2,7 +2,6 @@ import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
 import { VideoCameraAddOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
 
@@ -79,20 +78,20 @@ const CourseManager = (props) => {
         {
             title: 'Chức năng',
             key: '5',
-            dataIndex: 'maPhim',
-            render: (text, flims, index) => {
+            dataIndex: 'maKhoaHoc',
+            render: (text, course, index) => {
                 return <Fragment>
-                    <NavLink key={1} to={`/admin/editfilms/${flims.maPhim}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+                    <NavLink key={1} to='' className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
                         onClick={() => {
-                            if (window.confirm(`Bạn Có Chắc Muốn Xóa Phim ${flims.tenPhim}`)) {
+                            if (window.confirm(`Bạn Có Chắc Muốn Xóa Khóa Học ${course.tenKhoaHoc}`)) {
                                 dispatch('')
                             }
                         }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
 
-                    <NavLink key={3} to={`/admin/showtime/${flims.maPhim}/${flims.tenPhim}`} 
-                    onClick={() => {localStorage.setItem('filmParams', flims.hinhAnh)}}
+                    <NavLink key={3} to='' 
+                    onClick={() => {localStorage.setItem('courseImg', course.hinhAnh)}}
                     className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
                 </Fragment>
             },
@@ -100,7 +99,6 @@ const CourseManager = (props) => {
         },
     ];
     const data = courseList.items;
-    console.log(courseList.items)
     
     const { Search } = Input;
 
@@ -111,7 +109,7 @@ const CourseManager = (props) => {
     return (
         <div>
             <div className="flex justify-between mb-5 md:mb-10">
-                <h3 className='text-orange-600 text-xl'>Quản lý phim</h3>
+                <h3 className='text-orange-600 text-xl'>Quản lý Khóa Học</h3>
                 <Search
                     allowClear
                     className='w-1/2'
@@ -120,10 +118,10 @@ const CourseManager = (props) => {
                     enterButton
 
                 />
-                <Button onClick={() => navigate('/admin/addfilms')} type='primary' size='large'><VideoCameraAddOutlined />Thêm Phim</Button>
+                <Button onClick={() => navigate('')} type='primary' size='large'>Thêm Khóa Học</Button>
 
             </div>
-            <Table rowKey={'maPhim'} columns={columns} dataSource={data} />
+            <Table rowKey={'maKhoaHoc'} columns={columns} dataSource={data} />
         </div>
     )
 }
