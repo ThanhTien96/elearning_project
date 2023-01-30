@@ -1,6 +1,6 @@
 import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
-import { VideoCameraAddOutlined, EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import {  EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
@@ -98,7 +98,8 @@ const CourseManager = (props) => {
             width: '20%',
         },
     ];
-    const data = courseList.items;
+    console.log(courseList);
+    const data = courseList?.items;
     
     const { Search } = Input;
 

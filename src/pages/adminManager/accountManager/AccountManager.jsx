@@ -119,7 +119,7 @@ const AccountManager = (props) => {
 
   ];
 
-  const data = accountList?.items;
+  const data = accountList.items;
   const onChange = async (pagination) => {
     console.log(pagination.current)
     dispatch(fetchApiAccountAction(pagination.current));

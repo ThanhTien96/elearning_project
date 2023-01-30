@@ -11,7 +11,6 @@ export const fetchApiAccountAction = (page) => {
     return async (dispatch) => {
         try {
             const res = await adminService.getApiAccountList(page);
-            console.log(res.data)
             dispatch(createAction(adminType.GET_ACCOUNT_LIST, res.data));
 
         } catch (err) {

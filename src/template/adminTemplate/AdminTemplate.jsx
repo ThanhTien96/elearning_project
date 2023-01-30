@@ -1,5 +1,5 @@
-import { FileOutlined,  UserOutlined, VideoCameraAddOutlined, ReadOutlined } from '@ant-design/icons/lib/icons';
-import { Alert, Breadcrumb, Layout, Menu, Space, theme } from 'antd'
+import {  UserOutlined,  ReadOutlined } from '@ant-design/icons/lib/icons';
+import {  Breadcrumb, Layout, Menu,  theme } from 'antd'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { ExportOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import { fetchApiAccountAction } from '../../redux/action/adminAction/accountManagerAction';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
+import { fetApiCourseAction } from '../../redux/action/adminAction/courseManagerAction';
 
 
 
@@ -38,6 +39,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     dispatch(fetchApiAccountAction());
+    dispatch(fetApiCourseAction());
     window.scrollTo(0, 0);
   }, [])
 
