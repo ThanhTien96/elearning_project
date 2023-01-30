@@ -89,10 +89,10 @@ const Header = () => {
                 </NavLink>
                 <ul className={styles.event}>
                   <li className={styles.categoryEvent}>
-                    Sự Kiện Sale Cuối Năm
+                    <NavLink to='last-year'>Sự Kiện Sale Cuối Năm</NavLink>
                   </li>
                   <li className={styles.categoryEvent}>
-                    Sự Kiện Sale Cuối Năm
+                    <NavLink to='noel'>Sự Kiện Giáng Sinh</NavLink>
                   </li>
                 </ul>
               </li>

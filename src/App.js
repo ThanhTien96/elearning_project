@@ -11,7 +11,7 @@ import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
@@ -25,6 +25,7 @@ import CoursesPage from './pages/courses/CoursesPage';
 import CategoryPage from './pages/categoryCourse/CategoryPage';
 import SearchPage from './pages/search/SearchPage';
 import AppRoute from './HOC/AppRoute';
+import NotFound from './pages/notFound/NotFound';
 
 
 function App() {
@@ -57,8 +58,11 @@ function App() {
             <Route path='search/:key' element={<SearchPage />}></Route>
 
           </Route>
+          <Route path='last-year' element={<NotFound />}></Route>
+          <Route path='noel' element={<NotFound />}></Route>
 
           <Route path='user' element={<UserTemplate />}>
+            <Route path='' element={<Navigate to='login' replace />}></Route>
             <Route path='login' element={<AppRoute component={Login} isAuth />}></Route>
             <Route path='register' element={<AppRoute component={Register} isAuth />}></Route>
           </Route>
@@ -69,8 +73,6 @@ function App() {
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
             <Route path='account/create/edit' element={<AppRoute component={EditAccount} isAdmin />}></Route>
           </Route>
-
-          <Route path='test' element={<AdminTemplate/>} />
 
           <Route path='*' element={<Navigate to='' replace />}></Route>
         </Routes>
