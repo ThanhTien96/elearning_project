@@ -98,9 +98,22 @@ const CourseManager = (props) => {
             width: '20%',
         },
     ];
+<<<<<<< HEAD
+
+    console.log(courseList);
+    const data = courseList?.items;
+    console.log(data);
+    
+    const onChange = async (pagination) => {
+        console.log(pagination.current)
+        dispatch(fetApiCourseAction(pagination.current));
+    };
+
+=======
     console.log(courseList);
     const data = courseList?.items;
     
+>>>>>>> origin
     const { Search } = Input;
 
     const onSearch = (value) => {
@@ -122,7 +135,11 @@ const CourseManager = (props) => {
                 <Button onClick={() => navigate('')} type='primary' size='large'>Thêm Khóa Học</Button>
 
             </div>
+<<<<<<< HEAD
+            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={onChange} />
+=======
             <Table rowKey={'maKhoaHoc'} columns={columns} dataSource={data} />
+>>>>>>> origin
         </div>
     )
 }
