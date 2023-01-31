@@ -4,6 +4,7 @@ import {  EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/ico
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
+import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
 
 
 
@@ -81,7 +82,7 @@ const CourseManager = (props) => {
             dataIndex: 'maKhoaHoc',
             render: (text, course, index) => {
                 return <Fragment>
-                    <NavLink key={1} to='' className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+                    <NavLink key={1} to='/admin/course/edit' className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
                         onClick={() => {
@@ -98,7 +99,6 @@ const CourseManager = (props) => {
             width: '20%',
         },
     ];
-<<<<<<< HEAD
 
     console.log(courseList);
     const data = courseList?.items;
@@ -109,11 +109,6 @@ const CourseManager = (props) => {
         dispatch(fetApiCourseAction(pagination.current));
     };
 
-=======
-    console.log(courseList);
-    const data = courseList?.items;
-    
->>>>>>> origin
     const { Search } = Input;
 
     const onSearch = (value) => {
@@ -135,11 +130,7 @@ const CourseManager = (props) => {
                 <Button onClick={() => navigate('')} type='primary' size='large'>Thêm Khóa Học</Button>
 
             </div>
-<<<<<<< HEAD
             <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={onChange} />
-=======
-            <Table rowKey={'maKhoaHoc'} columns={columns} dataSource={data} />
->>>>>>> origin
         </div>
     )
 }

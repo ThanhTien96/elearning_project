@@ -59,6 +59,17 @@ class CoursesService {
         });
     };
 
+    //edit khoa hoc
+    fetchApiEditCourse = (maKH) => {
+        return requester ({
+            url: apiPathCourseList.EDIT_COURSES,
+            method: 'PUT',
+            params: {
+                maKhoaHoc: maKH,
+            },
+        })
+    }
+
 };
 
 const coursesService = new CoursesService();

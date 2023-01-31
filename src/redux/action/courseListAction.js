@@ -82,3 +82,16 @@ export const fetchApiCategoryCoursesAction = (maDM) => async (dispatch) => {
     };
 };
 
+// edit khoa hoc
+export const editCourseApi = (maKH) => async (dispatch) => {
+    try {
+        dispatch(isLoadingAction(true));
+        const res = await coursesService.fetchApiDetailCourse(maKH);
+        dispatch(createAction(courseType.EDIT_COURSES, res.data));
+    } catch (err) {
+        console.log(err);
+    } finally {
+        dispatch(isLoadingAction(false));
+    }
+
+}

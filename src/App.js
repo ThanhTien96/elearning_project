@@ -26,6 +26,7 @@ import CategoryPage from './pages/categoryCourse/CategoryPage';
 import SearchPage from './pages/search/SearchPage';
 import AppRoute from './HOC/AppRoute';
 import NotFound from './pages/notFound/NotFound';
+import EditCourse from './pages/adminManager/courseManager/EditCourse';
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
             <Route path='account/create/edit' element={<AppRoute component={EditAccount} isAdmin />}></Route>
+            <Route path='course/edit' element={<AppRoute component={EditCourse} isAdmin />}></Route>
           </Route>
 
           <Route path='*' element={<Navigate to='' replace />}></Route>
