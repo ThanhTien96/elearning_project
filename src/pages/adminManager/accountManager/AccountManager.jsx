@@ -3,7 +3,6 @@ import { Table, Input, Button } from 'antd';
 import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getApiAccount } from '../../../redux/reducer/admin/accountManagerSlice';
 import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './admin.module.scss'
 import clsx from 'clsx';
@@ -120,7 +119,7 @@ const AccountManager = (props) => {
 
   ];
 
-  const data = accountList?.items;
+  const data = accountList.items;
   const onChange = async (pagination) => {
     console.log(pagination.current)
     dispatch(fetchApiAccountAction(pagination.current));

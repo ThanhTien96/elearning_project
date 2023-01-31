@@ -1,5 +1,5 @@
-import { FileOutlined,  UserOutlined, VideoCameraAddOutlined, ReadOutlined } from '@ant-design/icons/lib/icons';
-import { Alert, Breadcrumb, Layout, Menu, Space, theme } from 'antd'
+import {  UserOutlined,  ReadOutlined } from '@ant-design/icons/lib/icons';
+import {  Breadcrumb, Layout, Menu,  theme } from 'antd'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { ExportOutlined } from '@ant-design/icons';
 import Swal from 'sweetalert2';
 import { fetchApiAccountAction } from '../../redux/action/adminAction/accountManagerAction';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
+import { fetApiCourseAction } from '../../redux/action/adminAction/courseManagerAction';
 
 
 
@@ -23,13 +24,13 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem(<NavLink to="/admin/account">Quản lý người dùng </NavLink>, '1', <UserOutlined />),
-  getItem(<NavLink to="/admin/course">Quản lý khóa học </NavLink>, '1', <ReadOutlined />),
+  getItem(<NavLink to="/admin">Quản lý khóa học </NavLink>, '2', <ReadOutlined />),
 
 ];
 
 const Dashboard = (props) => {
 
-  const user = useSelector(state => state.userSlice.userLogin);
+  const user = useSelector(state => state.userSlice.profile);
   
 
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     dispatch(fetchApiAccountAction());
+    dispatch(fetApiCourseAction());
     window.scrollTo(0, 0);
   }, [])
 
@@ -60,7 +62,7 @@ const Dashboard = (props) => {
     }).then(result => {
       if (result.isConfirmed) {
         dispatch(fetchApiLoginAction(null));
-        localStorage.removeItem('TOKEN');
+        localStorage.removeItem('Token');
         navigate('/');
         Swal.fire('Đăn Xuất Thành Công !', '', 'success')
       } 
@@ -71,7 +73,6 @@ const Dashboard = (props) => {
 
 
   return (
-    // <><Header /><Outlet /></>
     <>
       <Layout
         style={{
@@ -82,7 +83,7 @@ const Dashboard = (props) => {
           <div className='py-5 px-5'>
             <NavLink to='/'><img className='w-40' src={require('../../assets/logo/E-learning.png')} alt="" /></NavLink>
           </div>
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+          <Menu theme="dark" defaultSelectedKeys={['2']} mode="inline" items={items} />
         </Sider>
         <Layout className="site-layout">
           <Header

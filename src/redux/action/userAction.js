@@ -10,9 +10,9 @@ export const fetchApiLoginAction = (data) => async (dispatch) => {
         const res = await userServices.fetchApiLogin(data);
 
         if (res.status === statusCode.SUCCESS) {
-            localStorage.setItem('Token', res.data.accessToken);
-            dispatch(fetApiProfileAction);
+            await localStorage.setItem('Token', res.data.accessToken);
         }
+        await dispatch(createAction(userType.GET_PROFILE, res.data));
 
     } catch (err) {
         throw err;
@@ -36,7 +36,8 @@ export const fetApiProfileAction = async (dispatch) => {
     try {
 
         const res = await userServices.fetchApiProfile();
-        dispatch(createAction(userType.GET_PROFILE, res.data));
+        await dispatch(createAction(userType.GET_PROFILE, res.data));
+
     } catch (err) {
         console.log(err);
     };

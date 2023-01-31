@@ -1,9 +1,7 @@
 import adminService from '../../../services/adminSevice';
 import adminType from '../../type/adminType';
-import { useState } from 'react';
 import { createAction } from '../createAction';
-import userServices from '../../../services/userService';
-import userType from '../../type/userType';
+
 
 
 
@@ -13,7 +11,6 @@ export const fetchApiAccountAction = (page) => {
     return async (dispatch) => {
         try {
             const res = await adminService.getApiAccountList(page);
-            console.log(res.data)
             dispatch(createAction(adminType.GET_ACCOUNT_LIST, res.data));
 
         } catch (err) {

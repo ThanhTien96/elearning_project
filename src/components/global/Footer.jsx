@@ -3,8 +3,13 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import { FaAngleRight, FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaTwitter } from "react-icons/fa";
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
+
+  const { categoryList } = useSelector(state => state.courseList)
+
   return (
     <div className={clsx(styles.footer, 'md:pt-16 pt-8 pb-5 px-5 lg:px-0')}>
       <div className="container mx-auto">
@@ -23,7 +28,11 @@ const Footer = () => {
           <Col span={12} md={12} lg={4}>
             <h1 className='text-2xl font-bold mb-2 mt-5 md:mt-0'>Liên Kết</h1>
             <ul>
-              <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Trang Chủ</span></li>
+              <li className={styles.linkFooter}><FaAngleRight className='inline-block' />
+                <NavLink to='/'>
+                  <span>Trang Chủ</span>
+                </NavLink>
+              </li>
               <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Dịch Vụ</span></li>
               <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Nhóm</span></li>
               <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Blog</span></li>
@@ -33,10 +42,12 @@ const Footer = () => {
           <Col span={12} md={12} lg={4}>
             <h1 className='text-2xl font-bold mb-2 lg:mt-0 mt-5 '>Khóa Học</h1>
             <ul>
-              <li className={styles.linkFooter}><FaAngleRight className='align-middle inline-block' /> <span>Front End</span></li>
-              <li className={styles.linkFooter}><FaAngleRight className='align-middle inline-block' /> <span>Back End</span></li>
-              <li className={styles.linkFooter}><FaAngleRight className='align-middle inline-block' /> <span>Full stack</span></li>
-              <li className={styles.linkFooter}><FaAngleRight className='align-middle inline-block' /> <span>Node Js</span></li>
+              {
+                categoryList.map((ele, index) => (<li key={index} className={styles.linkFooter}>
+                  <FaAngleRight className='align-middle inline-block' />
+                  <NavLink to={`category-courses/${ele.maDanhMuc}`} > <span>{ele.tenDanhMuc}</span></NavLink>
+                </li>))
+              }
             </ul>
           </Col>
 

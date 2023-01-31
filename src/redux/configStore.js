@@ -4,9 +4,10 @@ import thunk from "redux-thunk";
 import userSlice from './reducer/userSlice';
 import courseList from './reducer/courseListSlice';
 import accountManagerSlice from './reducer/admin/accountManagerSlice';
+import courseManagerSlice from './reducer/admin/courseManagerSlice';
 
 const rootReducer = combineReducers({
-    userSlice,courseList,accountManagerSlice,
+    userSlice,courseList,accountManagerSlice, courseManagerSlice
 })
 
 const store = createStore(rootReducer, composeWithDevTools(

@@ -11,7 +11,7 @@ import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
@@ -24,54 +24,57 @@ import Blog from './pages/blog/Blog';
 import CoursesPage from './pages/courses/CoursesPage';
 import CategoryPage from './pages/categoryCourse/CategoryPage';
 import SearchPage from './pages/search/SearchPage';
+import AppRoute from './HOC/AppRoute';
+import NotFound from './pages/notFound/NotFound';
 
 
 function App() {
 
   const dispatch = useDispatch();
+  
 
   // fetch api profile
   useEffect(() => {
-    if(localStorage.getItem('Token')) {
+    if (localStorage.getItem('Token')) {
       dispatch(fetApiProfileAction);
     }
+
   }, []);
-  
 
   return (
     <div>
       <GlobalLoading />
       <BrowserRouter>
         <Routes>
-          <Route path='' element={<HomeTemplate/>}>
+          <Route path='' element={<HomeTemplate />}>
             <Route index path='' element={<Home />}></Route>
             <Route path='/detail/:id' element={<Detail />}></Route>
-            <Route path='profile' element={<Profile />} ></Route>
+            <Route path='profile' element={<AppRoute component={Profile} isPrivate />} ></Route>
             <Route path='about' element={<Information />}></Route>
             <Route path='event' element={<Event />}></Route>
             <Route path='blog' element={<Blog />}></Route>
             <Route path='courses' element={<CoursesPage />}></Route>
             <Route path='category-courses/:id' element={<CategoryPage />}></Route>
             <Route path='search/:key' element={<SearchPage />}></Route>
-            
-            <Route path='*' element={<Navigate to='' replace />}></Route>
+
           </Route>
+          <Route path='last-year' element={<NotFound />}></Route>
+          <Route path='noel' element={<NotFound />}></Route>
 
           <Route path='user' element={<UserTemplate />}>
-            <Route path='login' element={<Login />}></Route>
-            <Route path='register' element={<Register />}></Route>
+            <Route path='' element={<Navigate to='login' replace />}></Route>
+            <Route path='login' element={<AppRoute component={Login} isAuth />}></Route>
+            <Route path='register' element={<AppRoute component={Register} isAuth />}></Route>
           </Route>
 
           <Route path='admin' element={<AdminTemplate />}>
-
-            <Route path='account' element={<AccountManager />}></Route>
-            <Route path='account/create' element={<CreateAccount />}></Route>
-            <Route path='account/create/edit' element={<EditAccount />}></Route>
-            <Route path='course' element={<CourseManager />}></Route>
+            <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
+            <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
+            <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
+            <Route path='account/create/edit' element={<AppRoute component={EditAccount} isAdmin />}></Route>
           </Route>
 
-          
-
+          <Route path='*' element={<Navigate to='' replace />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

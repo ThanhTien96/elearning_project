@@ -19,7 +19,7 @@ const Login = () => {
   const [errMess, setErrMess] = useState(null);
 
   // ẩn hiện mật khẩu
-  const [showPasswor, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   // xử lý form bằng formik
   const formik = useFormik({
@@ -78,13 +78,13 @@ const Login = () => {
                 {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
                 <p>Mật Khẩu</p>
                 <div className='relative'>
-                  <input name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPasswor ? 'text' : 'password'} placeholder="Mật Khẩu" />
-                  {showPasswor ?
+                  <input name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPassword ? 'text' : 'password'} placeholder="Mật Khẩu" />
+                  {showPassword ?
                     <EyeInvisibleOutlined
-                      onClick={() => setShowPassword(true)}
+                      onClick={() => setShowPassword(false)}
                       className='absolute top-1/2 -translate-y-1/2 right-2 px-2' /> :
                     <EyeOutlined
-                      onClick={() => setShowPassword(false)}
+                      onClick={() => setShowPassword(true)}
                       className='absolute top-1/2 -translate-y-1/2 right-2 px-2' />
                   }
                 </div>
