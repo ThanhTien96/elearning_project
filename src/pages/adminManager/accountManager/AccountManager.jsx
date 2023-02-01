@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount } from '../../../redux/action/adminAction/accountManagerAction';
-import styles from './admin.module.scss'
+import styles from './Admin.module.scss'
 import clsx from 'clsx';
 
 const AccountManager = (props) => {
