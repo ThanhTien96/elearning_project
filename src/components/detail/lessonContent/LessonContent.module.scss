@@ -52,5 +52,8 @@
         padding: 10px;
         box-shadow: 1px 1px 2px 1px rgb(239 244 190 / 27%);
         cursor: pointer;
+        @media screen and (max-width: 414.98px) {
+            display: block;
+        }
     }
 }

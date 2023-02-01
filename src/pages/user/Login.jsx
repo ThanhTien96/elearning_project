@@ -24,29 +24,29 @@ const Login = () => {
   // xử lý form bằng formik
   const formik = useFormik({
     initialValues: {
-      taiKhoan: 'thanhtien1',
-      matKhau: 'thanhtien1',
+      taiKhoan: 'thanhtien2',
+      matKhau: 'thanhtien2',
     },
     onSubmit: async (value) => {
       try {
 
         await dispatch(fetchApiLoginAction(value));
-        Swal.fire({
-          position: 'top center',
+        await Swal.fire({
+          position: 'center',
           icon: 'success',
           title: 'Đăng Nhập Thành Công',
           showConfirmButton: false,
-          timer: 500
+          timer: 1500
         }).then(result => {
-          navigate('/')
-        })
+          navigate('/');
+        });
 
       } catch (err) {
         setErrMess(err.response.data);
         await setTimeout(() => {
           setErrMess(null);
-        }, 3000)
-      }
+        }, 3000);
+      };
     },
     validationSchema: Yup.object({
       taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!'),

@@ -1,7 +1,6 @@
 const sliceName = 'userSlice';
 
 const userType = {
-    USER_REGISTER: 'USER_REGISTER',
     GET_PROFILE: 'GET_PROFILE',
     IS_LOADING: 'IS_LOADING',
     SET_TAB_ACTIVE_KEY: 'SET_TAB_ACTIVE_KEY',

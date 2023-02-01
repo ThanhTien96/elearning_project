@@ -19,17 +19,7 @@ export const fetchApiLoginAction = (data) => async (dispatch) => {
     }
 };
 
-// action dang ky tai khoan
-export const fetchApiRegister = (data) => async (dispatch) => {
 
-    try {
-        const res = await userServices.fetchApiRegister(data);
-        dispatch(createAction(userType.USER_REGISTER, res.data))
-    } catch (err) {
-        throw err;
-    }
-
-};
 
 // action lay thong tin tai khoan
 export const fetApiProfileAction = async (dispatch) => {

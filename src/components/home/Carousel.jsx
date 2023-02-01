@@ -63,6 +63,9 @@ const Carousel = (props) => {
     },
   };
 
+  // scroll to view
+  const handleScrollToViewCourse = () => props.viewCourseRef.current.scrollIntoView({ behavior: 'smooth' });
+
   return (
     <Slider className={styles.bannerSlide} {...settingsCarouser}>
 
@@ -79,7 +82,9 @@ const Carousel = (props) => {
               <div className={styles.textAnimation}>
                 <h1>ELearning</h1>
               </div>
-              <button className='bg-green-600 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
+              <button
+                onClick={handleScrollToViewCourse}
+                className='bg-green-600 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
           <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
@@ -89,14 +94,14 @@ const Carousel = (props) => {
             <img className={styles.imgBanner4} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner5} src={require('../../assets/image/imgBanner/message_slider.6835c478.png')} alt="..." />
           </Col>
-          <Col span={12}></Col>
+
         </Row>
       </div>
 
       <div className={styles.banner1}>
         <Row>
           <Col className={styles.bannerLeft} xs={24} md={12} xl={12}>
-            <img  style={{width: '30%'}}  src={require('../../assets/image/imgBanner/paper_plane.93dfdbf5.png')} alt="..." />
+            <img style={{ width: '30%' }} src={require('../../assets/image/imgBanner/paper_plane.93dfdbf5.png')} alt="..." />
             <div className={styles.flyAngle}></div>
             <div className={styles.BgDot1}></div>
             <div className={styles.BgDot2}></div>
@@ -106,7 +111,9 @@ const Carousel = (props) => {
               <div className={styles.textAnimation2}>
                 <h1>Front End Chuyên Nghiệp</h1>
               </div>
-              <button className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
+              <button
+                onClick={handleScrollToViewCourse}
+                className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
           <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
@@ -115,7 +122,7 @@ const Carousel = (props) => {
             <img className={styles.imgBanner3} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
             <img className={styles.imgBanner4} src={require('../../assets/image/imgBanner/clouds.15eb556c.png')} alt="..." />
           </Col>
-          <Col span={12}></Col>
+
         </Row>
       </div>
 
@@ -132,7 +139,7 @@ const Carousel = (props) => {
               <div className={styles.textAnimation}>
                 <h1>ELearning</h1>
               </div>
-              <button className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
+              <button onClick={handleScrollToViewCourse} className='bg-green-700 uppercase mt-5 py-2 px-5 text-lg text-white hover:scale-95 hover:rounded-md transition duration-500'>Bắt Đầu Nào</button>
             </div>
           </Col>
           <Col className={styles.bannerRight} xs={24} md={12} xl={12}>
@@ -141,7 +148,7 @@ const Carousel = (props) => {
             <img className={styles.imgComputer2} src={require('../../assets/image/imgBanner/computerIcon.png')} alt="..." />
             <img className={styles.imgComputer3} src={require('../../assets/image/imgBanner/computerIcon.png')} alt="..." />
           </Col>
-          <Col span={12}></Col>
+
         </Row>
       </div>
 

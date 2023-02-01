@@ -6,7 +6,8 @@ export const apiPathUser = {
     USER_REGISTER: '/api/QuanLyNguoiDung/DangKy',
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     REGISTER_COURSE: '/api/QuanLyKhoaHoc/DangKyKhoaHoc',
-    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung'
+    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
+    UNSUBSCRIBE_COURSE: '/api/QuanLyKhoaHoc/HuyGhiDanh',
 }
 
 // api path lay danh sach khoa hoc, danh muc, khóa học theo danh mục
@@ -19,6 +20,7 @@ export const apiPathCourseList = {
     GET_CATEGORY_COURSE: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
     SEARCH_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc',
     EDIT_COURSES: 'api/QuanLyKhoaHoc/CapNhatKhoaHoc',
+    
 }
 
 //api path quan ly nguoi dung

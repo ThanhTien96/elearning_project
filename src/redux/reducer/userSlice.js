@@ -13,10 +13,7 @@ const reducer = (state = initialState, {type, payload}) => {
             case userType.GET_PROFILE:
                 draft.profile = payload;
                 break;
-            case userType.USER_REGISTER:
-                draft.profile = payload;
-                break;
-
+                
             case userType.IS_LOADING: 
                 draft.globalLoading = payload;
                 break; 

@@ -14,7 +14,6 @@ const Detail = (props) => {
 
   const dispatch = useDispatch();
   const params = useParams();
-  console.log(params)
   useEffect(() => {
     const id = params.id
     dispatch(fetchApiDetailCourseAction(id));
@@ -37,7 +36,7 @@ const Detail = (props) => {
           </Col>
         </Row>
 
-        <div className='py-10'>
+        <div className='py-10 px-5 lg:px-0'>
           <h1 className='mb-5 text-lg font-semibold border-2 inline-block rounded-3xl px-5 py-1 border-solid cursor-pointer hover:border-gray-500 transition-all duration-500' >
             Khóa học tham khảo
           </h1>
