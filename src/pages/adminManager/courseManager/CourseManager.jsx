@@ -100,12 +100,9 @@ const CourseManager = (props) => {
         },
     ];
 
-    console.log(courseList);
     const data = courseList?.items;
-    console.log(data);
     
     const onChange = async (pagination) => {
-        console.log(pagination.current)
         dispatch(fetApiCourseAction(pagination.current));
     };
 

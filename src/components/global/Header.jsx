@@ -9,6 +9,7 @@ import { createAction } from '../../redux/action/createAction';
 import userType from '../../redux/type/userType';
 import { useFormik } from 'formik';
 import { defaultTabActiveKeyAction } from '../../redux/action/userAction';
+import Swal from 'sweetalert2';
 
 
 const Header = () => {
@@ -35,8 +36,22 @@ const Header = () => {
 
   // dang xuat
   const handleLogout = () => {
-    dispatch(createAction(userType.GET_PROFILE, null));
-    localStorage.removeItem('Token');
+    Swal.fire({
+      title: 'Bạn có muốn đăng xuất',
+      icon: 'question',
+      confirmButtonText: 'Đăng Xuất',
+      showCancelButton: true,
+      cancelButtonText: 'Hủy Bỏ',
+    }).then(result => {
+      if (result.isConfirmed) {
+        dispatch(createAction(userType.GET_PROFILE, null));
+        localStorage.removeItem('Token');
+        navigate('/');
+        Swal.fire('Đăng Xuất Thành Công !', '', 'success');
+      }
+
+    })
+
   }
 
 

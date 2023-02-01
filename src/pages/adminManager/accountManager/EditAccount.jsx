@@ -1,9 +1,8 @@
 
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Radio, Select } from 'antd';
 import { useFormik } from 'formik';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import adminService from '../../../services/adminSevice';
 import { maNhom } from '../../../utils/index';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,8 +20,7 @@ const EditAccount = (props) => {
 
 
    const user = useSelector(state => state.accountManagerSlice.accountList);
-   console.log(user.items);
-    
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -131,7 +129,7 @@ const EditAccount = (props) => {
                         span: 16,
                     }}
                 >
-                    <button className='px-5 py-2 bg-orange-500 border-transparent text-white cursor-pointer rounded-md' type='submit'>Cập Nhật</button>
+                    <button className='px-5 py-2 bg-teal-500 border-transparent text-white cursor-pointer rounded-md' type='submit'>Cập Nhật</button>
                 </Form.Item>
             </Form>
         </>

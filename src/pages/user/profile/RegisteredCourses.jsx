@@ -8,7 +8,6 @@ import userServices from '../../../services/userService';
 import formData from '../../../utils/formData';
 import Swal from 'sweetalert2';
 import { fetApiProfileAction } from '../../../redux/action/userAction';
-import statusCode from '../../../utils/statusCode';
 
 
 const RegisteredCourses = () => {

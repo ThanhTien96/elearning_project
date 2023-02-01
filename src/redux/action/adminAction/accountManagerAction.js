@@ -51,7 +51,6 @@ export const fetchApiAccountProfile = async (taiKhoan) => {
             
             const res = await adminService.fetchApiAccountProfile(taiKhoan);
             dispatch(createAction(adminType.EDIT_ACCOUNT, res.data));
-            console.log(res.data);
         } catch (err) {
             console.log(err);
         }
@@ -64,7 +63,6 @@ export const searchAccountApi = (tuKhoa) => {
         try{
             const res = await adminService.searchAccountPagination(tuKhoa);
             dispatch(createAction(adminType.FIND_ACCOUNT, res.data));
-            console.log(res.data)
         }catch(err) {
             console.log(err);
         }

@@ -1,6 +1,6 @@
 import { Col, Row, Tabs } from 'antd'
 import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetApiProfileAction } from '../../redux/action/userAction';
 import userServices from '../../services/userService';
