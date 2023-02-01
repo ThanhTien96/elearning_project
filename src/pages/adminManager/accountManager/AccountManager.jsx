@@ -3,9 +3,10 @@ import { Table, Input, Button } from 'antd';
 import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount, isAlertActionERR, isAlertActionSuccess } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './Admin.module.scss'
 import clsx from 'clsx';
+import adminService from '../../../services/adminSevice';
 
 const AccountManager = (props) => {
 
@@ -16,6 +17,30 @@ const AccountManager = (props) => {
   useEffect(() => {
     dispatch(fetchApiAccountAction());
   }, [])
+
+  // xóa tài khoản người dùng
+  const handleDeleteAccount = async (tk) => {
+
+    try {
+      const res = await adminService.getApiDeleteAccount(tk);
+
+      await dispatch(isAlertActionSuccess(res.data));
+
+      await setTimeout(() => {
+        dispatch(isAlertActionSuccess(null));
+      }, 1000);
+
+      dispatch(fetchApiAccountAction(accountList?.currentPage));
+
+    } catch (err) {
+
+      dispatch(isAlertActionERR(err.response.data));
+      
+      await setTimeout(() => {
+        dispatch(isAlertActionERR(null));
+      }, 1000);
+    }
+  }
 
   const columns = [
     {
@@ -91,26 +116,8 @@ const AccountManager = (props) => {
       width: '20%',
       render: (text, user, index) => {
         return <Fragment>
-          <NavLink key={1} to={`/admin/account/create/edit`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
-
           <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
-            onClick={async () => {
-
-              try {
-                await dispatch(fetchApiDeleteAccount(user.taiKhoan));
-                // await dispatch(isAlertActionSuccess({ message: 'Xóa tài khoản thành công!' }));
-                // await setTimeout(() => {
-                //   dispatch(isAlertActionSuccess(null));
-                // }, 1000);
-                dispatch(fetchApiAccountAction(accountList?.currentPage));
-              } catch (err) {
-                // await dispatch(isAlertActionERR({ message: err.response.data.content }));
-                // await setTimeout(() => {
-                //   dispatch(isAlertActionERR(null));
-                // }, 1000);
-              }
-
-            }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+            onClick={() => handleDeleteAccount(user.taiKhoan)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
         </Fragment>
       }
     },
@@ -121,7 +128,6 @@ const AccountManager = (props) => {
 
   const data = accountList.items;
   const onChange = async (pagination) => {
-    console.log(pagination.current)
     dispatch(fetchApiAccountAction(pagination.current));
   };
 

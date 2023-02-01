@@ -15,7 +15,6 @@ import { useDispatch} from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
-import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
 import CourseManager from './pages/adminManager/courseManager/CourseManager';
@@ -72,8 +71,8 @@ function App() {
             <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
-            <Route path='account/create/edit' element={<AppRoute component={EditAccount} isAdmin />}></Route>
-            <Route path='course/edit' element={<AppRoute component={EditCourse} isAdmin />}></Route>
+            <Route path='course/edit/:key' element={<AppRoute component={EditCourse} isAdmin />}></Route>
+            <Route path='*' element={<Navigate to='admin' replace/>}></Route>
           </Route>
 
           <Route path='*' element={<Navigate to='' replace />}></Route>

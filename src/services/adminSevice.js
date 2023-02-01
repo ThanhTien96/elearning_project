@@ -75,9 +75,16 @@ class AdminService {
         });
     };
 
-
-   
-
+    // xóa khóa học
+    getApiDeleteCourse = (MaKhoaHoc) => (
+        requester({
+            url: apiPathCourseManagerList.DELETE_COURSE,
+            method: 'DELETE',
+            params: {
+                MaKhoaHoc: MaKhoaHoc
+            },
+        })
+    );
 
 
 };

@@ -69,6 +69,12 @@ export const searchAccountApi = (tuKhoa) => {
     }
 }
 
+// set is alert err
+export const isAlertActionERR =  (data) => ({type: adminType.SET_IS_ALERT_ERR, payload: data})
+
+//set is alert success
+export const isAlertActionSuccess = (data) => ({type: adminType.SET_IS_ALERT_SUCCESS, payload: data});
+
 // xóa tài khoản người dùng
 export const fetchApiDeleteAccount = (taiKhoan) => {
     return async (dispatch) => {
@@ -77,7 +83,7 @@ export const fetchApiDeleteAccount = (taiKhoan) => {
             await adminService.getApiDeleteAccount(taiKhoan);
             
         } catch (err) {
-            throw err;            
+            throw err.response.data           
         }
     };
 };

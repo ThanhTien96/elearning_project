@@ -29,7 +29,7 @@ const CourseManager = (props) => {
             title: 'Hình ảnh',
             dataIndex: 'hinhAnh',
             render: (text, course, index) => {
-                return <Fragment><img src={course.hinhAnh} alt={course.tenPhim} width={50} onError={(e) => { e.tartget.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
+                return <Fragment><img src={course.hinhAnh ? course.hinhAnh : ''} alt='...' width={50} onError={(e) => { e.tartget.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
             },
             width: '15%',
             key: '2'
@@ -82,10 +82,10 @@ const CourseManager = (props) => {
             dataIndex: 'maKhoaHoc',
             render: (text, course, index) => {
                 return <Fragment>
-                    <NavLink key={1} to='/admin/course/edit' className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+                    <NavLink key={1} to={`/admin/course/edit/${course.maKhoaHoc}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
-                        onClick={() => {
+                        onClick={async () => {
                             if (window.confirm(`Bạn Có Chắc Muốn Xóa Khóa Học ${course.tenKhoaHoc}`)) {
                                 dispatch('')
                             }
@@ -102,7 +102,8 @@ const CourseManager = (props) => {
 
     const data = courseList?.items;
     
-    const onChange = async (pagination) => {
+    // handle change pagination
+    const handleChangePagination = async (pagination) => {
         dispatch(fetApiCourseAction(pagination.current));
     };
 
@@ -127,7 +128,7 @@ const CourseManager = (props) => {
                 <Button onClick={() => navigate('')} type='primary' size='large'>Thêm Khóa Học</Button>
 
             </div>
-            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={onChange} />
+            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={handleChangePagination} />
         </div>
     )
 }

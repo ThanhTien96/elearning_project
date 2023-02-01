@@ -7,6 +7,8 @@ import adminType from "../../type/adminType";
 
 const initialState = {
     accountList: null,
+    isAlertErr: null,
+    isAlertSuccess: null,
 
 }
 
@@ -33,6 +35,14 @@ const reducer = (state = initialState, {
                 break;
             case adminType.DELETE_ACCOUNT:
                 draft.accountList = payload;
+                break;
+
+            case adminType.SET_IS_ALERT_ERR:
+                draft.isAlertErr = payload;
+                break;
+
+            case adminType.SET_IS_ALERT_SUCCESS:
+                draft.isAlertSuccess = payload;
                 break;
 
             default:
