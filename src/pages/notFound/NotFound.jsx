@@ -1,10 +1,12 @@
+import clsx from 'clsx';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NotFound.module.scss';
+import styleImg from './NotFound.module.css';
 
 const NotFound = () => {
     return (
-        <div className={styles.page404}>
+        <div className={clsx( styleImg.page404Found, styles.page404)}>
             <div className={styles.page404Container}>
                 <div className={styles.content404}>
                     <h1>404</h1>

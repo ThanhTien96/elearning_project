@@ -34,10 +34,6 @@
         }
     }
     .aboutImgLeft, .aboutImgRight{
-        padding: 0 10px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: 50%;
         img{
             width: 100%;
             height: 382px;
@@ -46,12 +42,7 @@
             vertical-align: middle;
         }
     }
-    // .aboutImgLeft{
-    //     background-image: url(../../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg);
-    // }
-    // .aboutImgRight{
-    //     background-image: url(../../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg);
-    // }
+    
     @media screen and (max-width: 768.98px) {
         .aboutText{
             padding: 0 40px;

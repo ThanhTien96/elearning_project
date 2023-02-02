@@ -1,9 +1,11 @@
+import clsx from 'clsx';
 import React from 'react';
-import styles from './EventSlide.module.scss'
+import styles from './EventSlide.module.scss';
+import styleImg from '../../utils/variableImg.module.css';
 
 const EventSlide = () => {
   return (
-    <div className={styles.eventSlide}>
+    <div className={clsx(styles.eventSlide, styleImg.eventSlide)}>
         <div className="container mx-auto">
             <div className='flex items-center w-full'>
                 <div className='mr-5 lg:mr-10 text-center'>

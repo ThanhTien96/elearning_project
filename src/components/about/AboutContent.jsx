@@ -1,6 +1,8 @@
 import { Col, Row } from 'antd'
 import React from 'react';
 import styles from './AboutContent.module.scss';
+import styleImg from  '../../utils/variableImg.module.css'
+import clsx from 'clsx';
 
 const AboutContent = () => {
   return (
@@ -12,17 +14,14 @@ const AboutContent = () => {
             <h1>Nơi hội tụ kiến thức</h1>
             <p>Đây là nền tảng giảng dạy và học tập trực tuyến được xây dựng để hỗ trợ phát triển giáo dục trong thời đại công nghiệp 4.0, được xây dựng dựa trên cơ sở quan sát toàn bộ các nhu cầu cần thiết của một lớp học offline. Từ đó đáp ứng và đảm bảo cung cấp các công cụ toàn diện, dễ sử dụng cho giáo viên và học sinh, giúp tạo nên một lớp học trực tuyến thú vị và hấp dẫn.</p>
           </Col>
-          <Col className={styles.aboutImgRight} xs={24} lg={12}>
+          <Col className={clsx(styles.aboutImgRight,styleImg.aboutBgRight)} xs={24} lg={12}>
             <img className='bock w-full' src={require('../../assets/image/aboutBG/hero-flex.1.png')} alt="..." />
           </Col>
         </Row>
 
         <Row className='mt-20'>
-          <Col className={styles.aboutImgLeft} xs={24} lg={12}>
+          <Col className={clsx(styles.aboutImgLeft,styleImg.aboutBgLeft)} xs={24} lg={12}>
             <img className='bock w-full' src={require('../../assets/image/aboutBG/education-2.png')} alt="..." />
-            <div>
-              <img src={require('../../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg')} alt="..." />
-            </div>
           </Col>
 
           <Col className={styles.aboutText} xs={24} lg={12}>
@@ -38,12 +37,12 @@ const AboutContent = () => {
             <h1>Đào tạo lập trình chuyên sâu</h1>
             <p>Trở thành hệ thống đào tạo lập trình chuyên sâu theo nghề hàng đầu khu vực, cung cấp nhân lực có tay nghề cao, chuyên môn sâu cho sự phát triển công nghiệp phần mềm trong thời đại công nghệ số hiện nay, góp phần giúp sự phát triển của xã hội, đưa Việt Nam thành cường quốc về phát triển phần mềm.giúp người học phát triển cả tư duy, phân tích, chuyên sâu nghề nghiệp, học tập suốt đời, sẵn sàng đáp ứng mọi nhu cầu của doanh nghiệp.</p>
           </Col>
-          <Col className={styles.aboutImgRight} xs={24} lg={12}>
+          <Col className={clsx(styles.aboutImgRight,styleImg.aboutBgRight)} xs={24} lg={12}>
             <img className='bock w-full' src={require('../../assets/image/aboutBG/olstudy.3.png')} alt="..." />
           </Col>
 
           <Row className='mt-20'>
-            <Col className={styles.aboutImgLeft} xs={24} lg={12}>
+            <Col className={clsx(styles.aboutImgLeft,styleImg.aboutBgLeft)} xs={24} lg={12}>
               <img className='bock w-full' src={require('../../assets/image/aboutBG/students.4.png')} alt="..." />
             </Col>
 
