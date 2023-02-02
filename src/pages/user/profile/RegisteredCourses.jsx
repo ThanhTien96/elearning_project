@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import { Col, Pagination, Row } from 'antd';
 import styles from './RegisteredCourses.module.scss';
 import { Rate } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeAccents, truncateText } from '../../../utils/index';
+import userServices from '../../../services/userService';
+import formData from '../../../utils/formData';
+import Swal from 'sweetalert2';
+import { fetApiProfileAction } from '../../../redux/action/userAction';
 
 
 const RegisteredCourses = () => {
     const [dataSearch, setDataSearch] = useState(null);
     const { chiTietKhoaHocGhiDanh } = useSelector(state => state.userSlice.profile);
-    
-   // pagination index
+    const { profile } = useSelector(state => state.userSlice);
+
+    const dispatch = useDispatch();
+    // pagination index
     const [currentPage, setCurrentPage] = useState(1);
     const [coursePerPage] = useState(4);
     const indexOfLastCourse = currentPage * coursePerPage;
@@ -27,9 +33,27 @@ const RegisteredCourses = () => {
             setDataSearch(null)
         }
     };
+    // phân trang handle click
     const handleChangePagination = (current) => {
         setCurrentPage(current);
     };
+
+    // hủy đăng ký khóa học
+    const handleUnsubscribeCourse = async (data) => {
+        try {
+            const res = await userServices.fetchApiUnsubscribeCourse(data);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: res.data,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            dispatch(fetApiProfileAction);
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div className='lg:px-10 px-5'>
@@ -68,7 +92,13 @@ const RegisteredCourses = () => {
                             </Col>
 
                             <Col className='lg:text-right py-3 lg:py-0' xs={24} md={12} lg={6}>
-                                <button className={styles.btnRegistered}><span>Hủy Đăng Ký</span></button>
+                                <button
+                                    onClick={() => {
+                                        const data = formData.dataUnsubscribeCourse(course.maKhoaHoc, profile.taiKhoan)
+                                        handleUnsubscribeCourse(data)
+                                    }}
+                                    className={styles.btnRegistered}><span>Hủy Đăng Ký</span>
+                                </button>
 
                             </Col>
                         </Row>
@@ -96,7 +126,13 @@ const RegisteredCourses = () => {
                             </Col>
 
                             <Col className='lg:text-right py-3 lg:py-0' xs={24} md={12} lg={6}>
-                                <button className={styles.btnRegistered}><span>Hủy Đăng Ký</span></button>
+                                <button
+                                    onClick={() => {
+                                        const data = formData.dataUnsubscribeCourse(course.maKhoaHoc, profile.taiKhoan)
+                                        handleUnsubscribeCourse(data)
+                                    }}
+                                    className={styles.btnRegistered}><span>Hủy Đăng Ký</span>
+                                </button>
 
                             </Col>
                         </Row>

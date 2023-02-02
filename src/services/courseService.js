@@ -79,13 +79,11 @@ class CoursesService {
     }
 
     //edit khoa hoc
-    fetchApiEditCourse = (maKH) => {
+    fetchApiEditCourse = (formData) => {
         return requester ({
             url: apiPathCourseList.EDIT_COURSES,
-            method: 'PUT',
-            params: {
-                maKhoaHoc: maKH,
-            },
+            method: 'POST',
+            data: formData,
         })
     }
 

@@ -1,5 +1,5 @@
-import {  UserOutlined,  ReadOutlined } from '@ant-design/icons/lib/icons';
-import {  Breadcrumb, Layout, Menu,  theme } from 'antd'
+import { UserOutlined, ReadOutlined } from '@ant-design/icons/lib/icons';
+import { Alert, Breadcrumb, Layout, Menu, Space, theme } from 'antd'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
@@ -31,7 +31,10 @@ const items = [
 const Dashboard = (props) => {
 
   const user = useSelector(state => state.userSlice.profile);
-  
+  const mesSuccess = useSelector(state => state.accountManagerSlice.isAlertSuccess);
+  const mesERR = useSelector(state => state.accountManagerSlice.isAlertErr);
+
+
 
   const dispatch = useDispatch();
 
@@ -65,7 +68,7 @@ const Dashboard = (props) => {
         localStorage.removeItem('Token');
         navigate('/');
         Swal.fire('Đăn Xuất Thành Công !', '', 'success')
-      } 
+      }
 
     })
   }
@@ -97,9 +100,9 @@ const Dashboard = (props) => {
           >
             <h1 className="text-orange-600 font-semibold text-1xl mr-3 capitalize">{user?.hoTen}</h1>
             <img className="w-10 h-10 object-cover rounded-full" alt="User avatar" src="https://picsum.photos/150/150" />
-            <NavLink to={'/'} 
-            onClick={handleLogOut}
-            className='adminLink text-black ml-5 hover:text-orange-400 transition-all flex items-center'><ExportOutlined  style={{fontSize: '1.5rem', marginRight: '5px'}} /> Đăng Xuất</NavLink>
+            <NavLink to={'/'}
+              onClick={handleLogOut}
+              className='adminLink text-black ml-5 hover:text-orange-400 transition-all flex items-center'><ExportOutlined style={{ fontSize: '1.5rem', marginRight: '5px' }} /> Đăng Xuất</NavLink>
           </Header>
           <Content
             style={{
@@ -113,6 +116,19 @@ const Dashboard = (props) => {
             >
             </Breadcrumb>
             <Outlet />
+            {mesSuccess || mesERR ? <Space
+              direction="vertical"
+              style={{
+                position: 'fixed',
+                top: 10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '30%',
+              }}
+            >
+              {mesSuccess && <Alert message={mesSuccess} type="success" showIcon />}
+              {mesERR && <Alert message={mesERR} type="error" showIcon />}
+            </Space> : ''}
           </Content>
           <Footer
             style={{

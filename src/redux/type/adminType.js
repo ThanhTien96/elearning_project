@@ -8,9 +8,9 @@ const adminType = {
     GET_PROFILE: 'GET_PROFILE',
     FIND_ACCOUNT: 'FIND_ACCOUNT',
     DELETE_ACCOUNT: 'DELETE_ACCOUNT',
-
-    //quan ly khoa hoc type
     GET_COURSE_LIST: 'GET_COURSE_LIST',
+    SET_IS_ALERT_ERR: 'SET_IS_ALERT',
+    SET_IS_ALERT_SUCCESS: 'SET_IS_ALERT_SUCCESS',
 
 }
 

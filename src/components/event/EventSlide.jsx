@@ -1,5 +1,6 @@
+import clsx from 'clsx';
 import React from 'react';
-import styles from './EventSlide.module.scss'
+import styles from './EventSlide.module.scss';
 
 const EventSlide = () => {
   return (

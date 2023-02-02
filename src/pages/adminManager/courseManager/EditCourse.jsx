@@ -6,40 +6,45 @@ import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 import { fetchApiDetailCourseAction } from '../../../redux/action/courseListAction'
 import { editCourseApi } from '../../../redux/action/courseListAction'
-import { Form, Radio, Input, DatePicker } from 'antd';
+import { Form, Radio, Input, DatePicker, Select } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
 
 
 const EditCourse = (props) => {
-
-    const course = useSelector(state => state.courseManagerSlice.courseList);
-    // lấy danh mục khóa học
-    const { categoryList } = useSelector(state => state.courseList);
-    console.log(course);
-    const [editCourse, setEditCourse] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
     const [imgSrc, setImgSrc] = useState('');
 
     useEffect(() => {
-        const id = params.id;
-        dispatch(fetchApiDetailCourseAction(id));
-    }, [params]);
+
+        dispatch(fetchApiDetailCourseAction(params.key));
+    }, [params.key]);
+
+    const course = useSelector(state => state.courseList.detailCourse);
+
+    // lấy danh mục khóa học
+    const { categoryList } = useSelector(state => state.courseList);
+
+    console.log(course?.ngayTao)
+    
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
             maKhoaHoc: course?.maKhoaHoc,
             tenKhoaHoc: course?.tenKhoaHoc,
             moTa: course?.moTa,
-            luotXem: 0,
-            danhGia: 0,
+            luotXem: course?.luotXem,
+            danhGia: course?.danhGia,
             hinhAnh: null,
             maNhom: course?.maNhom,
             ngayTao: course?.ngayTao,
-            maDanhMucKhoaHoc: categoryList?.maDanhMuc,
-            taiKhoanNguoiTao: null,
+            maDanhMucKhoaHoc: course?.danhMucKhoaHoc.maDanhMuc,
+            taiKhoanNguoiTao: course?.nguoiTao.taiKhoan,
         },
         onSubmit: async (values) => {
+            console.log(values)
             let formData = new FormData();
             for (let key in values) {
 
@@ -69,6 +74,7 @@ const EditCourse = (props) => {
     };
 
     const handleChangeDatePicker = (value) => {
+        console.log(value?.$d)
         let ngayTao = moment(value?.$d).format('DD/MM/YYYY');
         formik.setFieldValue('ngayTao', ngayTao);
     };
@@ -87,6 +93,12 @@ const EditCourse = (props) => {
         };
 
     }
+    // chọn ma danh muc
+    const handleChangeSelect = (value) => {
+        console.log(value)
+        formik.setFieldValue('maDanhMucKhoaHoc', value)
+    };
+
 
     return (
         <div>
@@ -119,7 +131,7 @@ const EditCourse = (props) => {
                     <Input name='tenKhoaHoc' onChange={formik.handleChange} value={formik.values.tenKhoaHoc} />
                 </Form.Item>
                 <Form.Item label="Mô Tả">
-                    <Input name='moTa' onChange={formik.handleChange} value={formik.values.moTa} />
+                    <TextArea name='moTa' onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
                 <Form.Item label="Lượt Xem">
                     <Input name='luotXem' onChange={formik.handleChange} value={formik.values.luotXem} />
@@ -133,17 +145,16 @@ const EditCourse = (props) => {
                     <img className='mt-5' src={imgSrc === '' ? course?.hinhAnh : imgSrc} alt="..." style={{ width: '200px' }} />
 
                 </Form.Item>
-                <Form.Item label="Mã Nhóm">
-                    <Input name='maNhom' onChange={formik.handleChange} value={formik.values.maNhom} />
-                </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
-                    <DatePicker format="DD/MM/YYYY" onChange={handleChangeDatePicker} defaultValue={moment(formik.values.ngayTao)} />
+                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment(formik.values.ngayTao)} />
                 </Form.Item>
-                <Form.Item label="Mã Danh Mục Khoá Học">
-                    <Input name='maDanhMucKhoaHoc' onChange={formik.handleChange} value={formik.values.maDanhMucKhoaHoc} />
-                </Form.Item>
-                <Form.Item label="Tài Khoản Người Tạo">
-                    <Input name='taiKhoanNguoiTao' onChange={formik.handleChange} value={formik.values.taiKhoanNguoiTao} />
+                <Form.Item label="Danh Mục Khóa Học">
+                    <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
+                        onChange={handleChangeSelect}
+                        placeholder='Chọn danh mục khóa học'
+                        onSelect={formik.values.maDanhMucKhoaHoc}
+                    />
+                    {formik.errors.maLoaiNguoiDung && formik.touched.maLoaiNguoiDung && (<p className='text-red-700 mt-1'>{formik.errors.maLoaiNguoiDung}</p>)}
                 </Form.Item>
                 <Form.Item
                     wrapperCol={{

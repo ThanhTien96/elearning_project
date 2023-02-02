@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const DetailContent = (props) => {
     const { detailCourse } = useSelector(state => state.courseList);
     return (
-        <div>
+        <div className='px-5 lg:px-0'>
             <div className={styles.detailContent}>
                 <h1 className={styles.CourseName}>{detailCourse?.tenKhoaHoc}</h1>
                 <div className={styles.itemsTop}>
@@ -63,7 +63,7 @@ const DetailContent = (props) => {
                             </li>
                         </ul>
                     </Col>
-                    <Col className='pl-5' xs={24} lg={12}>
+                    <Col className='lg:pl-5' xs={24} lg={12}>
                         <ul className='text-justify'>
                             <li className='mb-2 text-[16px]'>
                                 <BsCheckLg className='mr-2 inline-block  text-yellow-500' />

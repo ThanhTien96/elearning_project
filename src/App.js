@@ -11,11 +11,10 @@ import AccountManager from './pages/adminManager/accountManager/AccountManager';
 
 import Detail from './pages/detail/Detail';
 import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetApiProfileAction } from './redux/action/userAction';
 import Profile from './pages/user/profile/Profile';
 import CreateAccount from './pages/adminManager/accountManager/CreateAccount';
-import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import GlobalLoading from './components/global/GlobalLoading';
 import Information from './pages/information/Information';
 import CourseManager from './pages/adminManager/courseManager/CourseManager';
@@ -27,16 +26,24 @@ import SearchPage from './pages/search/SearchPage';
 import AppRoute from './HOC/AppRoute';
 import NotFound from './pages/notFound/NotFound';
 import EditCourse from './pages/adminManager/courseManager/EditCourse';
+<<<<<<< HEAD
 import CreateCourse from './pages/adminManager/courseManager/CreateCourse';
+=======
+import { fetchApiCategoryListAction } from './redux/action/courseListAction';
+>>>>>>> master
 
 
 function App() {
 
   const dispatch = useDispatch();
-  
+
 
   // fetch api profile
   useEffect(() => {
+    // lấy danh mục khóa học
+    dispatch(fetchApiCategoryListAction);
+
+    // lấy thông tin tài khoản
     if (localStorage.getItem('Token')) {
       dispatch(fetApiProfileAction);
     }
@@ -70,12 +77,20 @@ function App() {
           </Route>
 
           <Route path='admin' element={<AdminTemplate />}>
+<<<<<<< HEAD
             <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
             <Route path='account/create/edit' element={<AppRoute component={EditAccount} isAdmin />}></Route>
             <Route path='course/edit' element={<AppRoute component={EditCourse} isAdmin />}></Route>
             <Route path='course/create' element={<AppRoute component={CreateCourse} isAdmin />}></Route>
+=======
+            <Route path='' element={<AppRoute component={CourseManager} isPrivate />}></Route>
+            <Route path='account' element={<AppRoute component={AccountManager} isPrivate />}></Route>
+            <Route path='account/create' element={<AppRoute component={CreateAccount} isPrivate />}></Route>
+            <Route path='course/edit/:key' element={<AppRoute component={EditCourse} isPrivate />}></Route>
+            <Route path='*' element={<Navigate to='admin' replace />}></Route>
+>>>>>>> master
           </Route>
 
           <Route path='*' element={<Navigate to='' replace />}></Route>

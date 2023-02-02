@@ -2,12 +2,10 @@ import { Col, Row } from 'antd';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Banner from '../../components/global/Banner';
 import SearchFilter from '../../components/search/SearchFilter';
 import SearchResults from '../../components/search/SearchResults';
-import { fetApiSearchCourseAction } from '../../redux/action/courseListAction';
 import coursesService from '../../services/courseService';
 
 

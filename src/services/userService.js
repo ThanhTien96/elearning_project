@@ -44,6 +44,14 @@ class UserServices {
             data: data,
         })
     );
+    // hủy đăng ký khóa học
+    fetchApiUnsubscribeCourse = (data) => (
+        requester({
+            url: apiPathUser.UNSUBSCRIBE_COURSE,
+            method: 'POST',
+            data: data,
+        })
+    );
 };
 
 const userServices = new UserServices();

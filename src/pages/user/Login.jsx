@@ -5,10 +5,10 @@ import * as Yup from 'yup';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import styles from './userStyle.module.scss'
 import Swal from 'sweetalert2';
 import { Alert } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import styles from '../../components/global/GlobalBtn.module.scss';
 
 
 const Login = () => {
@@ -24,29 +24,29 @@ const Login = () => {
   // xử lý form bằng formik
   const formik = useFormik({
     initialValues: {
-      taiKhoan: 'thanhtien1',
-      matKhau: 'thanhtien1',
+      taiKhoan: 'thanhtien2',
+      matKhau: 'thanhtien2',
     },
     onSubmit: async (value) => {
       try {
 
         await dispatch(fetchApiLoginAction(value));
-        Swal.fire({
-          position: 'top center',
+        await Swal.fire({
+          position: 'center',
           icon: 'success',
           title: 'Đăng Nhập Thành Công',
           showConfirmButton: false,
-          timer: 500
+          timer: 1500
         }).then(result => {
-          navigate('/')
-        })
+          navigate('/');
+        });
 
       } catch (err) {
         setErrMess(err.response.data);
         await setTimeout(() => {
           setErrMess(null);
-        }, 3000)
-      }
+        }, 3000);
+      };
     },
     validationSchema: Yup.object({
       taiKhoan: Yup.string().required('* Vui lòng nhập tài khoản!'),
@@ -72,13 +72,13 @@ const Login = () => {
               <div className="flex flex-col text-sm rounded-md">
                 <p>Tài Khoản</p>
                 <div>
-                  <input name='taiKhoan' onChange={formik.handleChange} className="mb-2 w-full rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
+                  <input value={formik.values.taiKhoan} name='taiKhoan' onChange={formik.handleChange} className="mb-2 w-full rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
 
                 </div>
                 {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
                 <p>Mật Khẩu</p>
                 <div className='relative'>
-                  <input name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPassword ? 'text' : 'password'} placeholder="Mật Khẩu" />
+                  <input value={formik.values.matKhau} name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPassword ? 'text' : 'password'} placeholder="Mật Khẩu" />
                   {showPassword ?
                     <EyeInvisibleOutlined
                       onClick={() => setShowPassword(false)}

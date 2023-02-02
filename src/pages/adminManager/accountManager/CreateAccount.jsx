@@ -9,8 +9,7 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { maNhom } from '../../../utils/index';
 import { fetchApiCreateAccountAction } from '../../../redux/action/adminAction/accountManagerAction';
-import styles from './admin.module.scss'
-import clsx from 'clsx';
+
 import { Swal } from 'sweetalert2';
 
 const CreateAccount = (props) => {
@@ -139,7 +138,7 @@ const CreateAccount = (props) => {
                         span: 16,
                     }}
                 >
-                    <button className='px-5 py-2 bg-orange-500 border-transparent text-white cursor-pointer rounded-md' type='submit'>Tạo Tài Khoản</button>
+                    <button className='px-5 py-2 bg-teal-500 border-transparent text-white cursor-pointer rounded-md' type='submit'>Tạo Tài Khoản</button>
                 </Form.Item>
             </Form>
         </>

@@ -4,7 +4,7 @@ import { CalendarOutlined, FieldTimeOutlined } from '@ant-design/icons';
 import { FaSignal } from 'react-icons/fa';
 import styles from './SearchResults.module.scss'
 import { truncateText } from '../../utils';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 const SearchResults = (props) => {
 

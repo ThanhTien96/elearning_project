@@ -6,7 +6,8 @@ export const apiPathUser = {
     USER_REGISTER: '/api/QuanLyNguoiDung/DangKy',
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     REGISTER_COURSE: '/api/QuanLyKhoaHoc/DangKyKhoaHoc',
-    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung'
+    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
+    UNSUBSCRIBE_COURSE: '/api/QuanLyKhoaHoc/HuyGhiDanh',
 }
 
 // api path lay danh sach khoa hoc, danh muc, khóa học theo danh mục
@@ -18,9 +19,14 @@ export const apiPathCourseList = {
     GET_COURSE_DETAIL: '/api/QuanLyKhoaHoc/LayThongTinKhoaHoc',
     GET_CATEGORY_COURSE: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
     SEARCH_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc',
+<<<<<<< HEAD
     EDIT_COURSES: 'api/QuanLyKhoaHoc/CapNhatKhoaHoc',
     CREATE_COURSES: 'api/QuanLyKhoaHoc/ThemKhoaHoc',
     UPLOAD_FILE: 'api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc'
+=======
+    EDIT_COURSES: '/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload',
+    
+>>>>>>> master
 }
 
 //api path quan ly nguoi dung
@@ -29,7 +35,6 @@ export const apiPathAdminList = {
     ADD_ACCOUNT: '/api/QuanLyNguoiDung/ThemNguoiDung',
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     EDIT_ACCOUNT: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
-    DELETE_ACCOUNT: '/api/QuanLyNguoiDung/XoaNguoiDung',
     SEARCH_ACCOUNT_PAGINATION: 'api/QuanLyNguoiDung/TimKiemNguoiDung',
    
 }
@@ -37,5 +42,6 @@ export const apiPathAdminList = {
 //api path quan ly khoa hoc
 export const apiPathCourseManagerList = {
     GET_API_COURSE_LIST: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
+    DELETE_COURSE: '/api/QuanLyKhoaHoc/XoaKhoaHoc',
 
 }

@@ -3,12 +3,13 @@
 
 .headerLine{
     background: $c3GradientRight;
-    width: 100%;
+    width: 100vw;
     height: 3px;
 }
 .header{
+    width: 100vw;
    @apply bg-slate-900 text-white h-16 flex items-center;
-
+    padding: 0 10px;
    .Logo{
     position: relative;
     display: flex;
@@ -111,9 +112,9 @@
             @media screen and (max-width: 414.98px){
                 z-index: 100;
                 .portfolio{
-                    width: 90%;
+                    width: 100%;
                     top: 0;
-                    left: -90%;      
+                    left: -100%;      
                 }        
                 &:hover .portfolio{
                     height: 147px; 
@@ -159,6 +160,15 @@
             &:hover .event{
                 visibility: visible;
                 height: 74px; 
+            }
+
+            @media screen and (max-width: 414.98px) {
+                .event{
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                }
+                
             }
         }
 
@@ -224,7 +234,7 @@
         display: block;
         transition: all .5s;
         position: absolute;
-        width: 50%;
+        width: 48%;
         height: 256px;
         top: 100%;
         z-index: 1000;
@@ -239,6 +249,9 @@
                 transition: all .4s;
                 &:hover{
                     color: $cWhite;
+                }
+                a{
+                    padding: 0;
                 }
             }
         }

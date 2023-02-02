@@ -4,9 +4,32 @@ import styles from './Footer.module.scss';
 import { FaAngleRight, FaEnvelope, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaTwitter } from "react-icons/fa";
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useFormik } from 'formik';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      phoneNumber: '',
+    },
+    onSubmit: (e, { resetForm }) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Đăng Ký Thành Công',
+        showConfirmButton: false,
+        timer: 1000
+      }).then(result => {
+        navigate('/');
+      });
+
+      resetForm();
+    }
+  })
 
   const { categoryList } = useSelector(state => state.courseList)
 
@@ -33,9 +56,18 @@ const Footer = () => {
                   <span>Trang Chủ</span>
                 </NavLink>
               </li>
-              <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Dịch Vụ</span></li>
-              <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Nhóm</span></li>
-              <li className={styles.linkFooter}><FaAngleRight className='inline-block' /> <span>Blog</span></li>
+              <li className={styles.linkFooter}><FaAngleRight className='inline-block' />
+                <NavLink to='courses'><span>Khóa Học</span></NavLink>
+              </li>
+              <li className={styles.linkFooter}><FaAngleRight className='inline-block' />
+                <NavLink to='blog'><span>Blog</span></NavLink>
+              </li>
+              <li className={styles.linkFooter}><FaAngleRight className='inline-block' />
+                <NavLink to='event'><span>Sự Kiện</span></NavLink>
+              </li>
+              <li className={styles.linkFooter}><FaAngleRight className='inline-block' />
+                <NavLink to='about'><span>Thông Tin</span></NavLink>
+              </li>
             </ul>
           </Col>
 
@@ -53,10 +85,10 @@ const Footer = () => {
 
           <Col span={24} md={12} lg={8} className='lg:px-5'>
             <h1 className='text-2xl font-bold mb-2 mt-5 lg:mt-0'>Đăng Kí Tư Vấn</h1>
-            <form className='mr-5'>
-              <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg' placeholder='Họ Và Tên' />
-              <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Email' />
-              <input type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Số Điện Thoại' />
+            <form onSubmit={formik.handleSubmit} className='mr-5'>
+              <input name='name' onChange={formik.handleChange} type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg' placeholder='Họ Và Tên' />
+              <input name='email' onChange={formik.handleChange} type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Email' />
+              <input name='phoneNumber' onChange={formik.handleChange} type="text" className='ml-0.5 border-2 border-teal-600 px-3 py-1 w-full focus:outline-none focus:rounded-md transition-all focus:ml-0 rounded-lg mt-3' placeholder='Số Điện Thoại' />
               <div className='mt-3'>
                 <button type='submit' className={styles.btnFooter}>Đăng Ký</button>
               </div>
