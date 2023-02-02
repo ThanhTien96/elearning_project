@@ -4,11 +4,10 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useState, React } from 'react';
 import Swal from 'sweetalert2';
-import styles from './UserStyle.module.scss';
 import userServices from '../../services/userService';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { maNhom } from '../../utils';
-
+import styles from '../../components/global/GlobalBtn.module.scss'
 
 
 
