@@ -27,7 +27,9 @@ export const fetchApiCreateCourseAction = (formData) => {
 
             dispatch(createAction(courseListType.CREATE_COURSES, res.data));
         }catch(err){
-            console.error(err);
+
+            throw err
+
         }
     }
 }

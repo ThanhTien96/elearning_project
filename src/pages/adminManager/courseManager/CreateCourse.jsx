@@ -1,16 +1,20 @@
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { maNhom } from '../../../utils/index';
-import { Swal } from 'sweetalert2';
 import { Form, Radio, Input, DatePicker } from 'antd';
 import moment from 'moment';
 import { fetchApiCreateCourseAction } from '../../../redux/action/adminAction/courseManagerAction'
 
 const CreateCourse = (props) => {
+
+    const profile = useSelector( state => state.userSlice.profile);
+    
+    const category = useSelector( state => state.courseList.categoryList);
+
 
     const [imgSrc, setImgSrc] = useState(null);
 
@@ -29,9 +33,8 @@ const CreateCourse = (props) => {
             hinhAnh: {},
             maNhom: maNhom,
             ngayTao: '',
-            maDanhMuc: '',
-            taiKhoanNguoiTao: '',
-
+            maDanhMuc: category[0].maDanhMuc,
+            taiKhoanNguoiTao: profile.taiKhoan,
 
         },
         validationSchema: Yup.object({
@@ -44,17 +47,20 @@ const CreateCourse = (props) => {
             maNhom: Yup.string().required('* Vui lòng nhập mã nhóm !'),
         }),
         onSubmit: async (values) => {
-            try {
-                await dispatch(fetchApiCreateCourseAction(values));
-                navigate('/admin');
-                Swal.fire({
-                    position: 'top center',
-                    icon: 'success',
-                    title: 'Thêm Khoá Học Thành Công!',
-                    showConfirmButton: false,
-                    timer: 500
-                });
+            let formData = new FormData();
+            for (let key in values) {
 
+                if (key !== 'hinhAnh') {
+                    formData.append(key, values[key]);
+                } else {
+                    formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                    
+                }
+            }
+            try {
+                await dispatch(fetchApiCreateCourseAction(formData));
+                console.log('thêm Khóa Học Thành Công')
+                navigate('/admin');
             } catch (err) {
                 console.log(err);
 
@@ -136,11 +142,7 @@ const CreateCourse = (props) => {
 
 
                 </Form.Item>
-                <Form.Item label="Mã Nhóm">
-                    <Input name='maNhom' onChange={formik.handleChange} value={formik.values?.maNhom} />
-                    {formik.errors.maNhom && formik.touched.maNhom && (<p className='text-red-700 mt-1'>{formik.errors.maNhom}</p>)}
 
-                </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
                     <DatePicker format="DD/MM/YYYY" onChange={handleChangeDatePicker} placeholder='DD/MM/YYYY' />
                     {formik.errors.ngayTao && formik.touched.ngayTao && (<p className='text-red-700 mt-1'>{formik.errors.ngayTao}</p>)}
@@ -151,11 +153,7 @@ const CreateCourse = (props) => {
                     {formik.errors.maDanhMuc && formik.touched.maDanhMuc && (<p className='text-red-700 mt-1'>{formik.errors.maDanhMuc}</p>)}
 
                 </Form.Item>
-                <Form.Item label="Tài Khoản Người Tạo">
-                    <Input name='taiKhoanNguoiTao' onChange={formik.handleChange} placeholder='' />
-                    {formik.errors.taiKhoanNguoiTao && formik.touched.taiKhoanNguoiTao && (<p className='text-red-700 mt-1'>{formik.errors.taiKhoanNguoiTao}</p>)}
-
-                </Form.Item>
+            
                 <Form.Item
                     wrapperCol={{
                         offset: 4,

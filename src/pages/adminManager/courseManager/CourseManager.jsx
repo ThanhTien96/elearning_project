@@ -50,7 +50,7 @@ const CourseManager = (props) => {
             },
             render: (text, course) => {
                 return <Fragment>
-                    <h4 className='text-green-700'>{course.maKhoaHoc}</h4>
+                    <h4 className='text-green-700'>{course.tenKhoaHoc}</h4>
                 </Fragment>
             },
             sortDirection: ['descend', 'ascend'],
