@@ -1,10 +1,10 @@
 import { Col, Row } from 'antd'
 import React from 'react';
-import './Producer.css';
+import styles from './Producer.module.scss';
 
 const Producer = () => {
     return (
-        <div className='producer'>
+        <div className={styles.producer}>
             <div className='container mx-auto'>
                 <h1 className='text-center font-bold text-yellow-500 text-3xl mb-2'>CÁC NHÀ ĐỒNG SÁNG TẠO</h1>
                 <Row>
