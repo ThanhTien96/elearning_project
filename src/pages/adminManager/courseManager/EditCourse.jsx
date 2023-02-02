@@ -11,26 +11,26 @@ import TextArea from 'antd/es/input/TextArea';
 
 
 const EditCourse = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const params = useParams();
+    const [imgSrc, setImgSrc] = useState('');
+
+    useEffect(() => {
+
+        dispatch(fetchApiDetailCourseAction(params.key));
+    }, [params.key]);
 
     const course = useSelector(state => state.courseList.detailCourse);
 
     // lấy danh mục khóa học
     const { categoryList } = useSelector(state => state.courseList);
 
-    const [editCourse, setEditCourse] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const params = useParams();
-    const [imgSrc, setImgSrc] = useState('');
-
-    console.log(course.ngayTao)
-
-    useEffect(() => {
-
-        dispatch(fetchApiDetailCourseAction(params.key));
-    }, [params]);
+    console.log(course?.ngayTao)
+    
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
             maKhoaHoc: course?.maKhoaHoc,
             tenKhoaHoc: course?.tenKhoaHoc,
@@ -39,8 +39,8 @@ const EditCourse = (props) => {
             danhGia: course?.danhGia,
             hinhAnh: null,
             maNhom: course?.maNhom,
-            ngayTao: course.ngayTao,
-            maDanhMucKhoaHoc: course?.danhMucKhoaHoc,
+            ngayTao: course?.ngayTao,
+            maDanhMucKhoaHoc: course?.danhMucKhoaHoc.maDanhMuc,
             taiKhoanNguoiTao: course?.nguoiTao.taiKhoan,
         },
         onSubmit: async (values) => {
@@ -74,8 +74,8 @@ const EditCourse = (props) => {
     };
 
     const handleChangeDatePicker = (value) => {
-        console.log(value)
-        let ngayTao = moment(value).format('DD/MM/YYYY');
+        console.log(value.$d)
+        let ngayTao = moment(value?.$d).format('DD/MM/YYYY');
         formik.setFieldValue('ngayTao', ngayTao);
     };
 
@@ -146,12 +146,13 @@ const EditCourse = (props) => {
 
                 </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
-                    <DatePicker format="DD/MM/YYYY" onChange={handleChangeDatePicker} defaultValue={moment(formik.values.ngayTao).format('DD/MM/YYYY')} />
+                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} defaultValue={moment(formik.values.ngayTao, 'DD/MM/YYYY')} />
                 </Form.Item>
                 <Form.Item label="Danh Mục Khóa Học">
-                    <Select options={categoryList.map(ele => ({value: ele, label: ele.tenDanhMuc}))}
+                    <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
                         onChange={handleChangeSelect}
                         placeholder='Chọn danh mục khóa học'
+                        onSelect={formik.values.maDanhMucKhoaHoc}
                     />
                     {formik.errors.maLoaiNguoiDung && formik.touched.maLoaiNguoiDung && (<p className='text-red-700 mt-1'>{formik.errors.maLoaiNguoiDung}</p>)}
                 </Form.Item>

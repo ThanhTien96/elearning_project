@@ -29,7 +29,7 @@ const CourseManager = (props) => {
             title: 'Hình ảnh',
             dataIndex: 'hinhAnh',
             render: (text, course, index) => {
-                return <Fragment><img src={course.hinhAnh ? course.hinhAnh : ''} alt='...' width={50} onError={(e) => { e.tartget.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
+                return <Fragment><img src={course.hinhAnh} alt='...' width={50} onError={(e) => { e.target.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
             },
             width: '15%',
             key: '2'

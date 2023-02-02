@@ -20,6 +20,9 @@ const AboutContent = () => {
         <Row className='mt-20'>
           <Col className={styles.aboutImgLeft} xs={24} lg={12}>
             <img className='bock w-full' src={require('../../assets/image/aboutBG/education-2.png')} alt="..." />
+            <div>
+              <img src={require('../../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg')} alt="..." />
+            </div>
           </Col>
 
           <Col className={styles.aboutText} xs={24} lg={12}>
