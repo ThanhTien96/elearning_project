@@ -59,6 +59,25 @@ class CoursesService {
         });
     };
 
+    //them khoa hoc
+    fetApiCreateCourse = (formData) => {
+        return requester ({
+            url: apiPathCourseList.CREATE_COURSES,
+            method: 'POST',
+            data: formData,
+
+        })
+    }
+
+    //upload file anh
+    fetApiUploadfile = (formData) => {
+        return requester ({
+            url: apiPathCourseList.UPLOAD_FILE,
+            method: 'POST',
+            data: formData,
+        })
+    }
+
     //edit khoa hoc
     fetchApiEditCourse = (maKH) => {
         return requester ({
