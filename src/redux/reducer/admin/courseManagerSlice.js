@@ -22,6 +22,9 @@ const reducer = (state = initialState, {
             case courseType.EDIT_COURSES:
                 draft.courseList = payload;
                 break;
+            case courseType.CREATE_COURSES:
+                draft.courseList = payload;
+                break;
 
             default:
                 break;

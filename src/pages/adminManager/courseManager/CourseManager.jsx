@@ -1,11 +1,12 @@
 import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
-import {  EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import {  EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
 import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
-
+import styles from './course.module.scss'
+import clsx from 'clsx';
 
 
 
@@ -122,10 +123,10 @@ const CourseManager = (props) => {
                     className='w-1/2'
                     placeholder="Nhập từ khóa tìm kiếm"
                     onSearch={onSearch}
-                    enterButton
+                    
 
                 />
-                <Button onClick={() => navigate('')} type='primary' size='large'>Thêm Khóa Học</Button>
+                <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/course/create')} type='primary' size='large' ><PlusOutlined /><span>Thêm Khoá Học</span></Button>
 
             </div>
             <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={handleChangePagination} />
