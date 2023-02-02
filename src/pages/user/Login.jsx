@@ -72,13 +72,13 @@ const Login = () => {
               <div className="flex flex-col text-sm rounded-md">
                 <p>Tài Khoản</p>
                 <div>
-                  <input name='taiKhoan' onChange={formik.handleChange} className="mb-2 w-full rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
+                  <input value={formik.values.taiKhoan} name='taiKhoan' onChange={formik.handleChange} className="mb-2 w-full rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500 " type="text" placeholder="Tài Khoản" />
 
                 </div>
                 {formik.errors.taiKhoan && formik.touched.taiKhoan && (<p className='text-red-700 mb-5'>{formik.errors.taiKhoan}</p>)}
                 <p>Mật Khẩu</p>
                 <div className='relative'>
-                  <input name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPassword ? 'text' : 'password'} placeholder="Mật Khẩu" />
+                  <input value={formik.values.matKhau} name='matKhau' onChange={formik.handleChange} className="w-full border rounded-[4px] p-3 pr-10 hover:outline-none focus:outline-none hover:border-yellow-500" type={showPassword ? 'text' : 'password'} placeholder="Mật Khẩu" />
                   {showPassword ?
                     <EyeInvisibleOutlined
                       onClick={() => setShowPassword(false)}
