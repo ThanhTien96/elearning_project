@@ -146,7 +146,7 @@ const EditCourse = (props) => {
 
                 </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
-                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment('13/01/2023')} />
+                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment(formik.values.ngayTao)} />
                 </Form.Item>
                 <Form.Item label="Danh Mục Khóa Học">
                     <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
