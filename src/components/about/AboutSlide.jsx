@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './AboutSlide.module.scss';
-import  '../../utils/variableImg.css';
 import clsx from 'clsx';
 
 const AboutSlide = () => {
   return (
-    <div className={clsx(styles.aboutSlide, 'aboutSlide')}>
+    <div className={clsx(styles.aboutSlide)}>
         <div className={styles.aboutItem}>
             <h3>E LEARNING HỌC LÀ VUI</h3>
             <h1>Cùng nhau khám phá nhưng điều mới mẻ</h1>

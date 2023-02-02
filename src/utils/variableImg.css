@@ -1,24 +1,7 @@
-.aboutBgLeft{
-    background: url('../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg');
-}
-.aboutBgRight{
-    background: url('../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg');
-}
 
-.aboutBgLeft, .aboutBgRight {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    padding: 0 10px;
-        
-}
 
-.aboutSlide{
-    background: url('../assets/image/aboutBG/bgAbout.19ac825c.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
+
 
 .eventSlide{
     background: url('../assets/image/event/backroundTech.a989a5f8.jpg');

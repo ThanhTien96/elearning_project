@@ -2,7 +2,11 @@
 @import '../../utils/mixin.scss';
 
 .aboutSlide{
-    
+
+    background: url('../../assets/image/aboutBG/bgAbout.19ac825c.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 450px;
     width: 100%;
     background-attachment: fixed;
