@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import styles from './userStyle.module.scss'
+import styles from './UserStyle.module.scss'
 import Swal from 'sweetalert2';
 import { Alert } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
