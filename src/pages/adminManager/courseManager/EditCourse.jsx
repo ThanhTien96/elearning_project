@@ -74,7 +74,7 @@ const EditCourse = (props) => {
     };
 
     const handleChangeDatePicker = (value) => {
-        console.log(value.$d)
+        console.log(value?.$d)
         let ngayTao = moment(value?.$d).format('DD/MM/YYYY');
         formik.setFieldValue('ngayTao', ngayTao);
     };
@@ -146,7 +146,7 @@ const EditCourse = (props) => {
 
                 </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
-                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} defaultValue={moment(formik.values.ngayTao, 'DD/MM/YYYY')} />
+                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment('13/01/2023')} />
                 </Form.Item>
                 <Form.Item label="Danh Mục Khóa Học">
                     <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}

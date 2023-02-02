@@ -1,8 +1,8 @@
 .aboutBgLeft{
-    background-image: url('../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg');
+    background: url('../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg');
 }
 .aboutBgRight{
-    background-image: url('../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg');
+    background: url('../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg');
 }
 
 .aboutBgLeft, .aboutBgRight {
