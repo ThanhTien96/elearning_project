@@ -1,8 +1,8 @@
 .aboutBgLeft{
-    background-image: url(../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg);
+    background-image: url('../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg');
 }
 .aboutBgRight{
-    background-image: url(../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg);
+    background-image: url('../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg');
 }
 
 .aboutBgLeft, .aboutBgRight {
@@ -14,21 +14,21 @@
 }
 
 .aboutSlide{
-    background: url(../assets/image/aboutBG/bgAbout.19ac825c.png);
+    background: url('../assets/image/aboutBG/bgAbout.19ac825c.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .eventSlide{
-    background: url(../assets/image/event/backroundTech.a989a5f8.jpg);
+    background: url('../assets/image/event/backroundTech.a989a5f8.jpg');
     background-position: 0;
     background-size: cover;
     background-repeat: no-repeat;
 }
 .eventSlide::after{
     content: "";
-    background: url(../assets/image/event/high-techbrain.2f38d2ab.png);
+    background: url('../assets/image/event/high-techbrain.2f38d2ab.png');
     position: absolute;
     z-index: -1;
     top: 0;
