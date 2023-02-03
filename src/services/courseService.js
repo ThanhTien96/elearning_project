@@ -24,7 +24,7 @@ class CoursesService {
     }
 
     // call api lay danh sach khoa hoc pho bien
-    fetchApiPopularCourses = (page = 1) => {
+    fetchApiPopularCourses = (page = 1, tenKhoaHoc = '') => {
         return requester({
             url: apiPathCourseList.GET_POPULAR_COURSES,
             method: 'GET',
@@ -32,6 +32,7 @@ class CoursesService {
                 page: page,
                 pageSize: 8,
                 MaNhom: maNhom,
+                tenKhoaHoc: tenKhoaHoc
             },
         });
     };

@@ -77,7 +77,7 @@ function App() {
             <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
-            <Route path='course/edit' element={<AppRoute component={EditCourse} isAdmin />}></Route>
+            <Route path='course/edit/:key' element={<AppRoute component={EditCourse} isAdmin />}></Route>
             <Route path='course/create' element={<AppRoute component={CreateCourse} isAdmin />}></Route>
           </Route>
 

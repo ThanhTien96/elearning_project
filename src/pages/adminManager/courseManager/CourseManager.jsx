@@ -1,20 +1,64 @@
 import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
-import {  EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
 import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
 import styles from './course.module.scss'
 import clsx from 'clsx';
+import adminService from '../../../services/adminSevice';
+import Swal from 'sweetalert2';
 
 
 
 const CourseManager = (props) => {
 
     const dispatch = useDispatch();
-    const {courseList} = useSelector(state => state.courseManagerSlice);
+    const { courseList } = useSelector(state => state.courseManagerSlice);
     const navigate = useNavigate();
+
+
+
+    const data = courseList?.items;
+
+    // handle change pagination
+    const handleChangePagination = async (pagination) => {
+        dispatch(fetApiCourseAction(pagination.current));
+    };
+
+    // xóa khóa học
+    const fetchApiDeleteCourse = async (maKH, courseName) => {
+
+        Swal.fire({
+            title: 'Có Chắc Bạn Muốn Xóa Khóa Học',
+            text: courseName,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa Khóa Học',
+            cancelButtonText: 'Hủy Bỏ'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const res = await adminService.getApiDeleteCourse(maKH);
+                    Swal.fire(res.data, '', 'success').then((result) => {
+                        dispatch(fetApiCourseAction());
+                    })
+                } catch (err) {
+                    Swal.fire('', err.response.data, 'error')
+                };
+            };
+        });
+
+    };
+
+    // tìm kiếm khóa học
+    const { Search } = Input;
+    const onSearch = (value) => {
+        dispatch('');
+    };
 
 
     const columns = [
@@ -86,33 +130,17 @@ const CourseManager = (props) => {
                     <NavLink key={1} to={`/admin/course/edit/${course.maKhoaHoc}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
-                        onClick={async () => {
-                            if (window.confirm(`Bạn Có Chắc Muốn Xóa Khóa Học ${course.tenKhoaHoc}`)) {
-                                dispatch('')
-                            }
-                        }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+                        onClick={() => fetchApiDeleteCourse(course.maKhoaHoc)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
 
-                    <NavLink key={3} to='' 
-                    onClick={() => {localStorage.setItem('courseImg', course.hinhAnh)}}
-                    className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
+                    <NavLink key={3} to=''
+                        onClick={() => { localStorage.setItem('courseImg', course.hinhAnh) }}
+                        className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
                 </Fragment>
             },
             width: '20%',
         },
     ];
 
-    const data = courseList?.items;
-    
-    // handle change pagination
-    const handleChangePagination = async (pagination) => {
-        dispatch(fetApiCourseAction(pagination.current));
-    };
-
-    const { Search } = Input;
-
-    const onSearch = (value) => {
-        dispatch('');
-    };
 
     return (
         <div>
@@ -123,7 +151,7 @@ const CourseManager = (props) => {
                     className='w-1/2'
                     placeholder="Nhập từ khóa tìm kiếm"
                     onSearch={onSearch}
-                    
+
 
                 />
                 <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/course/create')} type='primary' size='large' ><PlusOutlined /><span>Thêm Khoá Học</span></Button>

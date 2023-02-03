@@ -3,15 +3,27 @@ import { createAction } from '../createAction';
 import adminType from '../../type/adminType';
 import courseService from '../../../services/courseService';
 import courseListType from '../../type/courseListType';
+import { isLoadingAction } from '../userAction';
 
 //lay danh sach khoa hoc
 export const fetApiCourseAction = (page) => {
     return async (dispatch) => {
         try {
+
+            dispatch(isLoadingAction(true));
+
             const res = await courseService.fetchApiPopularCourses(page);
-            dispatch(createAction(adminType.GET_COURSE_LIST, res.data))
+
+            dispatch(createAction(adminType.GET_COURSE_LIST, res.data));
+
         } catch (err) {
+
             console.error(err);
+
+        } finally {
+
+            dispatch(isLoadingAction(false));
+
         }
 
     }
@@ -21,11 +33,10 @@ export const fetApiCourseAction = (page) => {
 export const fetchApiCreateCourseAction = (formData) => {
     return async (dispatch) => {
         try {
-            const res = await courseService.fetApiCreateCourse(formData);
-            
-            console.log(res.data);
 
-            dispatch(createAction(courseListType.CREATE_COURSES, res.data));
+            await courseService.fetApiCreateCourse(formData);
+
+
         }catch(err){
 
             throw err
