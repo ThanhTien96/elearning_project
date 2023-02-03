@@ -90,7 +90,7 @@ export const editCourseApi = (formData) => async (dispatch) => {
 
         console.log(res)
     } catch (err) {
-        console.log(err);
+        console.log(err.response);
     } finally {
         dispatch(isLoadingAction(false));
     }

@@ -44,14 +44,3 @@ export const fetchApiCreateCourseAction = (formData) => {
         }
     }
 }
-
-//upload file
-export const fetchApiUploadFileAction = (formData) => {
-    return async (dispatch) => {
-        try {
-            
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}

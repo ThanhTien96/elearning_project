@@ -6,8 +6,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 import { fetchApiDetailCourseAction } from '../../../redux/action/courseListAction'
 import { editCourseApi } from '../../../redux/action/courseListAction'
-import { Form, Radio, Input, DatePicker, Select } from 'antd';
+import { Form, Radio, Input, DatePicker, Select, InputNumber } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import coursesService from '../../../services/courseService';
 
 
 const EditCourse = (props) => {
@@ -23,15 +24,16 @@ const EditCourse = (props) => {
 
     const course = useSelector(state => state.courseList.detailCourse);
 
+    console.log(course.danhMucKhoaHoc.maDanhMucKhoahoc)
     // lấy danh mục khóa học
     const { categoryList } = useSelector(state => state.courseList);
 
-    console.log(course?.ngayTao)
     
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            
             maKhoaHoc: course?.maKhoaHoc,
             tenKhoaHoc: course?.tenKhoaHoc,
             moTa: course?.moTa,
@@ -40,7 +42,7 @@ const EditCourse = (props) => {
             hinhAnh: null,
             maNhom: course?.maNhom,
             ngayTao: course?.ngayTao,
-            maDanhMucKhoaHoc: course?.danhMucKhoaHoc.maDanhMuc,
+            maDanhMuc: course?.danhMucKhoaHoc.maDanhMucKhoahoc,
             taiKhoanNguoiTao: course?.nguoiTao.taiKhoan,
         },
         onSubmit: async (values) => {
@@ -58,11 +60,11 @@ const EditCourse = (props) => {
             }
             try {
 
-                await dispatch(editCourseApi(formData));
+                const res = await coursesService.fetchApiEditCourse(formData);
+                console.log(res)
                 
-                navigate('/admin');
             } catch (err) {
-                console.log(err);
+                console.log(err.response);
             }
 
         }
@@ -93,10 +95,15 @@ const EditCourse = (props) => {
         };
 
     }
+
+    //hàm lấy giá trị input number
+    const handleChangeInputNumber = (name) => {
+        return (value) => { formik.setFieldValue(name, value) };
+    };
+
     // chọn ma danh muc
     const handleChangeSelect = (value) => {
-        console.log(value)
-        formik.setFieldValue('maDanhMucKhoaHoc', value)
+        formik.setFieldValue('maDanhMuc', value)
     };
 
 
@@ -133,12 +140,6 @@ const EditCourse = (props) => {
                 <Form.Item label="Mô Tả">
                     <TextArea name='moTa' onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
-                <Form.Item label="Lượt Xem">
-                    <Input name='luotXem' onChange={formik.handleChange} value={formik.values.luotXem} />
-                </Form.Item>
-                <Form.Item label="Đánh Giá">
-                    <Input name='danhGia' onChange={formik.handleChange} value={formik.values.danhGia} />
-                </Form.Item>
                 <Form.Item label="Hình Ảnh">
                     <input type='file' onChange={handleChangeFile} accept="image/png, image/jpg, image/jpeg, image/gif" />
 
@@ -148,11 +149,24 @@ const EditCourse = (props) => {
                 <Form.Item label="Ngày Tạo Khoá Học">
                     <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment(formik.values.ngayTao)} />
                 </Form.Item>
+
+                <Form.Item label="Lượt Xem">
+                    <InputNumber name='luotXem' onChange={handleChangeInputNumber('luotXem')} placeholder='nhập danh lượt xem' min={0} />
+                    {formik.errors.luotXem && formik.touched.luotXem && (<p className='text-red-700 mt-1'>{formik.errors.luotXem}</p>)}
+
+                </Form.Item>
+
+                <Form.Item label="Đánh Giá">
+                    <InputNumber name='danhGia' onChange={handleChangeInputNumber('danhGia')} placeholder='nhập danh mục đánh giá' min={0} max={10} />
+                    {formik.errors.danhGia && formik.touched.danhGia && (<p className='text-red-700 mt-1'>{formik.errors.danhGia}</p>)}
+
+                </Form.Item>
+
                 <Form.Item label="Danh Mục Khóa Học">
                     <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
                         onChange={handleChangeSelect}
                         placeholder='Chọn danh mục khóa học'
-                        onSelect={formik.values.maDanhMucKhoaHoc}
+                        defaultValue={formik.values.maDanhMuc}
                     />
                     {formik.errors.maLoaiNguoiDung && formik.touched.maLoaiNguoiDung && (<p className='text-red-700 mt-1'>{formik.errors.maLoaiNguoiDung}</p>)}
                 </Form.Item>
