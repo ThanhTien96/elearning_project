@@ -8,6 +8,7 @@ import { fetchApiDetailCourseAction } from '../../../redux/action/courseListActi
 import { editCourseApi } from '../../../redux/action/courseListAction'
 import { Form, Radio, Input, DatePicker, Select } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import Swal from 'sweetalert2';
 
 
 const EditCourse = (props) => {
@@ -27,7 +28,7 @@ const EditCourse = (props) => {
     const { categoryList } = useSelector(state => state.courseList);
 
     console.log(course?.ngayTao)
-    
+
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -59,8 +60,16 @@ const EditCourse = (props) => {
             try {
 
                 await dispatch(editCourseApi(formData));
-                
-                navigate('/admin');
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Chỉnh Sửa Thành Công',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(result => {
+                    navigate('/admin');
+                });
+
             } catch (err) {
                 console.log(err);
             }
@@ -149,7 +158,7 @@ const EditCourse = (props) => {
                     <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment(formik.values.ngayTao)} />
                 </Form.Item>
                 <Form.Item label="Danh Mục Khóa Học">
-                    <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
+                    <Select options={categoryList.map(ele => ({ value: ele.maDanhMuc, label: ele.tenDanhMuc }))}
                         onChange={handleChangeSelect}
                         placeholder='Chọn danh mục khóa học'
                         onSelect={formik.values.maDanhMucKhoaHoc}

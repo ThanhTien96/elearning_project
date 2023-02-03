@@ -8,12 +8,13 @@ import { maNhom } from '../../../utils/index';
 import { Form, Radio, Input, DatePicker } from 'antd';
 import moment from 'moment';
 import { fetchApiCreateCourseAction } from '../../../redux/action/adminAction/courseManagerAction'
+import Swal from 'sweetalert2';
 
 const CreateCourse = (props) => {
 
-    const profile = useSelector( state => state.userSlice.profile);
-    
-    const category = useSelector( state => state.courseList.categoryList);
+    const profile = useSelector(state => state.userSlice.profile);
+
+    const category = useSelector(state => state.courseList.categoryList);
 
 
     const [imgSrc, setImgSrc] = useState(null);
@@ -54,20 +55,28 @@ const CreateCourse = (props) => {
                     formData.append(key, values[key]);
                 } else {
                     formData.append('File', values.hinhAnh, values.hinhAnh.name);
-                    
+
                 }
             }
             try {
                 await dispatch(fetchApiCreateCourseAction(formData));
-                console.log('thêm Khóa Học Thành Công')
-                navigate('/admin');
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Tạo Khoá Học Thành Công',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(result => {
+                    navigate('/admin');
+                });
+                
             } catch (err) {
                 console.log(err);
 
             }
         }
     });
-    
+
 
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
@@ -90,9 +99,9 @@ const CreateCourse = (props) => {
             reader.onload = (e) => {
                 setImgSrc(e.target.result);
             };
-            
+
         };
-        
+
 
     }
 
@@ -134,7 +143,7 @@ const CreateCourse = (props) => {
                     {formik.errors.moTa && formik.touched.moTa && (<p className='text-red-700 mt-1'>{formik.errors.moTa}</p>)}
 
                 </Form.Item>
-                
+
                 <Form.Item label="Hình Ảnh">
                     <input type='file' onChange={handleChangeFile} accept="image/png, image/jpg, image/jpeg, image/gif" />
 
@@ -153,7 +162,7 @@ const CreateCourse = (props) => {
                     {formik.errors.maDanhMuc && formik.touched.maDanhMuc && (<p className='text-red-700 mt-1'>{formik.errors.maDanhMuc}</p>)}
 
                 </Form.Item>
-            
+
                 <Form.Item
                     wrapperCol={{
                         offset: 4,

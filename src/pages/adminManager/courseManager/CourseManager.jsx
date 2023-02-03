@@ -1,19 +1,20 @@
 import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
-import {  EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
-import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
+import { fetApiCourseAction, fetchApiDeleteCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
 import styles from './course.module.scss'
 import clsx from 'clsx';
+import Swal from 'sweetalert2';
 
 
 
 const CourseManager = (props) => {
 
     const dispatch = useDispatch();
-    const {courseList} = useSelector(state => state.courseManagerSlice);
+    const { courseList } = useSelector(state => state.courseManagerSlice);
     const navigate = useNavigate();
 
 
@@ -87,14 +88,31 @@ const CourseManager = (props) => {
 
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
                         onClick={async () => {
-                            if (window.confirm(`Bạn Có Chắc Muốn Xóa Khóa Học ${course.tenKhoaHoc}`)) {
-                                dispatch('')
-                            }
-                        }}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
 
-                    <NavLink key={3} to='' 
-                    onClick={() => {localStorage.setItem('courseImg', course.hinhAnh)}}
-                    className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
+                            Swal.fire({
+                                title: `Bạn có muốn xoá khoá học ${course.tenKhoaHoc}`,
+                                icon: 'question',
+                                confirmButtonText: 'Xoá',
+                                showCancelButton: true,
+                                cancelButtonText: 'Hủy Bỏ',
+                            }).then(result => {
+                                if (result.isConfirmed) {
+                                    dispatch(fetchApiDeleteCourseAction(course.maKhoaHoc))
+                                    navigate('/admin');
+                                    Swal.fire('Đã Xoá Thành Công !', '', 'success');
+
+                                }
+
+                            })
+
+
+                        }}
+
+                    ><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+
+                    <NavLink key={3} to=''
+                        onClick={() => { localStorage.setItem('courseImg', course.hinhAnh) }}
+                        className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
                 </Fragment>
             },
             width: '20%',
@@ -102,7 +120,9 @@ const CourseManager = (props) => {
     ];
 
     const data = courseList?.items;
-    
+
+
+
     // handle change pagination
     const handleChangePagination = async (pagination) => {
         dispatch(fetApiCourseAction(pagination.current));
@@ -123,7 +143,7 @@ const CourseManager = (props) => {
                     className='w-1/2'
                     placeholder="Nhập từ khóa tìm kiếm"
                     onSearch={onSearch}
-                    
+
 
                 />
                 <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/course/create')} type='primary' size='large' ><PlusOutlined /><span>Thêm Khoá Học</span></Button>

@@ -21,7 +21,8 @@ export const apiPathCourseList = {
     SEARCH_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc',
     EDIT_COURSES: '/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload',
     CREATE_COURSES: '/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh',
-    UPLOAD_FILE: 'api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc'
+    UPLOAD_FILE: 'api/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc',
+    DELETE_COURSES: 'api/QuanLyKhoaHoc/XoaKhoaHoc'
 }
 
 //api path quan ly nguoi dung

@@ -87,6 +87,17 @@ class CoursesService {
         })
     }
 
+    //xoa khoa hoc
+    fetApiDeleteCourse = (maKH) => {
+        return requester ({
+            url: apiPathCourseList.DELETE_COURSES,
+            method: 'DELETE',
+            params: {
+                maKhoaHoc: maKH
+            }
+        })
+    }
+
 };
 
 const coursesService = new CoursesService();
