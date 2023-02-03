@@ -10,7 +10,11 @@ import { fetchApiDetailCourseAction } from '../../redux/action/courseListAction'
 
 const Detail = (props) => {
 
+<<<<<<< HEAD
   const bannerRef = useRef({ title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!' })
+=======
+  const bannerRef = useRef({title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!'})
+>>>>>>> 1f25082 ('updateSearchPage')
 
   const dispatch = useDispatch();
   const params = useParams();
