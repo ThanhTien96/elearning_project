@@ -1,6 +1,6 @@
 import { Table, Input, Button } from 'antd';
 import React, { Fragment } from 'react';
-import { EditOutlined, DeleteOutlined, CalendarOutlined, PlusOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { truncateText } from '../../../utils';
@@ -9,6 +9,8 @@ import styles from './course.module.scss'
 import clsx from 'clsx';
 import adminService from '../../../services/adminSevice';
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
+import { FaUserClock, FaUserGraduate } from "react-icons/fa";
 
 
 
@@ -17,6 +19,10 @@ const CourseManager = (props) => {
     const dispatch = useDispatch();
     const { courseList } = useSelector(state => state.courseManagerSlice);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispatch(fetApiCourseAction());
+    }, [])
 
 
 
@@ -76,7 +82,7 @@ const CourseManager = (props) => {
             render: (text, course, index) => {
                 return <Fragment><img src={course.hinhAnh} alt='...' width={50} onError={(e) => { e.target.onError = null; e.target.src = `https://picsum.photos/id/${index}/150/150` }} /></Fragment>
             },
-            width: '15%',
+            width: '10%',
             key: '2'
         },
         {
@@ -132,12 +138,14 @@ const CourseManager = (props) => {
                     <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
                         onClick={() => fetchApiDeleteCourse(course.maKhoaHoc)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
 
-                    <NavLink key={3} to=''
-                        onClick={() => { localStorage.setItem('courseImg', course.hinhAnh) }}
-                        className='text-white ml-2 text-2xl'><CalendarOutlined style={{ color: 'blue' }} /></NavLink>
+                    <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
+                        className='text-white ml-2 text-2xl'><FaUserGraduate className='text-blue-500 inline-block' /></NavLink>
+
+                    <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
+                        className='text-white ml-3 text-3xl'><FaUserClock className='text-teal-500 inline-block' /></NavLink>
                 </Fragment>
             },
-            width: '20%',
+            width: '25%',
         },
     ];
 

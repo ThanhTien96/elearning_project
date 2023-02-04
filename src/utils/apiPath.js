@@ -19,8 +19,9 @@ export const apiPathCourseList = {
     GET_COURSE_DETAIL: '/api/QuanLyKhoaHoc/LayThongTinKhoaHoc',
     GET_CATEGORY_COURSE: '/api/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc',
     SEARCH_COURSES: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc',
-    EDIT_COURSES: '/api/QuanLyKhoaHoc/CapNhatKhoaHoc',
+    EDIT_COURSES: '/api/QuanLyKhoaHoc/CapNhatKhoaHocUpload',
     CREATE_COURSES: '/api/QuanLyKhoaHoc/ThemKhoaHocUploadHinh',
+    
 }
 
 //api path quan ly nguoi dung
@@ -37,5 +38,5 @@ export const apiPathAdminList = {
 export const apiPathCourseManagerList = {
     GET_API_COURSE_LIST: '/api/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang',
     DELETE_COURSE: '/api/QuanLyKhoaHoc/XoaKhoaHoc',
-
+    GET_COURSE_STUDENT: '/api/QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc',
 }

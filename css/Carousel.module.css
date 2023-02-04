@@ -1,4 +1,6 @@
 .bannerSlide {
+  max-width: 100%;
+  margin: auto;
   height: 600px;
   overflow: hidden;
   width: 100%;
@@ -205,7 +207,7 @@
     width: 350px;
   }
 }
-@media screen and (max-width: 391.98px) {
+@media screen and (max-width: 414.98px) {
   .bannerSlide {
     height: auto;
     padding: 0 10px;

@@ -1,7 +1,22 @@
-.contentCourse {
-  margin-bottom: 40px;
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.contentCourse .btnView {
+.content .title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(to left, #227df9 20%, #7462f9, #df3ef8);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+@media screen and (max-width: 820.98px) {
+  .content {
+    display: block;
+  }
+}
+
+.btnRegistered {
   padding: 5px 20px;
   border: none;
   position: relative;
@@ -10,10 +25,10 @@
   z-index: 1;
   font-weight: 600;
 }
-.contentCourse .btnView span {
+.btnRegistered span {
   transition: all 0.3s ease;
 }
-.contentCourse .btnView::before {
+.btnRegistered::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -23,7 +38,7 @@
   background-color: #ffffff;
   z-index: -1;
 }
-.contentCourse .btnView::after {
+.btnRegistered::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -34,24 +49,11 @@
   z-index: 1;
   background-image: linear-gradient(to left, #df3ef8 0%, #7462f9 50%, #227df9 100%);
 }
-.contentCourse .btnView:hover::after {
+.btnRegistered:hover::after {
   right: 2px;
 }
-.contentCourse .btnView:hover span {
+.btnRegistered:hover span {
   position: relative;
   z-index: 2;
   color: white;
-}
-.contentCourse .lessonContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  box-shadow: 1px 1px 2px 1px rgba(239, 244, 190, 0.27);
-  cursor: pointer;
-}
-@media screen and (max-width: 414.98px) {
-  .contentCourse .lessonContainer {
-    display: block;
-  }
 }

@@ -7,7 +7,6 @@ import * as Yup from 'yup';
 import { maNhom } from '../../../utils/index';
 import { Form, Radio, Input, DatePicker, InputNumber, Select } from 'antd';
 import moment from 'moment';
-import { fetApiCourseAction, fetchApiCreateCourseAction } from '../../../redux/action/adminAction/courseManagerAction'
 import Swal from 'sweetalert2';
 import coursesService from '../../../services/courseService';
 import TextArea from 'antd/es/input/TextArea';
@@ -20,8 +19,6 @@ const CreateCourse = (props) => {
 
 
     const [imgSrc, setImgSrc] = useState(null);
-
-    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -87,7 +84,7 @@ const CreateCourse = (props) => {
         }
     });
 
-
+    // thay đổi kích thước form
     const [componentSize, setComponentSize] = useState('default');
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
@@ -100,7 +97,7 @@ const CreateCourse = (props) => {
         formik.setFieldValue('ngayTao', ngayTao);
     };
 
-    // hàm thêm hình ảnh
+    // thêm hình ảnh
     const handleChangeFile = async (e) => {
         let file = e.target.files[0];
         // luu vao formik
@@ -113,8 +110,6 @@ const CreateCourse = (props) => {
             };
 
         };
-
-
     };
 
     //hàm lấy giá trị input number

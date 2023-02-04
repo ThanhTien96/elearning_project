@@ -9,6 +9,8 @@ import { editCourseApi } from '../../../redux/action/courseListAction'
 import { Form, Radio, Input, DatePicker, Select, InputNumber } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import coursesService from '../../../services/courseService';
+import Swal from 'sweetalert2';
+import styles from '../accountManager/Admin.module.scss';
 
 
 const EditCourse = (props) => {
@@ -20,20 +22,24 @@ const EditCourse = (props) => {
     useEffect(() => {
 
         dispatch(fetchApiDetailCourseAction(params.key));
+
     }, [params.key]);
+
 
     const course = useSelector(state => state.courseList.detailCourse);
 
+<<<<<<< HEAD
     //console.log(course.danhMucKhoaHoc.maDanhMucKhoahoc)
+=======
+>>>>>>> 8f5f118 ('updateCode')
     // lấy danh mục khóa học
     const { categoryList } = useSelector(state => state.courseList);
 
-    
+
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            
             maKhoaHoc: course?.maKhoaHoc,
             tenKhoaHoc: course?.tenKhoaHoc,
             moTa: course?.moTa,
@@ -62,9 +68,26 @@ const EditCourse = (props) => {
 
                 const res = await coursesService.fetchApiEditCourse(formData);
                 console.log(res)
-                
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cập nhật thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/admin');
+
             } catch (err) {
-                console.log(err.response);
+
+                // vì đã thử nhiều lần bị lỗi sever CORS nên bắt buộc phải cập nhật lại hình ảnh,
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    text: err.response?.data === 'Upload file không thành công!' ? `${err.response.data} , kiểm tra lại tên khóa học hoặc hình ảnh`
+                        : 'Vui lòng cập nhật lại hình ảnh',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
             }
 
         }
@@ -76,7 +99,7 @@ const EditCourse = (props) => {
     };
 
     const handleChangeDatePicker = (value) => {
-        console.log(value?.$d)
+        console.log(value)
         let ngayTao = moment(value?.$d).format('DD/MM/YYYY');
         formik.setFieldValue('ngayTao', ngayTao);
     };
@@ -107,6 +130,8 @@ const EditCourse = (props) => {
     };
 
 
+    const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+
     return (
         <div>
             <Form onSubmitCapture={formik.handleSubmit}
@@ -132,7 +157,7 @@ const EditCourse = (props) => {
                     </Radio.Group>
                 </Form.Item>
                 <Form.Item label="Mã khoá Học">
-                    <Input name='maKhoaHoc' onChange={formik.handleChange} value={formik.values.maKhoaHoc} />
+                    <Input name='maKhoaHoc' onChange={formik.handleChange} disabled={true} value={formik.values.maKhoaHoc} />
                 </Form.Item>
                 <Form.Item label="Tên Khoá">
                     <Input name='tenKhoaHoc' onChange={formik.handleChange} value={formik.values.tenKhoaHoc} />
@@ -147,23 +172,23 @@ const EditCourse = (props) => {
 
                 </Form.Item>
                 <Form.Item label="Ngày Tạo Khoá Học">
-                    <DatePicker showToday={true} format="DD/MM/YYYY" onChange={handleChangeDatePicker} value={moment(formik.values.ngayTao)} />
+                    <DatePicker format="DD/MM/YYYY" onChange={handleChangeDatePicker} defaultValue={moment(formik.values.ngayTao, 'DD/MM/YYYY')} />
                 </Form.Item>
 
                 <Form.Item label="Lượt Xem">
-                    <InputNumber name='luotXem' onChange={handleChangeInputNumber('luotXem')} placeholder='nhập danh lượt xem' min={0} />
+                    <InputNumber name='luotXem' onChange={handleChangeInputNumber('luotXem')} value={formik.values.luotXem} placeholder='nhập danh lượt xem' min={0} />
                     {formik.errors.luotXem && formik.touched.luotXem && (<p className='text-red-700 mt-1'>{formik.errors.luotXem}</p>)}
 
                 </Form.Item>
 
                 <Form.Item label="Đánh Giá">
-                    <InputNumber name='danhGia' onChange={handleChangeInputNumber('danhGia')} placeholder='nhập danh mục đánh giá' min={0} max={10} />
+                    <InputNumber name='danhGia' onChange={handleChangeInputNumber('danhGia')} value={formik.values.danhGia} placeholder='nhập danh mục đánh giá' min={0} max={10} />
                     {formik.errors.danhGia && formik.touched.danhGia && (<p className='text-red-700 mt-1'>{formik.errors.danhGia}</p>)}
 
                 </Form.Item>
 
                 <Form.Item label="Danh Mục Khóa Học">
-                    <Select options={categoryList.map(ele => ({value: ele.maDanhMuc, label: ele.tenDanhMuc}))}
+                    <Select options={categoryList.map(ele => ({ value: ele.maDanhMuc, label: ele.tenDanhMuc }))}
                         onChange={handleChangeSelect}
                         placeholder='Chọn danh mục khóa học'
                         defaultValue={formik.values.maDanhMuc}
@@ -176,7 +201,7 @@ const EditCourse = (props) => {
                         span: 16,
                     }}
                 >
-                    <button className='px-5 py-2 bg-orange-500 border-transparent text-white cursor-pointer rounded-md' type='submit'>Cập Nhật</button>
+                    <button className={styles.btnGradient} type='submit'>Cập Nhật</button>
                 </Form.Item>
 
             </Form>

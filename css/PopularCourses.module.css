@@ -147,7 +147,7 @@
     padding: 20px 15px;
   }
 }
-@media screen and (max-width: 391.98px) {
+@media screen and (max-width: 414.98px) {
   .itemsCard .items .hoverLeftSide, .itemsCard .items .hoverRightSide {
     top: 0;
     width: 100%;

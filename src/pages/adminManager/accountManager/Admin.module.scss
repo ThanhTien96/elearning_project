@@ -1,7 +1,7 @@
 @import '../../../utils/mixin.scss';
 
 .btnGradient{
-    @apply px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
+    @apply px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm text-white;
     @include btnGradient(linear-gradient(to left, #227df9 0%, #7462f9 25%, #df3ef8 50%, #7462f9 75%, #227df9 100%),250% auto , all 0.5s ease);
     transition-timing-function: ease, ease;
    

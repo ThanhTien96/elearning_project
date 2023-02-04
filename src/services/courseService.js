@@ -70,15 +70,6 @@ class CoursesService {
         })
     }
 
-    //upload file anh
-    fetApiUploadfile = (formData) => {
-        return requester ({
-            url: apiPathCourseList.UPLOAD_FILE,
-            method: 'POST',
-            data: formData,
-        })
-    }
-
     //edit khoa hoc
     fetchApiEditCourse = (formData) => {
         return requester ({

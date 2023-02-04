@@ -2,8 +2,8 @@
 import { createAction } from '../createAction';
 import adminType from '../../type/adminType';
 import courseService from '../../../services/courseService';
-import courseListType from '../../type/courseListType';
 import { isLoadingAction } from '../userAction';
+import adminService from '../../../services/adminSevice';
 
 //lay danh sach khoa hoc
 export const fetApiCourseAction = (page) => {
@@ -42,5 +42,20 @@ export const fetchApiCreateCourseAction = (formData) => {
             throw err
 
         }
+    }
+};
+
+// lấy danh sách học viên khóa học
+export const fetchApiCourseStudentAction = (maKH) => async(dispatch) => {
+    try {
+
+        console.log(maKH)
+        const res = await adminService.fetchApiCourseStudent(maKH);
+        console.log(res.data);
+
+        dispatch(createAction(adminType.GET_COURSE_STUDENT, res.data));
+
+    } catch (err) {
+        console.log(err.response)
     }
 }

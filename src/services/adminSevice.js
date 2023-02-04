@@ -86,6 +86,17 @@ class AdminService {
         })
     );
 
+    // lấy danh sách học viên khóa học;
+    fetchApiCourseStudent = (MaKhoaHoc) => {
+        return requester({
+            url: apiPathCourseManagerList.GET_COURSE_STUDENT,
+            method: 'POST',
+            data: {
+                MaKhoaHoc: MaKhoaHoc,
+            }
+        });
+    };
+
 
 };
 

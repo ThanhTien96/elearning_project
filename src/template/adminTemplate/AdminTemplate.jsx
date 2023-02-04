@@ -42,7 +42,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     dispatch(fetchApiAccountAction());
-    dispatch(fetApiCourseAction());
+    
     window.scrollTo(0, 0);
   }, [])
 

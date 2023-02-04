@@ -65,7 +65,7 @@ li.slick-active .slickDots {
   width: 20px;
 }
 
-@media screen and (min-width: 391.98px) {
+@media screen and (min-width: 414.98px) {
   .setPrev::after, .setNext::after {
     height: 60px;
   }

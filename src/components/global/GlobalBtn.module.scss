@@ -1,4 +1,5 @@
-
+@import '../../utils/mixin.scss';
+@import '../../utils/variable.scss';
 
 .btnUser{
 
@@ -12,6 +13,12 @@
         background-position: right center;
         animation: scaleBtn 1s ease-in-out infinite;
     }
+}
+
+.btnGlobal{
+    @apply px-2 py-1 lg:px-3 lg:py-2 mr-3 md:text-sm lg:text-sm ;
+    @include btnGradient($c5GradientLeft, 250% auto, all 0.5s ease);
+    transition-timing-function: ease, ease;
 }
 
 @keyframes scaleBtn {
