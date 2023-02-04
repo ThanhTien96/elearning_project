@@ -7,6 +7,8 @@ import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount, isAlert
 import styles from './Admin.module.scss'
 import clsx from 'clsx';
 import adminService from '../../../services/adminSevice';
+import Swal from 'sweetalert2';
+
 
 const AccountManager = (props) => {
 
@@ -21,25 +23,28 @@ const AccountManager = (props) => {
   // xóa tài khoản người dùng
   const handleDeleteAccount = async (tk) => {
 
-    try {
-      const res = await adminService.getApiDeleteAccount(tk);
+    Swal.fire({
+      title: 'Có Chắc Bạn Muốn Xóa Tài Khoản',
+      text: tk,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa Tài Khoản',
+      cancelButtonText: 'Hủy Bỏ'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await adminService.getApiDeleteAccount(tk);
+          Swal.fire(res.data, '', 'success').then((result) => {
+            dispatch(fetchApiAccountAction());
+          })
+        } catch (err) {
+          Swal.fire('', err.response.data, 'error')
+        };
+      };
+    });
 
-      await dispatch(isAlertActionSuccess(res.data));
-
-      await setTimeout(() => {
-        dispatch(isAlertActionSuccess(null));
-      }, 1000);
-
-      dispatch(fetchApiAccountAction(accountList?.currentPage));
-
-    } catch (err) {
-
-      dispatch(isAlertActionERR(err.response.data));
-
-      await setTimeout(() => {
-        dispatch(isAlertActionERR(null));
-      }, 1000);
-    }
   }
 
   const columns = [

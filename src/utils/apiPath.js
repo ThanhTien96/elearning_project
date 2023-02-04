@@ -30,6 +30,7 @@ export const apiPathAdminList = {
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     EDIT_ACCOUNT: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
     SEARCH_ACCOUNT_PAGINATION: 'api/QuanLyNguoiDung/TimKiemNguoiDung',
+    DELETE_ACCOUNT: 'api/QuanLyNguoiDung/XoaNguoiDung',
    
 }
 
