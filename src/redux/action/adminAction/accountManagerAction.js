@@ -20,9 +20,9 @@ export const fetchApiAccountAction = (page) => {
 };
 
 //lay thong tin tai khoan
-export const fetApiProfileAction = async (dispatch) => {
+export const fetApiProfileAction = (taiKhoan) => async (dispatch) => {
     try {
-        const res = await adminService.getAccountProfile();
+        const res = await adminService.getAccountProfile(taiKhoan);
         dispatch(createAction(adminType.GET_PROFILE, res.data));
     } catch (err) {
         console.log(err);

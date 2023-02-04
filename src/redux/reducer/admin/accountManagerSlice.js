@@ -9,6 +9,7 @@ const initialState = {
     accountList: null,
     isAlertErr: null,
     isAlertSuccess: null,
+    detailAccount: null,
 
 }
 
@@ -27,13 +28,14 @@ const reducer = (state = initialState, {
             case adminType.ADD_ACCOUNT:
                 draft.accountList = payload;
                 break;
-            case adminType.GET_PROFILE:
-                draft.accountList = payload;
-                break;
+            
             case adminType.FIND_ACCOUNT:
                 draft.accountList = payload;
                 break;
             case adminType.DELETE_ACCOUNT:
+                draft.accountList = payload;
+                break;
+            case adminType.EDIT_ACCOUNT:
                 draft.accountList = payload;
                 break;
 
@@ -43,6 +45,9 @@ const reducer = (state = initialState, {
 
             case adminType.SET_IS_ALERT_SUCCESS:
                 draft.isAlertSuccess = payload;
+                break;
+            case adminType.GET_PROFILE:
+                draft.detailAccount = payload;
                 break;
 
             default:

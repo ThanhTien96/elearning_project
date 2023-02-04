@@ -35,7 +35,7 @@ const AccountManager = (props) => {
     } catch (err) {
 
       dispatch(isAlertActionERR(err.response.data));
-      
+
       await setTimeout(() => {
         dispatch(isAlertActionERR(null));
       }, 1000);
@@ -116,6 +116,8 @@ const AccountManager = (props) => {
       width: '20%',
       render: (text, user, index) => {
         return <Fragment>
+          <NavLink key={1} to={`/admin/account/edit/${user.taiKhoan}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+
           <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
             onClick={() => handleDeleteAccount(user.taiKhoan)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
         </Fragment>

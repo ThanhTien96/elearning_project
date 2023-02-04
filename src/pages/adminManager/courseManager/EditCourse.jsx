@@ -24,7 +24,7 @@ const EditCourse = (props) => {
 
     const course = useSelector(state => state.courseList.detailCourse);
 
-    console.log(course.danhMucKhoaHoc.maDanhMucKhoahoc)
+    //console.log(course.danhMucKhoaHoc.maDanhMucKhoahoc)
     // lấy danh mục khóa học
     const { categoryList } = useSelector(state => state.courseList);
 

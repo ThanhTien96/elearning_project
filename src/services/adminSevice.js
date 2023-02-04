@@ -23,11 +23,11 @@ class AdminService {
 
     // lấy thông tin tài khoản
     getAccountProfile = (taiKhoan) => {
-        requester({
+        return requester({
             url: apiPathAdminList.GET_ACCOUNT_PROFILE,
-            method: 'POST',
+            method: 'GET',
             params: {
-                TaiKhoan: taiKhoan,
+                taiKhoan: taiKhoan,
             },
         });
     };
