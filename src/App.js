@@ -28,12 +28,9 @@ import NotFound from './pages/notFound/NotFound';
 import EditCourse from './pages/adminManager/courseManager/EditCourse';
 import CreateCourse from './pages/adminManager/courseManager/CreateCourse';
 import { fetchApiCategoryListAction } from './redux/action/courseListAction';
-<<<<<<< HEAD
 import EditAccount from './pages/adminManager/accountManager/EditAccount';
-=======
 import CourseStudent from './pages/adminManager/courseManager/CourseStudent';
 
->>>>>>> 8f5f118 ('updateCode')
 
 function App() {
 
@@ -81,7 +78,7 @@ function App() {
           <Route path='admin' element={<AdminTemplate />}>
             <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
-            <Route path='account/edit/:key' element={<AppRoute component={EditAccount} isAdmin />}></Route>
+            <Route path='account/edit/:account' element={<AppRoute component={EditAccount} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
             <Route path='course/edit/:key' element={<AppRoute component={EditCourse} isAdmin />}></Route>
             <Route path='course/create' element={<AppRoute component={CreateCourse} isAdmin />}></Route>

@@ -36,7 +36,6 @@ export const fetchApiCreateCourseAction = (formData) => {
 
             await courseService.fetApiCreateCourse(formData);
 
-
         }catch(err){
 
             throw err
@@ -49,13 +48,15 @@ export const fetchApiCreateCourseAction = (formData) => {
 export const fetchApiCourseStudentAction = (maKH) => async(dispatch) => {
     try {
 
-        console.log(maKH)
+        dispatch(isLoadingAction(true));
+
         const res = await adminService.fetchApiCourseStudent(maKH);
-        console.log(res.data);
 
         dispatch(createAction(adminType.GET_COURSE_STUDENT, res.data));
 
     } catch (err) {
         console.log(err.response)
+    } finally {
+        dispatch(isLoadingAction(false));
     }
-}
+};

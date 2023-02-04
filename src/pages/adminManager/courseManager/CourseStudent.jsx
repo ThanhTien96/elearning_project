@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
 import { Table, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import styles from '../accountManager/Admin.module.scss'
+import { useParams } from 'react-router-dom';
+import styles from '../accountManager/Admin.module.scss';
 import clsx from 'clsx';
 import { fetchApiCourseStudentAction } from '../../../redux/action/adminAction/courseManagerAction';
 import formData from '../../../utils/formData';
@@ -17,7 +17,6 @@ const CourseStudent = (props) => {
     // lấy danh sách học sinh từ reducer
     const { courseStudent } = useSelector(state => state.courseManagerSlice)
 
-    console.log(courseStudent)
     useEffect(() => {
 
         dispatch(fetchApiCourseStudentAction(params.courseName));

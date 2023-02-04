@@ -6,7 +6,6 @@ export const apiPathUser = {
     USER_REGISTER: '/api/QuanLyNguoiDung/DangKy',
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     REGISTER_COURSE: '/api/QuanLyKhoaHoc/DangKyKhoaHoc',
-    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
     UNSUBSCRIBE_COURSE: '/api/QuanLyKhoaHoc/HuyGhiDanh',
 }
 

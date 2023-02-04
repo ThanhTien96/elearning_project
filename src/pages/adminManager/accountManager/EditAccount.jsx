@@ -11,25 +11,29 @@ const EditAccount = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
+    
+    const {detailAccount} = useSelector(state => state.accountManagerSlice);
+    console.log(detailAccount)
 
+    console.log(params)
     useEffect(() => {
-        dispatch(fetApiProfileAction(params.key));
-    }, [params.key]);
+        dispatch(fetApiProfileAction(params.account));
+    }, [params.account]);
 
-    const account = useSelector(state => state.detailAccount);
+    
 
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             
-            taiKhoan: account?.taiKhoan,
-            matKhau: account?.matKhau,
-            hoTen: account?.hoTen,
-            soDT: account?.soDT,
-            maLoaiNguoiDung: account?.maLoaiNguoiDung,
-            maNhom: account?.maNhom,
-            email: account?.email
+            taiKhoan: detailAccount?.taiKhoan,
+            matKhau: detailAccount?.matKhau,
+            hoTen: detailAccount?.hoTen,
+            soDT: detailAccount?.soDT,
+            maLoaiNguoiDung: detailAccount?.maLoaiNguoiDung,
+            maNhom: detailAccount?.maNhom,
+            email: detailAccount?.email
         },
         onSubmit: async (values) => {
             console.log(values)
@@ -37,7 +41,7 @@ const EditAccount = (props) => {
             
             try {
 
-                const res = await adminService.fetchApiEditAccount(formData);
+                const res = await adminService.fetchApiEditAccount(values);
                 console.log(res)
                 
             } catch (err) {

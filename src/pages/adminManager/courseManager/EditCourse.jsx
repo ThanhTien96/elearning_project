@@ -11,6 +11,7 @@ import TextArea from 'antd/es/input/TextArea';
 import coursesService from '../../../services/courseService';
 import Swal from 'sweetalert2';
 import styles from '../accountManager/Admin.module.scss';
+import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
 
 
 const EditCourse = (props) => {
@@ -28,10 +29,6 @@ const EditCourse = (props) => {
 
     const course = useSelector(state => state.courseList.detailCourse);
 
-<<<<<<< HEAD
-    //console.log(course.danhMucKhoaHoc.maDanhMucKhoahoc)
-=======
->>>>>>> 8f5f118 ('updateCode')
     // lấy danh mục khóa học
     const { categoryList } = useSelector(state => state.courseList);
 
@@ -67,7 +64,7 @@ const EditCourse = (props) => {
             try {
 
                 const res = await coursesService.fetchApiEditCourse(formData);
-                console.log(res)
+
                 await Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -75,6 +72,9 @@ const EditCourse = (props) => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+
+                await dispatch(fetApiCourseAction());
+
                 navigate('/admin');
 
             } catch (err) {
@@ -99,7 +99,6 @@ const EditCourse = (props) => {
     };
 
     const handleChangeDatePicker = (value) => {
-        console.log(value)
         let ngayTao = moment(value?.$d).format('DD/MM/YYYY');
         formik.setFieldValue('ngayTao', ngayTao);
     };

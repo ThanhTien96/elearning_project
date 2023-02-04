@@ -21,7 +21,9 @@ const CourseManager = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+
         dispatch(fetApiCourseAction());
+
     }, [])
 
 
@@ -139,10 +141,7 @@ const CourseManager = (props) => {
                         onClick={() => fetchApiDeleteCourse(course.maKhoaHoc)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
 
                     <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
-                        className='text-white ml-2 text-2xl'><FaUserGraduate className='text-blue-500 inline-block' /></NavLink>
-
-                    <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
-                        className='text-white ml-3 text-3xl'><FaUserClock className='text-teal-500 inline-block' /></NavLink>
+                        className='text-white ml-2 text-2xl'><FaUserGraduate className='text-teal-500 inline-block' /></NavLink>
                 </Fragment>
             },
             width: '25%',
