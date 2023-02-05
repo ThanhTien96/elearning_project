@@ -11,9 +11,8 @@ const EditAccount = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
-    
+
     const {detailAccount} = useSelector(state => state.accountManagerSlice);
-    console.log(detailAccount)
 
     console.log(params)
     useEffect(() => {
