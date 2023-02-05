@@ -24,23 +24,35 @@ class CoursesService {
     }
 
     // call api lay danh sach khoa hoc pho bien
-    fetchApiPopularCourses = (page = 1, tenKhoaHoc = '') => {
+    fetchApiPopularCourses = (page = 1, tenKhoaHoc='') => {
         return requester({
             url: apiPathCourseList.GET_POPULAR_COURSES,
             method: 'GET',
             params: {
+                tenKhoaHoc: tenKhoaHoc,
                 page: page,
                 pageSize: 8,
                 MaNhom: maNhom,
-                tenKhoaHoc: tenKhoaHoc
+                
             },
         });
     };
 
-    // call api lấy thông tin chi tiết khóa học
+    //lấy thông tin chi tiết khóa học
     fetchApiDetailCourse = (maKH) => {
         return requester({
             url: apiPathCourseList.GET_COURSE_DETAIL,
+            method: 'GET',
+            params: {
+                maKhoaHoc: maKH,
+            },
+        });
+    };
+
+    //lấy thông tin chi tiết khóa học và học sinh
+    fetchApiDetailCourseStudent = (maKH) => {
+        return requester({
+            url: apiPathCourseList.GET_COURSE_DETAIL_STUDENT,
             method: 'GET',
             params: {
                 maKhoaHoc: maKH,
@@ -67,15 +79,6 @@ class CoursesService {
             method: 'POST',
             data: formData,
 
-        })
-    }
-
-    //edit khoa hoc
-    fetchApiEditCourse = (formData) => {
-        return requester ({
-            url: apiPathCourseList.EDIT_COURSES,
-            method: 'POST',
-            data: formData,
         })
     }
 

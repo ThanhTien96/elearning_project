@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { Form, Input, Radio, Select } from 'antd';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
-// import { isAlertActionERR, isAlertActionSuccess } from '../../../../redux/reducers/admin/movieManagerSlice';
 import * as Yup from 'yup';
 import { maNhom } from '../../../utils/index';
 import { fetchApiCreateAccountAction } from '../../../redux/action/adminAction/accountManagerAction';

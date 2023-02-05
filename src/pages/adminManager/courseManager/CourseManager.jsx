@@ -17,8 +17,8 @@ import { FaUserClock, FaUserGraduate } from "react-icons/fa";
 const CourseManager = (props) => {
 
     const dispatch = useDispatch();
-    const { courseList } = useSelector(state => state.courseManagerSlice);
-    const navigate = useNavigate();
+    const { courseList, isError } = useSelector(state => state.courseManagerSlice);
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -65,7 +65,12 @@ const CourseManager = (props) => {
     // tìm kiếm khóa học
     const { Search } = Input;
     const onSearch = (value) => {
-        dispatch('');
+        if (value) {
+            const keyWord = value.toLowerCase().trim();
+            dispatch(fetApiCourseAction(1, keyWord));
+        } else {
+            dispatch(fetApiCourseAction());
+        }
     };
 
 
@@ -106,26 +111,26 @@ const CourseManager = (props) => {
                 </Fragment>
             },
             sortDirection: ['descend', 'ascend'],
-            width: '20%',
+            width: '25%',
         },
         {
             title: 'Mô tả',
             key: '4',
             dataIndex: 'moTa',
             sorter: (a, b) => {
-                let khoaHocA = a.tenPhim.toLowerCase().trim();
-                let khoaHocB = b.tenPhim.toLowerCase().trim();
+                let khoaHocA = a.tenKhoaHoc.toLowerCase().trim();
+                let khoaHocB = b.tenKhoaHoc.toLowerCase().trim();
                 if (khoaHocA > khoaHocB) {
                     return 1
                 } else {
                     return -1;
                 }
             },
-            width: '35%',
+            width: '30%',
             sortDirection: ['descend', 'ascend'],
             render: (text, course, index) => {
                 return <Fragment>
-                    {truncateText(course.moTa, 50)}
+                    {truncateText(course.moTa, 40)}
                 </Fragment>
             }
         },
@@ -135,13 +140,42 @@ const CourseManager = (props) => {
             dataIndex: 'maKhoaHoc',
             render: (text, course, index) => {
                 return <Fragment>
-                    <NavLink key={1} to={`/admin/course/edit/${course.maKhoaHoc}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
 
-                    <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
-                        onClick={() => fetchApiDeleteCourse(course.maKhoaHoc)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+                    <div className={styles.action}>
+                        <NavLink key={1} to={`/admin/course/edit/${course.maKhoaHoc}`} className='text-white mr-2 text-2xl'>
+                            <span>
+                                <EditOutlined style={{ color: 'green' }}></EditOutlined>
+                            </span>
+                        </NavLink>
+                        <h1>Cập Nhật Khóa Học</h1>
+                    </div>
 
-                    <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
-                        className='text-white ml-2 text-2xl'><FaUserGraduate className='text-teal-500 inline-block' /></NavLink>
+                    <div className={styles.action}>
+                        <NavLink key={3} to={`/admin/course/student/${course.maKhoaHoc}`}
+                            className='text-white ml-2 text-2xl'>
+                            <span>
+                                <FaUserGraduate className='text-teal-500 inline-block' />
+                            </span>
+                        </NavLink>
+                        <h1>Học Sinh Khóa Học</h1>
+                    </div>
+
+                    <div className={styles.action}>
+                        <NavLink key={3} to={`/admin/course/waiting-approval-student/${course.maKhoaHoc}`}
+                            className='text-white ml-2 text-3xl'>
+                            <span>
+                                <FaUserClock className='text-yellow-500 inline-block' />
+                            </span>
+                        </NavLink>
+                        <h1>Học Sinh Chờ Xét Duyệt</h1>
+                    </div>
+
+                    <div className={styles.action}>
+                        <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
+                            onClick={() => fetchApiDeleteCourse(course.maKhoaHoc)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+                        <h1>Xóa Khóa Học</h1>
+                    </div>
+
                 </Fragment>
             },
             width: '25%',
@@ -164,7 +198,8 @@ const CourseManager = (props) => {
                 <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/course/create')} type='primary' size='large' ><PlusOutlined /><span>Thêm Khoá Học</span></Button>
 
             </div>
-            <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={handleChangePagination} />
+            {!isError && <Table pagination={{ total: courseList?.totalCount }} rowKey={'maKhoaHoc'} columns={columns} dataSource={data} onChange={handleChangePagination} />}
+            {isError && <h1 className='text-center font-semibold text-xl text-red-500'>{isError}</h1>}
         </div>
     )
 }

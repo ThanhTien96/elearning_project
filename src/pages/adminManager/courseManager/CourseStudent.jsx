@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import { Table, Input } from 'antd';
+import { Table} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styles from '../accountManager/Admin.module.scss';
@@ -48,6 +48,9 @@ const CourseStudent = (props) => {
             });
         }; 
     };
+
+    // data table
+    const data = courseStudent;
 
     const columns = [
         {
@@ -108,30 +111,14 @@ const CourseStudent = (props) => {
 
     ];
 
-    const data = courseStudent;
-
-
-    const { Search } = Input;
-
-    const onSearch = (value) => {
-        const keyWord = value.toLowerCase().trim();
-        console.log(keyWord)
-    };
 
     return (
         <div>
             <div className="flex justify-between mb-5 md:mb-10" >
                 <h3 className='text-teal-600 text-xl font-semibold'>Quản Lý Học Viên Khóa Học</h3>
-                <Search
-                    allowClear
-                    className='w-1/2'
-                    placeholder="Nhập từ khóa tìm kiếm"
-                    onSearch={onSearch}
-                />
-                {/* <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button> */}
 
             </div>
-            <Table pagination={''} rowKey={'taiKhoan'} columns={columns} dataSource={data} />
+            <Table rowKey={'taiKhoan'} columns={columns} dataSource={data} />
         </div>
 
 

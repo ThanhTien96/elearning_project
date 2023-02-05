@@ -17,7 +17,7 @@ const DetailContent = (props) => {
                         <img className='w-20 h-20 object-cover object-center rounded-full' src={require('../../assets/avatar/hoangNam.jpg')} alt="...." />
                         <div className='ml-5'>
                             <p className='text-[14px] font-medium text-gray-500'>Giảng Viên</p>
-                            <p className='text-[18px] font-semibold text-green-700'>Hoàng Nam</p>
+                            <p className='text-[18px] font-semibold text-green-700'>{detailCourse?.nguoiTao.hoTen}</p>
                         </div>
                     </div>
 

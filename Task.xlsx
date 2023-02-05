@@ -1,0 +1,34 @@
+
+************ Bảng Phân Chia Công Viêc ***************
+
+1/ Nguyễn Thanh Tiến:
+
+- Làm phần giao diện: 
++ Trang Chủ
++ Trang Danh Mục 
++ Trang Khóa Học
++ Trang Blog
++ Trang Sự Kiện
++ Trang 404 page
++ Trang Thông Tin
++ Trang Tìm kiếm khóa học
++ viết các hàm dùng chung 
++ set up dự án tạo các router
++ Thông tin tài khoản
+
+- Phần Admin: 
++ quản lý học viên xét duyệt khóa học cho học viên,
++ tạo khóa học
++ edit Khóa học
+
+2 Nguyễn Thành Phước:
+
++ Trang đăng ký
++ Trang đăng nhập
+
+- Admin:
++ quản lý tài khoản
++ tạo tài khoản
++ xóa tài khoản
++ xóa khóa học
++ hỗ trợ xây dựng UI/UX

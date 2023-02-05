@@ -40,9 +40,7 @@ const Dashboard = (props) => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(fetchApiAccountAction());
-    
+  useEffect(() => {    
     window.scrollTo(0, 0);
   }, [])
 

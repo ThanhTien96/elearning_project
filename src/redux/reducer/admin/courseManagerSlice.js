@@ -5,7 +5,9 @@ import courseType from '../../type/courseListType';
 
 const initialState = {
     courseList: null,
+    detailCourse: null,
     courseStudent: [],
+    isError: null,
 
 };
 
@@ -20,12 +22,21 @@ const reducer = (state = initialState, {
             case adminType.GET_COURSE_LIST:
                 draft.courseList = payload;
                 break;
+
+            case adminType.GET_DETAIL_COURSE_EDIT:
+                draft.detailCourse = payload;
+                break;
+
             case courseType.EDIT_COURSES:
-                draft.courseList = payload;
+                draft.detailCourse = payload;
                 break;
 
             case adminType.GET_COURSE_STUDENT:
                 draft.courseStudent = payload;
+                break;
+
+            case adminType.IS_ERROR:
+                draft.isError = payload;
                 break;
 
             default:

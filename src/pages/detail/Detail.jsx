@@ -1,5 +1,5 @@
 import { Col, Row } from 'antd';
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import DetailContent from '../../components/detail/DetailContent';
@@ -7,20 +7,34 @@ import RegisterCourse from '../../components/detail/RegisterCourse';
 import Banner from '../../components/global/Banner'
 import CourseList from '../../components/home/coursesList/CourseList';
 import { fetchApiDetailCourseAction } from '../../redux/action/courseListAction';
+import coursesService from '../../services/courseService';
 
 const Detail = (props) => {
 
   const bannerRef = useRef({ title: 'Thông Tin Khóa Học', text: 'tiến lên và không chần chừ !!!' })
-
+  const [detailStudent, setDetailStudent] = useState(null);
   const dispatch = useDispatch();
   const params = useParams();
+
+  // lấy danh sách chi tiết và học viên khóa học
+  const getDetailCourseStudent = async (maKH) => {
+    try {
+      const res = await coursesService.fetchApiDetailCourseStudent(maKH);
+      setDetailStudent(res.data)
+    } catch (err) {
+      console.log(err);
+    };
+  };
+
   useEffect(() => {
-    const id = params.id
+
+    const id = params.course
     dispatch(fetchApiDetailCourseAction(id));
+    getDetailCourseStudent(id);
 
     window.scrollTo(0, 0);
 
-  }, [params.id])
+  }, [params.course])
 
   return (
     <div>
@@ -32,7 +46,7 @@ const Detail = (props) => {
           </Col>
 
           <Col className='px-5' xs={24} lg={8}>
-            <RegisterCourse />
+            <RegisterCourse detailStudent={detailStudent} />
           </Col>
         </Row>
 

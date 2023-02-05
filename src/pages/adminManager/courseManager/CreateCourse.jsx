@@ -35,6 +35,7 @@ const CreateCourse = (props) => {
             ngayTao: '',
             maDanhMuc: '',
             taiKhoanNguoiTao: profile.taiKhoan,
+            maDanhMucKhoaHoc: '',
 
         },
         validationSchema: Yup.object({
@@ -62,7 +63,7 @@ const CreateCourse = (props) => {
             try {
 
                 const res = await coursesService.fetApiCreateCourse(formData);
-
+                console.log(res)
                 await Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -119,7 +120,7 @@ const CreateCourse = (props) => {
 
     // chọn danh mục khóa học
     const handleChangeCategory = (value) => {
-        formik.setFieldValue('maDanhMuc', value);
+        formik.setFieldValue('maDanhMucKhoaHoc', value);
     };
 
 
@@ -189,7 +190,7 @@ const CreateCourse = (props) => {
 
                 </Form.Item>
 
-                <Form.Item label="Mã Danh Mục Khoá Học">
+                <Form.Item label="Danh Mục Khoá Học">
                     <Select
                         showSearch
                         style={{

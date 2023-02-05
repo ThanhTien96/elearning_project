@@ -1,21 +1,27 @@
 import adminService from '../../../services/adminSevice';
 import adminType from '../../type/adminType';
 import { createAction } from '../createAction';
+import { isLoadingAction } from '../userAction';
 
 
 
 
 
 //lấy danh sách tài khoản người dùng AJAX
-export const fetchApiAccountAction = (page) => {
+export const fetchApiAccountAction = (page, tuKhoa) => {
     return async (dispatch) => {
         try {
-            const res = await adminService.getApiAccountList(page);
+            dispatch(isLoadingAction(true));
+
+            const res = await adminService.getApiAccountList(page, tuKhoa);
+
             dispatch(createAction(adminType.GET_ACCOUNT_LIST, res.data));
 
         } catch (err) {
             console.log(err);
-        }
+        } finally {
+            dispatch(isLoadingAction(false));
+        };
     };
 };
 
@@ -57,17 +63,6 @@ export const fetchApiAccountProfile = async (taiKhoan) => {
     }
 }
 
-// tìm kiếm người dùng
-export const searchAccountApi = (tuKhoa) => {
-    return async (dispatch) => {
-        try{
-            const res = await adminService.searchAccountPagination(tuKhoa);
-            dispatch(createAction(adminType.FIND_ACCOUNT, res.data));
-        }catch(err) {
-            console.log(err);
-        }
-    }
-}
 
 // set is alert err
 export const isAlertActionERR =  (data) => ({type: adminType.SET_IS_ALERT_ERR, payload: data})

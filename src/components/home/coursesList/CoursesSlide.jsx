@@ -57,8 +57,8 @@ const CoursesSlide = (props) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     dots: false
                 }
@@ -85,7 +85,6 @@ const CoursesSlide = (props) => {
     const handleFetchDetail = (id) => {
         navigate(`/detail/${id}`)
     }
-
 
 
     return (

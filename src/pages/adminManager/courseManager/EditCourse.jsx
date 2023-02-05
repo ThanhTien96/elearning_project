@@ -4,33 +4,33 @@ import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
-import { fetchApiDetailCourseAction } from '../../../redux/action/courseListAction'
-import { editCourseApi } from '../../../redux/action/courseListAction'
 import { Form, Radio, Input, DatePicker, Select, InputNumber } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import coursesService from '../../../services/courseService';
 import Swal from 'sweetalert2';
 import styles from '../accountManager/Admin.module.scss';
-import { fetApiCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
+import { fetApiCourseAction, fetchApiEditDetailCourseAction } from '../../../redux/action/adminAction/courseManagerAction';
+import adminService from '../../../services/adminSevice';
 
 
 const EditCourse = (props) => {
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
     const [imgSrc, setImgSrc] = useState('');
 
+    const course = useSelector(state => state.courseManagerSlice.detailCourse);
+
+    // lấy danh mục khóa học
+    const { categoryList } = useSelector(state => state.courseList);
+
     useEffect(() => {
 
-        dispatch(fetchApiDetailCourseAction(params.key));
+        dispatch(fetchApiEditDetailCourseAction(params.key));
 
     }, [params.key]);
 
 
-    const course = useSelector(state => state.courseList.detailCourse);
-
-    // lấy danh mục khóa học
-    const { categoryList } = useSelector(state => state.courseList);
 
 
 
@@ -45,11 +45,10 @@ const EditCourse = (props) => {
             hinhAnh: null,
             maNhom: course?.maNhom,
             ngayTao: course?.ngayTao,
-            maDanhMuc: course?.danhMucKhoaHoc.maDanhMucKhoahoc,
+            maDanhMucKhoaHoc: course?.danhMucKhoaHoc.maDanhMucKhoahoc,
             taiKhoanNguoiTao: course?.nguoiTao.taiKhoan,
         },
         onSubmit: async (values) => {
-            console.log(values)
             let formData = new FormData();
             for (let key in values) {
 
@@ -63,7 +62,7 @@ const EditCourse = (props) => {
             }
             try {
 
-                const res = await coursesService.fetchApiEditCourse(formData);
+                await adminService.fetchApiEditCourse(formData);
 
                 await Swal.fire({
                     position: 'center',
@@ -125,11 +124,9 @@ const EditCourse = (props) => {
 
     // chọn ma danh muc
     const handleChangeSelect = (value) => {
-        formik.setFieldValue('maDanhMuc', value)
+        formik.setFieldValue('maDanhMucKhoaHoc', value)
     };
 
-
-    const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
 
     return (
         <div>
@@ -190,7 +187,7 @@ const EditCourse = (props) => {
                     <Select options={categoryList.map(ele => ({ value: ele.maDanhMuc, label: ele.tenDanhMuc }))}
                         onChange={handleChangeSelect}
                         placeholder='Chọn danh mục khóa học'
-                        defaultValue={formik.values.maDanhMuc}
+                        defaultValue={formik.values.maDanhMucKhoaHoc}
                     />
                     {formik.errors.maLoaiNguoiDung && formik.touched.maLoaiNguoiDung && (<p className='text-red-700 mt-1'>{formik.errors.maLoaiNguoiDung}</p>)}
                 </Form.Item>
@@ -201,6 +198,9 @@ const EditCourse = (props) => {
                     }}
                 >
                     <button className={styles.btnGradient} type='submit'>Cập Nhật</button>
+                    <button
+                        onClick={() => {navigate('/admin')}}
+                        className={styles.btnGradient} type='button'>Hủy Cập Nhật</button>
                 </Form.Item>
 
             </Form>

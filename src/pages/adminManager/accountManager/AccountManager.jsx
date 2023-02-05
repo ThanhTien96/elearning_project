@@ -1,13 +1,14 @@
 import React, { Fragment, useEffect } from 'react'
 import { Table, Input, Button } from 'antd';
-import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons';
+import { DeleteOutlined, UserOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { fetchApiAccountAction, searchAccountApi, fetchApiDeleteAccount, isAlertActionERR, isAlertActionSuccess } from '../../../redux/action/adminAction/accountManagerAction';
+import { fetchApiAccountAction, } from '../../../redux/action/adminAction/accountManagerAction';
 import styles from './Admin.module.scss'
 import clsx from 'clsx';
 import adminService from '../../../services/adminSevice';
 import Swal from 'sweetalert2';
+import { FaUserCheck, FaUserClock } from "react-icons/fa";
 
 
 const AccountManager = (props) => {
@@ -38,7 +39,7 @@ const AccountManager = (props) => {
           const res = await adminService.getApiDeleteAccount(tk);
           Swal.fire(res.data, '', 'success').then((result) => {
             dispatch(fetchApiAccountAction());
-          })
+          });
         } catch (err) {
           Swal.fire('', err.response.data, 'error')
         };
@@ -63,7 +64,7 @@ const AccountManager = (props) => {
       },
       render: (text, user) => {
         return <Fragment>
-          <h4 className={clsx(styles.gradientText, 'font-medium text-lg')}>{user.hoTen}</h4>
+          <h4 className={clsx(styles.gradientText, 'font-medium text-lg capitalize')}>{user.hoTen}</h4>
         </Fragment>
       },
       sortDirection: ['descend', 'ascend'],
@@ -121,10 +122,27 @@ const AccountManager = (props) => {
       width: '20%',
       render: (text, user, index) => {
         return <Fragment>
-          <NavLink key={1} to={`/admin/account/edit/${user.taiKhoan}`} className='text-white mr-2 text-2xl'><EditOutlined style={{ color: 'green' }}></EditOutlined></NavLink>
+          <div className={styles.action}>
+            <NavLink key={1} to={`/admin/account/approved-course/${user.taiKhoan}`} className='text-white mr-2 text-2xl'>
+              <span><FaUserCheck style={{ color: 'blue', display: 'inline-block' }} /></span>
+            </NavLink>
+            <h1>Xem Khóa Học Đã Duyệt</h1>
+          </div>
 
-          <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
-            onClick={() => handleDeleteAccount(user.taiKhoan)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+          <div className={styles.action}>
+            <NavLink key={1} to={`/admin/account/waiting-approval/${user.taiKhoan}`} className='text-white mr-2 text-2xl'>
+              <span><FaUserClock style={{ color: 'green', display: 'inline-block' }} /></span>
+            </NavLink>
+            <h1>Xem Khóa Học Chờ Duyệt</h1>
+          </div>
+
+          <div className={styles.action}>
+            <span key={2} className='text-white mx-2 text-2xl cursor-pointer'
+              onClick={() => handleDeleteAccount(user.taiKhoan)}><DeleteOutlined style={{ color: 'red' }}></DeleteOutlined></span>
+            <h1>Xóa Người Dùng</h1>
+          </div>
+
+
         </Fragment>
       }
     },
@@ -133,19 +151,16 @@ const AccountManager = (props) => {
 
   ];
 
-  const data = accountList.items;
-  const onChange = async (pagination) => {
+  const data = accountList?.items;
+  const onChangePagination = async (pagination) => {
     dispatch(fetchApiAccountAction(pagination.current));
   };
 
   const { Search } = Input;
 
+  // tim kiem tai khoan nguoi dung
   const onSearch = (value) => {
-    if (value) {
-      dispatch(searchAccountApi(value));
-    } else {
-      dispatch(fetchApiAccountAction());
-    }
+    dispatch(fetchApiAccountAction(1, value));
   };
 
   return (
@@ -161,7 +176,7 @@ const AccountManager = (props) => {
         <Button className={clsx('flex items-center', styles.btnGradient)} onClick={() => navigate('/admin/account/create')} type='primary' size='large'><UserOutlined /> <span>Thêm Tài Khoản</span></Button>
 
       </div>
-      <Table pagination={{ total: accountList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChange} />
+      <Table pagination={{ total: accountList?.totalCount }} rowKey={'taiKhoan'} columns={columns} dataSource={data} onChange={onChangePagination} />
     </div>
 
 

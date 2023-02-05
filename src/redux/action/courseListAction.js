@@ -55,19 +55,22 @@ export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
     }
 }
 
-// action lấy chi tiết khóa học
-
+// lấy thông tin chi tiết khóa học
 export const fetchApiDetailCourseAction = (maKH) => async (dispatch) => {
     try {
+        
         dispatch(isLoadingAction(true));
         const res = await coursesService.fetchApiDetailCourse(maKH);
+
         dispatch(createAction(courseType.GET_DETAIL_COURSE, res.data));
+
     } catch (err) {
         console.log(err);
     } finally {
         dispatch(isLoadingAction(false));
-    }
+    };
 };
+
 
 // action lấy danh sách khóa học theo danh mục cho trang danh mục khóa học
 export const fetchApiCategoryCoursesAction = (maDM) => async (dispatch) => {

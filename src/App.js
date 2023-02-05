@@ -28,8 +28,10 @@ import NotFound from './pages/notFound/NotFound';
 import EditCourse from './pages/adminManager/courseManager/EditCourse';
 import CreateCourse from './pages/adminManager/courseManager/CreateCourse';
 import { fetchApiCategoryListAction } from './redux/action/courseListAction';
-import EditAccount from './pages/adminManager/accountManager/EditAccount';
 import CourseStudent from './pages/adminManager/courseManager/CourseStudent';
+import ApprovedCourse from './pages/adminManager/accountManager/ApprovedCourse';
+import WaitingApprovalCourse from './pages/adminManager/accountManager/WaitingApprovalCourse';
+import WaitingApprovalStudent from './pages/adminManager/courseManager/WaitingApprovalStudent';
 
 
 function App() {
@@ -56,7 +58,7 @@ function App() {
         <Routes>
           <Route path='' element={<HomeTemplate />}>
             <Route index path='' element={<Home />}></Route>
-            <Route path='/detail/:id' element={<Detail />}></Route>
+            <Route path='/detail/:course' element={<Detail />}></Route>
             <Route path='profile' element={<AppRoute component={Profile} isPrivate />} ></Route>
             <Route path='about' element={<Information />}></Route>
             <Route path='event' element={<Event />}></Route>
@@ -78,12 +80,14 @@ function App() {
           <Route path='admin' element={<AdminTemplate />}>
             <Route path='' element={<AppRoute component={CourseManager} isAdmin />}></Route>
             <Route path='account' element={<AppRoute component={AccountManager} isAdmin />}></Route>
-            <Route path='account/edit/:account' element={<AppRoute component={EditAccount} isAdmin />}></Route>
+            <Route path='account/approved-course/:account' element={<AppRoute component={ApprovedCourse} isAdmin />}></Route>
+            <Route path='account/waiting-approval/:account' element={<AppRoute component={WaitingApprovalCourse} isAdmin />}></Route>
             <Route path='account/create' element={<AppRoute component={CreateAccount} isAdmin />}></Route>
             <Route path='course/edit/:key' element={<AppRoute component={EditCourse} isAdmin />}></Route>
             <Route path='course/create' element={<AppRoute component={CreateCourse} isAdmin />}></Route>
             <Route path='course/student/:courseName' element={<AppRoute component={CourseStudent} isAdmin />}></Route>
-            <Route path='*' element={<Navigate to='' replace/>}></Route>
+            <Route path='course/waiting-approval-student/:course' element={<AppRoute component={WaitingApprovalStudent} isAdmin />}></Route>
+            <Route path='*' element={<Navigate to='' replace />}></Route>
           </Route>
 
           <Route path='*' element={<Navigate to='' replace />}></Route>

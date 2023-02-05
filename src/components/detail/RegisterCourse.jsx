@@ -65,7 +65,7 @@ const RegisterCourse = (props) => {
                 </button>
 
                 <div className='flex justify-between items-center border-b border-solid border-gray-300 py-5'>
-                    <p className='text-[1rem] text-gray-500'>Ghi danh: <span className='text-black font-medium ml-1'>10 Học viên</span></p>
+                    <p className='text-[1rem] text-gray-500'>Ghi danh: <span className='text-black font-medium ml-1'>{props.detailStudent?.lstHocVien.length} Học Viên</span></p>
                     <FaUserGraduate className='text-2xl text-yellow-500' />
                 </div>
 
