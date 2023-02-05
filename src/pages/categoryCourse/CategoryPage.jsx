@@ -20,7 +20,7 @@ const CategoryPage = () => {
 
     window.scrollTo(0, 0);
 
-  }, [params])
+  }, [params.id])
 
   const bannerContent = { title: 'KHÓA HỌC THEO DANH MỤC', text: 'HÃY CHỌN KHÓA HỌC MONG MUỐN !!!' }
 

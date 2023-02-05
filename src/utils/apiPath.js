@@ -7,6 +7,7 @@ export const apiPathUser = {
     GET_ACCOUNT_PROFILE: '/api/QuanLyNguoiDung/ThongTinTaiKhoan',
     REGISTER_COURSE: '/api/QuanLyKhoaHoc/DangKyKhoaHoc',
     UNSUBSCRIBE_COURSE: '/api/QuanLyKhoaHoc/HuyGhiDanh',
+    EDIT_PROFILE: '/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
 }
 
 // api path lay danh sach khoa hoc, danh muc, khóa học theo danh mục

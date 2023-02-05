@@ -5,6 +5,7 @@ const initialState = {
     categoryList: [],
     categoryCourse: [],
     courseLoading: false,
+    popularCourseLoading: false,
     popularCourses: null,
     detailCourse: null,
 }
@@ -23,6 +24,10 @@ const reducer = (state = initialState, {type, payload}) => {
 
             case courseType.COURSE_LOADING:
                 draft.courseLoading = payload;
+                break;
+
+            case courseType.POPULAR_COURSE_LOADING:
+                draft.popularCourseLoading = payload;
                 break;
             
             case courseType.GET_POPULAR_COURSE:

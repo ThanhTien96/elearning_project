@@ -33,7 +33,6 @@ const CreateCourse = (props) => {
             hinhAnh: {},
             maNhom: maNhom,
             ngayTao: '',
-            maDanhMuc: '',
             taiKhoanNguoiTao: profile.taiKhoan,
             maDanhMucKhoaHoc: '',
 
@@ -46,7 +45,7 @@ const CreateCourse = (props) => {
             danhGia: Yup.string().required('* Vui lòng nhập mô tả !'),
             hinhAnh: Yup.string().required('* Vui lòng tải lên hình ảnh khoá học !'),
             ngayTao: Yup.string().required('* Vui lòng chọn ngày tạo khoá học !'),
-            maDanhMuc: Yup.string().required('* Vui lòng nhập danh mục khoá học !'),
+            maDanhMucKhoaHoc: Yup.string().required('* Vui lòng nhập danh mục khoá học !'),
             maNhom: Yup.string().required('* Vui lòng nhập mã nhóm !'),
         }),
         onSubmit: async (values) => {

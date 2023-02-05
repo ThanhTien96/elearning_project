@@ -12,7 +12,7 @@ const PopularCourses = () => {
 
     const dispatch = useDispatch();
     const { popularCourses } = useSelector(state => state.courseList);
-    const { courseLoading } = useSelector(state => state.courseList);
+    const { popularCourseLoading } = useSelector(state => state.courseList);
     const navigate = useNavigate();
 
     // call api lấy danh sách khóa học phân trang
@@ -34,7 +34,7 @@ const PopularCourses = () => {
         <div >
             <Row>
                 {
-                    !courseLoading && popularCourses?.items.map((ele, index) => {
+                    !popularCourseLoading && popularCourses?.items.map((ele, index) => {
                         return (
                             <Col xs={24} md={12} lg={6} key={index} className={styles.itemsCard}>
                                 <div className={styles.items}>
@@ -115,7 +115,7 @@ const PopularCourses = () => {
                     })
                 }
 
-                {courseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
+                {popularCourseLoading && <div className='w-full h-64 top-0 left-0 bg-white text-center flex items-center justify-center'>
                     <img className='' src={require('../../assets/loading/Spinner-3.gif')} alt="..." />
                 </div>}
             </Row>

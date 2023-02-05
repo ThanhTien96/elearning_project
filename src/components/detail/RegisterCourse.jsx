@@ -20,14 +20,14 @@ const RegisterCourse = (props) => {
 
     //dang ky khoa hoc
     const handleRegisterCourse = async (data) => {
+        
         try {
             const res = await userServices.fetchApiRegisterCourse(data);
-            console.log(res)
             await dispatch(fetApiProfileAction);
             Swal.fire({
-                position: 'top center',
+                position: 'center',
                 icon: 'success',
-                title: 'Đăng Ký Thành Công',
+                title: res.data,
                 showConfirmButton: false,
                 timer: 1500
             }).then(result => {
@@ -56,6 +56,7 @@ const RegisterCourse = (props) => {
 
                 <button
                     onClick={() => {
+                        if(!profile) return navigate('/user/login')
                         const maKH = detailCourse.maKhoaHoc;
                         const TK = profile.taiKhoan;
                         handleRegisterCourse(formData.dataRegisterCourse(maKH, TK))

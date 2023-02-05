@@ -11,9 +11,6 @@ const CategoryCoursesItem = () => {
 
     const navigate = useNavigate();
 
-
-
-
     //lấy danh sách khóa học theo danh mục
     const { categoryCourse } = useSelector(state => state.courseList);
 
@@ -23,7 +20,13 @@ const CategoryCoursesItem = () => {
     const [coursePerPage] = useState(12);
     const lastIndex = currentPage * coursePerPage;
     const firstIndex = lastIndex - coursePerPage;
-    const dataMap = categoryCourse.slice(firstIndex, lastIndex);
+    let dataMap;
+    if (categoryCourse.length > 12) {
+        dataMap = categoryCourse.slice(firstIndex, lastIndex);
+    } else {
+        dataMap = categoryCourse;
+    }
+
 
     // chuyển sang trang chi tiết
     const handleFetchDetail = (id) => {

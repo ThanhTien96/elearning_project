@@ -2,6 +2,7 @@ import { Col, Row, Tabs } from 'antd'
 import { useFormik } from 'formik';
 import React, { memo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import { fetApiProfileAction } from '../../../redux/action/userAction';
 import userServices from '../../../services/userService';
 import styles from './Profile.module.scss';
@@ -27,18 +28,31 @@ export const Information = (props) => {
             matKhau: account?.matKhau,
             hoTen: account?.hoTen,
             soDT: account?.soDT,
-            maLoaiNguoiDung: 'GV',
+            maLoaiNguoiDung: account?.maLoaiNguoiDung,
             maNhom: account?.maNhom,
             email: account?.email,
         },
         onSubmit: async (values) => {
             try {
                 await userServices.fetchApiEditProfile(values);
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Đăng Nhập Thành Công',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 dispatch(fetApiProfileAction);
                 setEditProfile(false);
             } catch (err) {
-                console.log(err)
-            }
+                await Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: err.response.data,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            };
 
         }
     });

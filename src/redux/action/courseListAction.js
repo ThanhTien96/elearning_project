@@ -42,7 +42,7 @@ export const fetchApiCoursesWithCategoryAction = (category) => async (dispatch) 
 
 export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
     try{
-        dispatch(createAction(courseType.COURSE_LOADING, true));
+        dispatch(createAction(courseType.POPULAR_COURSE_LOADING, true));
 
         const res = await coursesService.fetchApiPopularCourses(page);
 
@@ -51,7 +51,7 @@ export const fetchApiPopularCoursesAction = (page) => async (dispatch) => {
     } catch (err) {
         console.log(err);
     } finally {
-        dispatch(createAction(courseType.COURSE_LOADING, false));
+        dispatch(createAction(courseType.POPULAR_COURSE_LOADING, false));
     }
 }
 
