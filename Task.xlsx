@@ -1,7 +1,7 @@
 
 ************ Bảng Phân Chia Công Viêc ***************
 
-1/ Nguyễn Thanh Tiến:
+////////*********** 1/ Nguyễn Thanh Tiến: ********////////////
 
 - Làm phần giao diện: 
 + Trang Chủ
@@ -12,6 +12,7 @@
 + Trang 404 page
 + Trang Thông Tin
 + Trang Tìm kiếm khóa học
++ header + footer.
 + viết các hàm dùng chung 
 + set up dự án tạo các router
 + Thông tin tài khoản
@@ -21,7 +22,7 @@
 + tạo khóa học
 + edit Khóa học
 
-2 Nguyễn Thành Phước:
+/////********* 2 Nguyễn Thành Phước: ********///////
 
 + Trang đăng ký
 + Trang đăng nhập
