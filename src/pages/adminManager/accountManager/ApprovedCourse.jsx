@@ -125,8 +125,6 @@ const ApprovedCourse = (props) => {
     <div>
             <div className="flex justify-between mb-5 md:mb-10" >
                 <h3 className='text-teal-600 text-xl font-semibold'>Quản Lý Học Đã Xét Duyệt</h3>
-                
-
             </div>
             <Table rowKey={'taiKhoan'} columns={columns} dataSource={data} />
         </div>

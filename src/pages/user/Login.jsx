@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { Alert } from 'antd';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import styles from '../../components/global/GlobalBtn.module.scss';
+import { FaArrowLeft } from 'react-icons/fa';
 
 
 const Login = () => {
@@ -59,7 +60,8 @@ const Login = () => {
 
     <div>
       <div className='container mx-auto relative'>
-        <div className="flex items-center justify-center h-screen lg:mt-5 px-5 lg:px-0">
+        <NavLink to='/' className={styles.backToHome}> <button><FaArrowLeft /></button></NavLink>
+        <div className="flex items-center justify-center h-screen px-5 lg:px-0">
 
           <form
             onSubmit={formik.handleSubmit}

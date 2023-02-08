@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { FaArrowLeft } from 'react-icons/fa';
+import { NavLink, Outlet } from 'react-router-dom';
+import styles from './UserTemplate.module.scss';
 
 const UserTemplate = () => {
 
@@ -9,7 +11,8 @@ const UserTemplate = () => {
   
 
   return (
-    <div>
+    <div className={styles.userBg}>
+      
       <Outlet />
     </div>
   )

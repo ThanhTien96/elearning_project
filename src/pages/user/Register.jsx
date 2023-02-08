@@ -1,13 +1,14 @@
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, React } from 'react';
 import Swal from 'sweetalert2';
 import userServices from '../../services/userService';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { maNhom } from '../../utils';
 import styles from '../../components/global/GlobalBtn.module.scss'
+import { FaArrowLeft } from 'react-icons/fa';
 
 
 
@@ -72,7 +73,8 @@ const Register = () => {
 
   return (
 
-    <div className='container mx-auto relative py-40'>
+    <div className='container mx-auto relative py-20'>
+      <NavLink to='/' className={styles.backToHome}> <button><FaArrowLeft /></button></NavLink>
       <div className="flex items-center justify-center h-screen lg:mt-5 px-5 lg:px-0">
         <form
           onSubmit={formik.handleSubmit}

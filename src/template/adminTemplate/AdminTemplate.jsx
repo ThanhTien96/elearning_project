@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import { fetchApiAccountAction } from '../../redux/action/adminAction/accountManagerAction';
 import { fetchApiLoginAction } from '../../redux/action/userAction';
 import { fetApiCourseAction } from '../../redux/action/adminAction/courseManagerAction';
+import { createAction } from '../../redux/action/createAction';
+import userType from '../../redux/type/userType';
 
 
 
@@ -62,7 +64,7 @@ const Dashboard = (props) => {
       cancelButtonText: 'Hủy Bỏ',
     }).then(result => {
       if (result.isConfirmed) {
-        dispatch(fetchApiLoginAction(null));
+        dispatch(createAction(userType.GET_PROFILE, null));
         localStorage.removeItem('Token');
         navigate('/');
         Swal.fire('Đăn Xuất Thành Công !', '', 'success')
