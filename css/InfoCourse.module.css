@@ -6,7 +6,7 @@
   content: "";
   display: inline-block;
   position: absolute;
-  background: linear-gradient(90deg, hsla(0deg, 0%, 100%, 0) 0, hsla(0deg, 0%, 100%, 0.3));
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, 0.3));
   top: 0;
   left: -160%;
   height: 100%;

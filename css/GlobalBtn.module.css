@@ -34,3 +34,18 @@
     transform: scale(0.97);
   }
 }
+.backToHome {
+  position: fixed;
+  color: white;
+  top: 5%;
+  left: 3%;
+  font-size: 25px;
+  border: 1px solid white;
+  width: 45px;
+  height: 45px;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+  border-radius: 100%;
+  cursor: pointer;
+}

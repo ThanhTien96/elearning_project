@@ -40,11 +40,11 @@
   border-radius: 30%;
   vertical-align: middle;
 }
-.aboutItem .aboutBgLeft {
-  background: url("../../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg");
+.aboutItem .aboutImgLeft {
+  background-image: url("../../assets/image/aboutBG/solutions-hero-royalBlue-bg.e6aa17e0.svg");
 }
-.aboutItem .aboutBgRight {
-  background: url("../../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg");
+.aboutItem .aboutImgRight {
+  background-image: url("../../assets/image/aboutBG/solutions-hero-green-bg.15753edf.svg");
 }
 @media screen and (max-width: 768.98px) {
   .aboutItem .aboutText {

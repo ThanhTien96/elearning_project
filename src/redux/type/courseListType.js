@@ -9,6 +9,7 @@ const courseType = {
     GET_DETAIL_COURSE: 'GET_DETAIL_COURSE',
 };
 
+
 Object.keys(courseType).forEach(key => {
     return courseType[key] = sliceName + '/' + courseType[key];
 });

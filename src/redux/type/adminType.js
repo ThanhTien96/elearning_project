@@ -17,7 +17,7 @@ const adminType = {
 }
 
 Object.keys(adminType).forEach(key => {
-    return adminType[key] = sliceName + '+' + adminType[key];
+    adminType[key] = sliceName + '+' + adminType[key];
 });
 
 export default adminType;
